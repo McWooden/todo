@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header {
+    padding: .5em 1em;
+    width: 100vw;
+}
+
+.container, form {
+    display: flex;
+    flex-direction: column;
+    padding: .5em;
+}
+.container {
+    max-width: 1024px;
+    margin: .5em auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: .5em;
+}
+.form-title {
+    text-align: center;
+}
+form input {
+    padding: .5em;
+    font-size: 1em;
+    margin: .5em;
+}
+.btn-submit {
+    width: fit-content;
+    align-self: flex-end;
+}
+form > * {
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: .5em;
+    border: 1px solid black;
+    padding: .5em;
+    padding-right: 0;
+    overflow: auto;
+    gap: .5em;
+}
+.card-btn {
+    display: flex;
+}
+.card-btn > * {
+    margin-right: .5em;
+    cursor: pointer;
+}
+

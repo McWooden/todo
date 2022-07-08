@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 style="color: red;">Todo App</h1>
+    </header>
+
+    <section>
+        <div class="container">
+            <p class="form-title">tambah tugas</p>
+            <form action="" id="form">
+                <p>Judul tugas</p>
+                <input type="text" placeholder="nama tugas" id="tugas" required>
+                <p>tanggal tugas</p>
+                <input type="date" id="tanggal" required>
+                <input type="submit" class="btn-submit" id="btnSubmit">
+            </form>
+        </div>
+        
+        <div class="container">
+            <p>belum dilakukan</p>
+            <div id="belum"></div>
+        </div>
+        <div class="container">
+            <p>sudah dilakukan</p>
+            <div id="sudah"></div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

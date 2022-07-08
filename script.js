@@ -1,0 +1,134 @@
+document.addEventListener('renderTugas', () => {
+    document.getElementById('belum').innerHTML = ''
+    document.getElementById('sudah').innerHTML = ''
+    let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.tanggal, x.selesai))
+    let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.tanggal, x.selesai))
+})
+
+let tugas = [
+    {
+        id: 123,
+        tugas: 'parkor',
+        tanggal: '08/07/2022',
+        selesai: false
+    },
+    {
+        id: 222,
+        tugas: 'nge hack sekolah',
+        tanggal: '08/07/2022',
+        selesai: false
+    },
+    {
+        id: 321,
+        tugas: 'nge mim',
+        tanggal: '02/06/2022',
+        selesai: true
+    },
+    {
+        id: 333,
+        tugas: 'share mim',
+        tanggal: '01/03/2022',
+        selesai: true
+    }
+]
+
+const form = document.getElementById('form')
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    
+    tugas.push({
+        id: +new Date(),
+        tugas: document.getElementById('tugas').value,
+        tanggal: document.getElementById('tanggal').value,
+        selesai: false
+    })
+    
+    document.dispatchEvent(new Event('renderTugas'))
+})
+
+function buatElement(id, tugas, tanggal, selesai) {   
+    // card
+    const card = document.createElement('div')
+    card.classList.add('card')
+    card.setAttribute('id', id)
+
+    // text card
+    const cardText = document.createElement('div')
+    cardText.classList.add('card-text')
+
+    const textTitle = document.createElement('p')
+    textTitle.innerText = tugas
+
+    const textTime = document.createElement('p')
+    textTime.innerText= tanggal
+
+    // btn card
+    const cardBtn = document.createElement('div')
+    cardBtn.classList.add('card-btn')
+
+    const centang = document.createElement('span')
+    centang.classList.add('centang')
+    centang.innerText = 'centang'
+    centang.addEventListener('click', (e) => {
+        pindahKeSudahSelesai(e.target.parentElement.parentElement.id)
+    })
+
+    const ulangi = document.createElement('span')
+    ulangi.classList.add('ulangi')
+    ulangi.innerText = 'ulangi'
+    ulangi.addEventListener('click', (e) => {
+        pindahKeBelumSelesai(e.target.parentElement.parentElement.id)
+    })
+
+    const buang = document.createElement('span')
+    buang.classList.add('buang')
+    buang.innerText = 'buang'
+    buang.addEventListener('click', (e) => {
+        buangDariSudahSelesai(e.target.parentElement.parentElement.id)
+    })
+
+    // penggabungan
+    cardText.append(textTitle, textTime)
+    card.append(cardText, cardBtn)
+
+
+    if (selesai) {
+        cardBtn.append(ulangi, buang)
+        return document.getElementById('sudah').appendChild(card)
+    } else {
+        cardBtn.append(centang)
+        return document.getElementById('belum').appendChild(card)
+    }
+}
+window.addEventListener('load', () => {
+    document.dispatchEvent(new Event('renderTugas'))
+})
+
+
+function pindahKeSudahSelesai(idYangDiCari) {
+    for (let i in tugas) {
+        if (tugas[i].id == idYangDiCari) {
+            tugas[i].selesai = true
+            document.dispatchEvent(new Event('renderTugas'))
+        }
+    }
+}
+
+function pindahKeBelumSelesai(idYangDiCari) {
+    for (let i in tugas) {
+        if (tugas[i].id == idYangDiCari) {
+            tugas[i].selesai = false
+            document.dispatchEvent(new Event('renderTugas'))
+        }
+    }
+}
+
+function buangDariSudahSelesai(idYangDiCari) {
+    for (let i in tugas) {
+        if (tugas[i].id == idYangDiCari) {
+            tugas.splice(i, 1)
+            document.dispatchEvent(new Event('renderTugas'))
+        }
+    }
+}
+
