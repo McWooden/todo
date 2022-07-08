@@ -1,36 +1,61 @@
+let tugas = []
+const myChache = 'todolist'
+
+    // storage
+    if (localStorage.getItem(myChache) == null) {
+        localStorage.setItem(myChache, '')
+    }
+    function simpanProggress() {
+        let simpanJSON = JSON.stringify(tugas)
+        localStorage.setItem(myChache, simpanJSON)
+    }
+    function ambilProggress() {
+        let ambilJSON = JSON.parse(localStorage.getItem(myChache))
+        tugas = ambilJSON
+    }
+
 document.addEventListener('renderTugas', () => {
     document.getElementById('belum').innerHTML = ''
     document.getElementById('sudah').innerHTML = ''
+    // dijadiin variable aja biar agak gampang di liat
     let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.tanggal, x.selesai))
     let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.tanggal, x.selesai))
+    simpanProggress()
+    console.log(JSON.parse(localStorage.getItem(myChache)))
 })
 
-let tugas = [
-    {
-        id: 123,
-        tugas: 'parkor',
-        tanggal: '08/07/2022',
-        selesai: false
-    },
-    {
-        id: 222,
-        tugas: 'nge hack sekolah',
-        tanggal: '08/07/2022',
-        selesai: false
-    },
-    {
-        id: 321,
-        tugas: 'nge mim',
-        tanggal: '02/06/2022',
-        selesai: true
-    },
-    {
-        id: 333,
-        tugas: 'share mim',
-        tanggal: '01/03/2022',
-        selesai: true
-    }
-]
+window.addEventListener('load', () => {
+    ambilProggress()
+    document.dispatchEvent(new Event('renderTugas'))
+})
+
+// // testing area
+// let testing = [
+//     {
+//         id: 123,
+//         tugas: 'parkor',
+//         tanggal: '08/07/2022',
+//         selesai: false
+//     },
+//     {
+//         id: 222,
+//         tugas: 'nge hack sekolah',
+//         tanggal: '08/07/2022',
+//         selesai: false
+//     },
+//     {
+//         id: 321,
+//         tugas: 'nge mim',
+//         tanggal: '02/06/2022',
+//         selesai: true
+//     },
+//     {
+//         id: 333,
+//         tugas: 'share mim',
+//         tanggal: '01/03/2022',
+//         selesai: true
+//     }
+// ]
 
 const form = document.getElementById('form')
 form.addEventListener('submit', (e) => {
@@ -100,9 +125,6 @@ function buatElement(id, tugas, tanggal, selesai) {
         return document.getElementById('belum').appendChild(card)
     }
 }
-window.addEventListener('load', () => {
-    document.dispatchEvent(new Event('renderTugas'))
-})
 
 
 function pindahKeSudahSelesai(idYangDiCari) {
@@ -131,4 +153,3 @@ function buangDariSudahSelesai(idYangDiCari) {
         }
     }
 }
-
