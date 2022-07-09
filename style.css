@@ -4,11 +4,15 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+body {
+    background-color: #DCD7C9;
+}
 header {
+    background-color: #2C3639;
+    color: #EEE;
     padding: .5em 1em;
     width: 100vw;
 }
-
 .container, form {
     display: flex;
     flex-direction: column;
@@ -18,43 +22,81 @@ header {
     max-width: 1024px;
     margin: .5em auto;
 }
-
+.subjudul {
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #2C3639;
+}
 form {
     display: flex;
     flex-direction: column;
     padding: .5em;
+    padding-top: 0;
 }
 .form-title {
     text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #2C3639;
 }
 form input {
     padding: .5em;
     font-size: 1em;
     margin: .5em;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #A27B5C;
+    background-color: #a27b5c44;
+    outline: none;
+}
+input[type="text"], input[type="date"] {
+    font-size: 1.2em;
 }
 .btn-submit {
     width: fit-content;
     align-self: flex-end;
+    cursor: pointer;
+    padding-right: 1em;
+    padding-left: 1em;
+    background-color: #A27B5C;
+    color: #EEE;
 }
-form > * {
-}
-
 .card {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: .5em;
-    border: 1px solid black;
+    border: 1px solid #A27B5C;
     padding: .5em;
     padding-right: 0;
     overflow: auto;
     gap: .5em;
+    border-radius: 10px;
+    font-size: large;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .card-btn {
     display: flex;
+    align-content: center;
+    justify-content: center;
 }
 .card-btn > * {
     margin-right: .5em;
     cursor: pointer;
+    color: #2C3639;
+}
+.centang, .ulangi, .buang {
+    padding: .25em .5em;
+    border-radius: 5px;
+    color: #EEE;
+}
+.centang {
+    background-color: #0D7377;
+}
+.ulangi {
+    background-color: #A27B5C;
+}
+.buang {
+    background-color: #774360;
 }
 
