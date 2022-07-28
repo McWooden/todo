@@ -1,6 +1,7 @@
 let tugas = []
 const myChache = 'todolist'
 
+
     // storage
     if (localStorage.getItem(myChache) == null) {
         localStorage.setItem(myChache, '')
@@ -18,8 +19,8 @@ document.addEventListener('renderTugas', () => {
     document.getElementById('belum').innerHTML = ''
     document.getElementById('sudah').innerHTML = ''
     // dijadiin variable aja biar agak gampang di liat
-    let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.tanggal, x.selesai))
-    let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.tanggal, x.selesai))
+    let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.mulai, x.tanggal, x.selesai))
+    let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.mulai, x.tanggal, x.selesai))
     simpanProggress()
     console.log(JSON.parse(localStorage.getItem(myChache)))
 })
@@ -29,33 +30,6 @@ window.addEventListener('load', () => {
     document.dispatchEvent(new Event('renderTugas'))
 })
 
-// // testing area
-// let testing = [
-//     {
-//         id: 123,
-//         tugas: 'parkor',
-//         tanggal: '08/07/2022',
-//         selesai: false
-//     },
-//     {
-//         id: 222,
-//         tugas: 'nge hack sekolah',
-//         tanggal: '08/07/2022',
-//         selesai: false
-//     },
-//     {
-//         id: 321,
-//         tugas: 'nge mim',
-//         tanggal: '02/06/2022',
-//         selesai: true
-//     },
-//     {
-//         id: 333,
-//         tugas: 'share mim',
-//         tanggal: '01/03/2022',
-//         selesai: true
-//     }
-// ]
 
 const form = document.getElementById('form')
 form.addEventListener('submit', (e) => {
@@ -64,6 +38,7 @@ form.addEventListener('submit', (e) => {
     tugas.push({
         id: +new Date(),
         tugas: document.getElementById('tugas').value,
+        mulai: document.getElementById('mulai').value,
         tanggal: document.getElementById('tanggal').value,
         selesai: false
     })
@@ -71,7 +46,7 @@ form.addEventListener('submit', (e) => {
     document.dispatchEvent(new Event('renderTugas'))
 })
 
-function buatElement(id, tugas, tanggal, selesai) {   
+function buatElement(id, tugas, mulai, tanggal, selesai) {   
     // card
     const card = document.createElement('div')
     card.classList.add('card')
@@ -85,7 +60,8 @@ function buatElement(id, tugas, tanggal, selesai) {
     textTitle.innerText = tugas
 
     const textTime = document.createElement('p')
-    textTime.innerText= tanggal
+    textTime.classList.add('text-time')
+    textTime.innerText = `${mulai} >> ${tanggal}`
 
     // btn card
     const cardBtn = document.createElement('div')
@@ -153,3 +129,4 @@ function buangDariSudahSelesai(idYangDiCari) {
         }
     }
 }
+
