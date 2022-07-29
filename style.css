@@ -56,6 +56,7 @@ form .subjudul {
     border-bottom: 1px solid #A27B5C;
 }
 form input {
+    box-shadow: #a27b5c5d 0px 25px 20px -20px;
     padding: .5em;
     font-size: 1em;
     margin: .5em;
@@ -65,6 +66,9 @@ form input {
     border-bottom: 3px solid #A27B5C;
     background-color: #eaeaea;
     outline: none;
+}
+#color {
+    padding: 0;
 }
 input[type="text"], input[type="date"] {
     font-size: 1.2em;
@@ -146,10 +150,11 @@ input[type="text"], input[type="date"] {
 
 #belum .card {
     border-color: #0D7377;
+
 }
 #sudah .card {
     border-color: #774360;
-    background-color: #eaeaea;
+    background-color: #7743600a;
 }
 
 footer {

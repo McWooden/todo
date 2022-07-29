@@ -19,8 +19,8 @@ document.addEventListener('renderTugas', () => {
     document.getElementById('belum').innerHTML = ''
     document.getElementById('sudah').innerHTML = ''
     // dijadiin variable aja biar agak gampang di liat
-    let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.tanggal, x.selesai))
-    let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.tanggal, x.selesai))
+    let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.berakhir, x.selesai))
+    let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.berakhir, x.selesai))
     simpanProggress()
     console.log(JSON.parse(localStorage.getItem(myChache)))
 })
@@ -40,14 +40,14 @@ form.addEventListener('submit', (e) => {
         tugas: document.getElementById('tugas').value,
         deskripsi: document.getElementById('deskripsi').value,
         mulai: document.getElementById('mulai').value,
-        tanggal: document.getElementById('tanggal').value,
+        berakhir: document.getElementById('tanggal').value,
         selesai: false
     })
     
     document.dispatchEvent(new Event('renderTugas'))
 })
 
-function buatElement(id, tugas, deskripsi, mulai, tanggal, selesai) {   
+function buatElement(id, tugas, deskripsi, mulai, berakhir, selesai) {   
     // card
     const card = document.createElement('div')
     card.classList.add('card')
@@ -60,9 +60,15 @@ function buatElement(id, tugas, deskripsi, mulai, tanggal, selesai) {
     const textTitle = document.createElement('p')
     textTitle.innerText = tugas
 
-    const textTime = document.createElement('p')
-    textTime.classList.add('text-time')
-    textTime.innerText = `${mulai} >> ${tanggal}`
+    const deskripsiText = document.createElement('p')
+    deskripsiText.classList.add('text-time')
+    let deadline;
+    if (mulai == '' && berakhir == '') {
+        deadline = deskripsi
+    } else {
+        deadline = `${mulai} | ${berakhir}`
+    }
+    deskripsiText.innerHTML = deadline
 
     // btn card
     const cardBtn = document.createElement('div')
@@ -90,14 +96,14 @@ function buatElement(id, tugas, deskripsi, mulai, tanggal, selesai) {
     })
 
     // penggabungan
-    cardText.append(textTitle, textTime)
+    cardText.append(textTitle, deskripsiText)
     card.append(cardText, cardBtn)
 
     card.addEventListener('click', () => {
-        textTime.innerText = deskripsi
+        deskripsiText.innerText = deskripsi
     })
     card.addEventListener('mouseleave', () => {
-        textTime.innerText = `${mulai} >> ${tanggal}`
+        deskripsiText.innerHTML = deadline
     })
 
     if (selesai) {
