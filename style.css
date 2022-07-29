@@ -147,3 +147,11 @@ footer {
         font-size: .8em;
     }
 }
+@media screen and (max-width: 490px) {
+    .tanggal {
+        flex-direction: column;
+    }
+    .tanggal > * {
+        width: 100%;
+    }
+}
