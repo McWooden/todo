@@ -5,9 +5,6 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-/* body {
-    background-color: #DCD7C9;
-} */
 header {
     background-color: #2C3639;
     color: #EEE;
@@ -33,7 +30,8 @@ form {
     display: flex;
     flex-direction: column;
     padding: .5em;
-    padding-top: 0;
+    background-color: #dbd2ba;
+    border-radius: 5px;
 }
 .form-title {
     text-align: center;
@@ -116,7 +114,6 @@ input[type="text"], input[type="date"] {
     border-bottom: .1em solid #0D7377;
 }
 .sudah {
-    background-color: #eaeaea;
     border-radius: 5px;
     margin-bottom: 0;
 }
@@ -129,13 +126,13 @@ input[type="text"], input[type="date"] {
 }
 #sudah .card {
     border-color: #774360;
+    background-color: #eaeaea;
 }
 
 footer {
     padding-top: 6em;
     text-align: center;
     padding-bottom: 1em;
-    background-color: #eaeaea;
     color: #a59a7d;
 }
 
