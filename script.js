@@ -93,7 +93,7 @@ function buatElement(id, tugas, deskripsi, mulai, tanggal, selesai) {
     cardText.append(textTitle, textTime)
     card.append(cardText, cardBtn)
 
-    card.addEventListener('mouseover', () => {
+    card.addEventListener('click', () => {
         textTime.innerText = deskripsi
     })
     card.addEventListener('mouseleave', () => {
