@@ -19,8 +19,8 @@ document.addEventListener('renderTugas', () => {
     document.getElementById('belum').innerHTML = ''
     document.getElementById('sudah').innerHTML = ''
     // dijadiin variable aja biar agak gampang di liat
-    let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.mulai, x.tanggal, x.selesai))
-    let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.mulai, x.tanggal, x.selesai))
+    let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.tanggal, x.selesai))
+    let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.tanggal, x.selesai))
     simpanProggress()
     console.log(JSON.parse(localStorage.getItem(myChache)))
 })
@@ -38,6 +38,7 @@ form.addEventListener('submit', (e) => {
     tugas.push({
         id: +new Date(),
         tugas: document.getElementById('tugas').value,
+        deskripsi: document.getElementById('deskripsi').value,
         mulai: document.getElementById('mulai').value,
         tanggal: document.getElementById('tanggal').value,
         selesai: false
@@ -46,7 +47,7 @@ form.addEventListener('submit', (e) => {
     document.dispatchEvent(new Event('renderTugas'))
 })
 
-function buatElement(id, tugas, mulai, tanggal, selesai) {   
+function buatElement(id, tugas, deskripsi, mulai, tanggal, selesai) {   
     // card
     const card = document.createElement('div')
     card.classList.add('card')
@@ -92,6 +93,12 @@ function buatElement(id, tugas, mulai, tanggal, selesai) {
     cardText.append(textTitle, textTime)
     card.append(cardText, cardBtn)
 
+    card.addEventListener('mouseover', () => {
+        textTime.innerText = deskripsi
+    })
+    card.addEventListener('mouseleave', () => {
+        textTime.innerText = `${mulai} >> ${tanggal}`
+    })
 
     if (selesai) {
         cardBtn.append(ulangi, buang)
