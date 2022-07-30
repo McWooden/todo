@@ -15,7 +15,13 @@ header {
     background-color: #2C3639;
     padding: .5em 1em;
 }
+header img {
+    width: 3em;
+}
 header a {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
     color: #EEE;
     text-decoration: none;
 }
@@ -155,6 +161,9 @@ input[type="text"], input[type="date"] {
 #sudah .card {
     border-color: #774360;
     background-color: #7743600a;
+}
+#sudah .card p:first-child {
+    text-decoration: line-through;
 }
 
 footer {
