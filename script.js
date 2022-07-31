@@ -143,3 +143,13 @@ function buangDariSudahSelesai(idYangDiCari) {
     }
 }
 
+document.getElementById('copyBtn').addEventListener('click', copyClipboard)
+function copyClipboard() {
+    let result = ''
+    tugas.map(x => {
+        if(x.selesai == false) {
+            result += `[*${x.tugas}*\n${x.mulai} - ${x.berakhir}\n${x.deskripsi}]\n\n`
+        }
+    })
+    navigator.clipboard.writeText(result).then(alert('tercopy!'))
+}

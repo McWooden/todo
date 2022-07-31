@@ -47,7 +47,7 @@ form {
     display: flex;
     flex-direction: column;
     padding: .5em;
-    background-color: #dbd2ba;
+    /* background-color: #dbd2ba; */
     border-radius: 5px;
     overflow: hidden;
 }
@@ -86,6 +86,7 @@ input[type="text"], input[type="date"] {
     padding-right: 1em;
     padding-left: 1em;
     background-color: #A27B5C;
+    box-shadow: #a27b5c 0px 25px 20px -20px;
     color: #EEE;
     transition: .1s;
 }
@@ -106,13 +107,13 @@ input[type="text"], input[type="date"] {
     margin: .5em;
     padding: .5em;
     border: 1px solid #A27B5C;
+    border-left-width: .5em;
     padding-right: 0;
     overflow: auto;
     gap: .5em;
     border-radius: 10px;
     font-size: large;
     font-weight: 400;
-    border-left-width: .5em;
 }
 .card-btn {
     display: flex;
@@ -156,11 +157,19 @@ input[type="text"], input[type="date"] {
 
 #belum .card {
     border-color: #0D7377;
-
+}
+#copyBtn {
+    background-color: #2C3639;
+    font-size: .6em;
+    padding: .3em;
+    color: #EEE;
+    border-radius: 5px;
+    position: absolute;
+    margin-left: .1em;
 }
 #sudah .card {
     border-color: #774360;
-    background-color: #7743600a;
+    background-color: #7743601e;
 }
 #sudah .card p:first-child {
     text-decoration: line-through;
