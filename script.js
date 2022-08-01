@@ -155,5 +155,6 @@ function copyClipboard() {
         }
     })
     result.select()
+    result.setSelectionRange(0, Infinity)
     navigator.clipboard.writeText(result).then(alert(result))
 }
