@@ -22,7 +22,6 @@ document.addEventListener('renderTugas', () => {
     let tugasSelesai = tugas.filter(x => x.selesai == true).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.berakhir, x.selesai))
     let tugasBelum = tugas.filter(x => x.selesai == false).map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.berakhir, x.selesai))
     simpanProggress()
-    console.log(JSON.parse(localStorage.getItem(myChache)))
 })
 
 window.addEventListener('load', () => {
@@ -148,8 +147,13 @@ function copyClipboard() {
     let result = ''
     tugas.map(x => {
         if(x.selesai == false) {
-            result += `[*${x.tugas}*\n${x.mulai} - ${x.berakhir}\n${x.deskripsi}]\n\n`
+            if (x.mulai == '' && x.berakhir == '') {
+                result += `[*${x.tugas}*\n${x.deskripsi}]\n\n`
+                return
+            }
+            result += `[*${x.tugas}*\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}]\n\n`
         }
     })
-    navigator.clipboard.writeText(result).then(alert('tercopy!'))
+    result.select()
+    navigator.clipboard.writeText(result).then(alert(result))
 }
