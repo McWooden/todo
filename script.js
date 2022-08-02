@@ -154,7 +154,13 @@ function copyClipboard() {
             result += `[*${x.tugas}*\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}]\n\n`
         }
     })
-    result.select()
-    result.setSelectionRange(0, Infinity)
     navigator.clipboard.writeText(result).then(alert(result))
 }
+
+// api area
+fetch('https://dummyjson.com/quotes/random')
+.then(res => res.json())
+.then(x => {
+    document.getElementById('quote').innerText = `"${x.quote}"`
+    document.getElementById('author').innerText = '- '+x.author
+})

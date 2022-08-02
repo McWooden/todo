@@ -34,6 +34,12 @@ header a {
     max-width: 1024px;
     margin: .5em auto;
 }
+.quotes {
+    color: #2C3639;
+    border-radius: 5px;
+    text-align: center;
+    max-width: calc(100vw - .5em);
+}
 .subjudul {
     font-size: 1.3em;
     font-weight: 400;
