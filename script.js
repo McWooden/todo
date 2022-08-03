@@ -159,7 +159,7 @@ function copyClipboard() {
     textResult.style.userSelect = 'all'
     document.getElementById('copyArea').append(textResult)
     textResult.select()
-
+    textResult.oncopy = document.getElementById('copyArea').innerHTML = ''
     // navigator.clipboard.writeText(result).then(alert(result))
 }
 
