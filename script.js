@@ -154,7 +154,13 @@ function copyClipboard() {
             result += `[*${x.tugas}*\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}]\n\n`
         }
     })
-    navigator.clipboard.writeText(result).then(alert(result))
+    let textResult = document.createElement('textarea')
+    textResult.innerHTML = result + '\nhttps://mcwooden.github.io/todo/'
+    textResult.style.userSelect = 'all'
+    document.getElementById('copyArea').append(textResult)
+    textResult.select()
+
+    // navigator.clipboard.writeText(result).then(alert(result))
 }
 
 // api area
