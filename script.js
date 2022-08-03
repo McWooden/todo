@@ -151,7 +151,7 @@ function copyClipboard() {
                 result += `[*${x.tugas}*\n${x.deskripsi}]\n\n`
                 return
             }
-            result += `[*${x.tugas}*\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}]\n\n`
+            result += `[${x.tugas}\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}]\n\n`
         }
     })
     let textResult = document.createElement('textarea')
@@ -159,7 +159,7 @@ function copyClipboard() {
     textResult.style.userSelect = 'all'
     document.getElementById('copyArea').append(textResult)
     textResult.select()
-    document.execCommand("copy")
+    document.execCommand("Copy")
     // navigator.clipboard.writeText(result).then(alert(result))
 }
 
