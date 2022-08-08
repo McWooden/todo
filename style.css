@@ -53,7 +53,6 @@ form {
     display: flex;
     flex-direction: column;
     padding: .5em;
-    /* background-color: #dbd2ba; */
     border-radius: 5px;
     overflow: hidden;
 }
@@ -86,15 +85,22 @@ input[type="text"], input[type="date"] {
     font-size: 1.2em;
 }
 .btn-submit {
-    width: fit-content;
-    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3em;
     cursor: pointer;
-    padding-right: 1em;
-    padding-left: 1em;
     background-color: #A27B5C;
-    box-shadow: #a27b5c 0px 25px 20px -20px;
     color: #EEE;
     transition: .1s;
+    border: none;
+    border-radius: 5px;
+    box-shadow: #a27b5c5d 0px 25px 20px -20px;
+}
+.btn-submit img {
+    width: 2.5em;
+    padding: .5em;
 }
 .btn-submit:active {
     background-color: #dbd2ba;
@@ -127,9 +133,16 @@ input[type="text"], input[type="date"] {
     justify-content: center;
 }
 .card-btn > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: .5em;
     cursor: pointer;
     color: #2C3639;
+    width: 3em;
+}
+.card-btn > * img {
+    width: 1em;
 }
 .centang, .ulangi, .buang {
     padding: .25em .5em;
@@ -147,7 +160,7 @@ input[type="text"], input[type="date"] {
     background-color: #A27B5C;
 }
 .buang {
-    background-color: #774360;
+    border: .1em solid #774360;
 }
 
 .belum .subjudul {
@@ -165,8 +178,7 @@ input[type="text"], input[type="date"] {
     border-color: #0D7377;
 }
 #copyBtn {
-    background-color: #2C3639;
-    font-size: .6em;
+    width: 1.5em;
     padding: .3em;
     color: #EEE;
     border-radius: 5px;
@@ -188,6 +200,22 @@ footer {
     padding-bottom: 1em;
     color: #a59a7d;
 }
+
+
+#loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: goldenrod;
+}
+#loader p {
+    font-size: 2em;
+    font-weight: bold;
+}
+
 
 @media screen and (max-width: 465px) {
     .text-time {

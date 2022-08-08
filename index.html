@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoApp</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favico-removebg-preview.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favico-removebg-preview.png" type="image/x-icon">
 </head>
 <body>
     <header>
         <a href="#todoapp">
-            <img src="favico-removebg-preview.png" alt="">
+            <img src="img/favico-removebg-preview.png" alt="">
             <h1>TodoApp</h1>
         </a>
     </header>
@@ -37,13 +37,16 @@
                         <input type="date" id="tanggal">
                     </div>
                 </div>
-                <input type="submit" class="btn-submit" id="btnSubmit" value="Tambah">
+                <!-- <input type="submit" class="btn-submit" id="btnSubmit" value='add'> -->
+                <button type="submit" class="btn-submit" id="btnSubmit">
+                    <img src="img/plus-solid.svg" alt="">
+                </button>
             </form>
         </div>
         <div id="todoapp"></div>
         <div class="container belum">
             <div id="copyArea"></div>
-            <p class="subjudul">belum dilakukan <span id="copyBtn">salin</span></p>
+            <p class="subjudul">belum dilakukan <span id="copyBtn"><img src="img/copy-solid.svg" alt=""></span></p>
             <div id="belum">
             </div>
         </div>
@@ -53,9 +56,14 @@
         </div>
     </section>
     <footer>
-        <p>versi beta | v0.12.15</p>
+        <p>versi beta | v1.13.0</p>
     </footer>
+    <div id="loader">
+        <p>loading...</p>
+    </div>
     <div id="testApi"></div>
     <script src="script.js"></script>
+    <script src="createElement.js"></script>
+    <script src="storage.js"></script>
 </body>
 </html>
