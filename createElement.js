@@ -26,23 +26,23 @@ function buatElement(id, tugas, deskripsi, mulai, berakhir, selesai) {
     const cardBtn = document.createElement('div')
     cardBtn.classList.add('card-btn')
 
-    const centang = document.createElement('span')
+    const centang = document.createElement('img')
     centang.classList.add('centang')
-    centang.innerHTML = '<img src="img/check-solid.svg">'
+    centang.setAttribute('src', 'img/check-solid.svg')
     centang.addEventListener('click', (e) => {
         pindahKeSudahSelesai(e.target.parentElement.parentElement.id)
     })
 
-    const ulangi = document.createElement('span')
+    const ulangi = document.createElement('img')
     ulangi.classList.add('ulangi')
-    ulangi.innerHTML = '<img src="img/reply-solid.svg">'
+    ulangi.setAttribute('src', 'img/reply-solid.svg')
     ulangi.addEventListener('click', (e) => {
         pindahKeBelumSelesai(e.target.parentElement.parentElement.id)
     })
 
-    const buang = document.createElement('span')
+    const buang = document.createElement('img')
     buang.classList.add('buang')
-    buang.innerHTML = '<img src="img/trash-solid.svg">'
+    buang.setAttribute('src', 'img/trash-solid.svg')
     buang.addEventListener('click', (e) => {
         buangDariSudahSelesai(e.target.parentElement.parentElement.id)
     })

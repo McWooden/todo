@@ -71,3 +71,5 @@ fetch('https://dummyjson.com/quotes/random')
     document.getElementById('quote').innerText = `"${x.quote}"`
     document.getElementById('author').innerText = '- '+x.author
 })
+
+document.addEventListener('click', (e) => console.log(e.target))

@@ -132,23 +132,14 @@ input[type="text"], input[type="date"] {
     align-content: center;
     justify-content: center;
 }
-.card-btn > * {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card-btn img {
     margin-right: .5em;
     cursor: pointer;
-    color: #2C3639;
-    width: 3em;
-}
-.card-btn > * img {
-    width: 1em;
-}
-.centang, .ulangi, .buang {
+    width: 3.2em;
     padding: .25em .5em;
     border-radius: 5px;
-    color: #EEE;
     transition: .1s;
+    padding: .25em 1em;
 }
 .centang:active, .ulangi:active, .buang:active {
     opacity: 0;
@@ -178,10 +169,11 @@ input[type="text"], input[type="date"] {
     border-color: #0D7377;
 }
 #copyBtn {
+    display: inline;
     width: 1.5em;
-    padding: .3em;
-    color: #EEE;
+    padding: .2em;
     border-radius: 5px;
+    border: 1px solid #2C3639;
     position: absolute;
     margin-left: .1em;
     cursor: pointer;
