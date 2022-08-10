@@ -27,6 +27,8 @@
                 <input type="text" id="tugas" required>
                 <p class="subjudul">Deskripsi</p>
                 <input type="text" id="deskripsi">
+                <p class="subjudul">Warna tag</p>
+                <input type="color" id="color" value="#0D7377">
                 <div class="tanggal">
                     <div>
                         <p class="subjudul">tanggal awal</p>
@@ -37,27 +39,33 @@
                         <input type="date" id="tanggal">
                     </div>
                 </div>
-                <!-- <input type="submit" class="btn-submit" id="btnSubmit" value='add'> -->
                 <button type="submit" class="btn-submit" id="btnSubmit">
-                    <img src="img/plus-solid.svg" alt="">
+                    <img src="img/plus-solid.svg" id="submitImg">
                 </button>
             </form>
         </div>
         <div id="todoapp"></div>
-        <div class="container belum">
+        <div class="container belum" id="container-belum">
             <div id="copyArea"></div>
             <p class="subjudul">belum dilakukan <img id="copyBtn" src="img/copy-solid.svg" alt=""></p>
             <div id="belum">
             </div>
         </div>
-        <div class="container sudah">
+        <div class="container sudah" id="container-sudah">
             <p class="subjudul">sudah dilakukan</p>
             <div id="sudah"></div>
         </div>
     </section>
-    <footer>
-        <p>versi beta | v1.13.6</p>
+    <footer id="footer">
+        <p><a target="_blank" href="https://huddin.showwcase.com/">McWooden</a> | v1.14.0</p>
     </footer>
+    <nav id="nav">
+        <div class="link">
+            <a href="#container-belum"><img src="img/check-solid.svg" alt=""></a>
+            <a href="#form"><img src="img/plus-solid.svg" alt=""></a>
+            <a href="#container-sudah"><img src="img/check-double-solid.svg" alt=""></a>
+        </div>
+    </nav>
     <div id="loader">
         <p>loading...</p>
     </div>

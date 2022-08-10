@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
 document.addEventListener('renderTugas', () => {
     document.getElementById('belum').innerHTML = ''
     document.getElementById('sudah').innerHTML = ''
-    tugas.map(x => buatElement(x.id, x.tugas, x.deskripsi, x.mulai, x.berakhir, x.selesai))
+    tugas.map(x => buatElement(x))
     simpanProggress()
 })
 
@@ -21,18 +21,28 @@ document.addEventListener('renderTugas', () => {
 const form = document.getElementById('form')
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    
+
     tugas.push({
         id: +new Date(),
         tugas: document.getElementById('tugas').value,
         deskripsi: document.getElementById('deskripsi').value,
+        color: document.getElementById('color').value,
         mulai: document.getElementById('mulai').value,
         berakhir: document.getElementById('tanggal').value,
         selesai: false
     })
     
     document.dispatchEvent(new Event('renderTugas'))
+    rotateSubmitButton()
 })
+// animate btn submit 
+function rotateSubmitButton() {
+    const btnSubmit = document.getElementById('submitImg')
+    btnSubmit.style.animation = 'rotate .3s'
+    setTimeout(() => {
+        btnSubmit.style.animation = ''
+    }, 300)
+}
 
 // copy "belumDilakukan" list
 document.getElementById('copyBtn').addEventListener('click', copyClipboard)
@@ -72,4 +82,5 @@ fetch('https://dummyjson.com/quotes/random')
     document.getElementById('author').innerText = '- '+x.author
 })
 
-document.addEventListener('click', (e) => console.log(e.target))
+// make footer marginBottom = height nav
+document.getElementById('footer').style.marginBottom = document.getElementById('nav').offsetHeight + 'px'

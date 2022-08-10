@@ -1,24 +1,24 @@
 // create element
-function buatElement(id, tugas, deskripsi, mulai, berakhir, selesai) {   
+function buatElement(x) {   
     // card
     const card = document.createElement('div')
     card.classList.add('card')
-    card.setAttribute('id', id)
+    card.setAttribute('id', x.id)
 
     // text card
     const cardText = document.createElement('div')
     cardText.classList.add('card-text')
 
     const textTitle = document.createElement('p')
-    textTitle.innerText = tugas
+    textTitle.innerText = x.tugas
 
     const deskripsiText = document.createElement('p')
     deskripsiText.classList.add('text-time')
     let deadline;
-    if (mulai == '' && berakhir == '') {
-        deadline = deskripsi
+    if (x.mulai == '' && x.berakhir == '') {
+        deadline = x.deskripsi
     } else {
-        deadline = `${mulai} | ${berakhir}`
+        deadline = `${x.mulai} | ${x.berakhir}`
     }
     deskripsiText.innerHTML = deadline
 
@@ -52,13 +52,15 @@ function buatElement(id, tugas, deskripsi, mulai, berakhir, selesai) {
     card.append(cardText, cardBtn)
 
     card.addEventListener('click', () => {
-        deskripsiText.innerText = deskripsi
+        deskripsiText.innerText = x.deskripsi
     })
     card.addEventListener('mouseleave', () => {
         deskripsiText.innerHTML = deadline
     })
-
-    if (selesai) {
+    // style
+    card.style.borderLeftColor = x.color
+    
+    if (x.selesai) {
         cardBtn.append(ulangi, buang)
         return document.getElementById('sudah').appendChild(card)
     } else {

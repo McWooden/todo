@@ -11,6 +11,48 @@ html {
 body {
     transition: .3s;
 }
+nav {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: #A27B5C solid .2em;
+    background-color: #a27b5c38;
+    padding: .5em;
+    width: 100vw;
+}
+nav div {
+    max-width: 1024px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1em;
+    background-color: #A27B5C;
+    padding: .5em;
+    border-radius: 5px;
+    color: #EEE;
+    transition: .1s;
+    padding: .5em 1.3em;
+}
+nav a:nth-child(1) {
+    background-color: #0D7377;
+}
+nav a:nth-child(3) {
+    background-color: #774360;
+}
+nav a:active {
+    opacity: 0;
+}
+nav a img {
+    width: 1em;
+}
 header {
     background-color: #2C3639;
     padding: .5em 1em;
@@ -168,6 +210,13 @@ input[type="text"], input[type="date"] {
 #belum .card {
     border-color: #0D7377;
 }
+#sudah .card {
+    border-color: #774360 !important;
+    background-color: #7743601e;
+}
+#sudah .card p:first-child {
+    text-decoration: line-through;
+}
 #copyBtn {
     display: inline;
     width: 1.5em;
@@ -178,13 +227,6 @@ input[type="text"], input[type="date"] {
     margin-left: .1em;
     cursor: pointer;
 }
-#sudah .card {
-    border-color: #774360;
-    background-color: #7743601e;
-}
-#sudah .card p:first-child {
-    text-decoration: line-through;
-}
 
 footer {
     padding-top: 6em;
@@ -192,13 +234,23 @@ footer {
     padding-bottom: 1em;
     color: #a59a7d;
 }
+footer a {
+    color: #a59a7d;
+}
 
 
 #loader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     width: 100vw;
     height: 100vh;
     background-color: goldenrod;
@@ -208,6 +260,10 @@ footer {
     font-weight: bold;
 }
 
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
 
 @media screen and (max-width: 465px) {
     .text-time {
