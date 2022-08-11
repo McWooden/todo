@@ -55,7 +55,7 @@ function copyClipboard() {
     tugas.map(x => {
         if(x.selesai == false) {
             if (x.mulai == '' && x.berakhir == '') {
-                result += `[*${x.tugas}*\n${x.deskripsi}]\n\n`
+                result += `[${x.tugas}\n${x.deskripsi}]\n\n`
                 return
             }
             result += `[${x.tugas}\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}]\n\n`
@@ -83,4 +83,4 @@ fetch('https://dummyjson.com/quotes/random')
 })
 
 // make footer marginBottom = height nav
-document.getElementById('footer').style.marginBottom = document.getElementById('nav').offsetHeight + 'px'
+document.getElementById('footer').style.marginBottom = (document.getElementById('nav').offsetHeight + 15) + 'px'

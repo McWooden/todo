@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="img/favico-removebg-preview.png" type="image/x-icon">
 </head>
 <body>
-    <header>
+    <header id="header">
         <a href="#todoapp">
             <img src="img/favico-removebg-preview.png" alt="">
             <h1>TodoApp</h1>
@@ -23,25 +23,13 @@
                 <p id="author"></p>
             </div>
             <form action="" id="form">
-                <p class="subjudul">Judul tugas</p>
-                <input type="text" id="tugas" required>
-                <p class="subjudul">Deskripsi</p>
-                <input type="text" id="deskripsi">
-                <p class="subjudul">Warna tag</p>
-                <input type="color" id="color" value="#0D7377">
-                <div class="tanggal">
-                    <div>
-                        <p class="subjudul">tanggal awal</p>
-                        <input type="date" id="mulai">
-                    </div>
-                    <div class="div">
-                        <p class="subjudul">tanggal akhir</p>
-                        <input type="date" id="tanggal">
-                    </div>
+                <input type="text" id="tugas" placeholder="Judul Tugas" required>
+                <input type="text" id="deskripsi" placeholder="Deskripsi">
+                <div class="tanggal" id="dateInput">
+                    <input type="date" id="mulai">
+                    <input type="date" id="tanggal">
                 </div>
-                <button type="submit" class="btn-submit" id="btnSubmit">
-                    <img src="img/plus-solid.svg" id="submitImg">
-                </button>
+                <input type="color" id="color" value="#0D7377">
             </form>
         </div>
         <div id="todoapp"></div>
@@ -62,8 +50,8 @@
     <nav id="nav">
         <div class="link">
             <a href="#container-belum"><img src="img/check-solid.svg" alt=""></a>
-            <a href="#form"><img src="img/plus-solid.svg" alt=""></a>
-            <a href="#container-sudah"><img src="img/check-double-solid.svg" alt=""></a>
+            <button type="submit" form="form"><img src="img/plus-solid.svg" alt=""></button>
+            <a href="#header"><img src="img/angle-up-solid.svg" alt=""></a>
         </div>
     </nav>
     <div id="loader">
