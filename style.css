@@ -10,6 +10,7 @@ html {
 }
 body {
     transition: .3s;
+    background-color: var(--2);
 }
 nav {
     position: fixed;
@@ -62,9 +63,11 @@ nav a img, nav button img {
 }
 header {
     position: relative;
-    background-color: #2C3639;
+    background: #2C3639;
     padding: .5em 1em;
     overflow: hidden;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 header img {
     width: 3em;
@@ -89,6 +92,15 @@ header h3 {
     top: -.5em;
     right: -.5em;
 }
+#quote, #author {
+    color: #EEE;
+}
+.quotes {
+    border-radius: 5px;
+    text-align: center;
+    max-width: calc(100vw - .5em);
+    border: 1px solid #EEE;
+}
 .container, form {
     display: flex;
     flex-direction: column;
@@ -97,12 +109,9 @@ header h3 {
 .container {
     max-width: 1024px;
     margin: .5em auto;
-}
-.quotes {
-    color: #2C3639;
-    border-radius: 5px;
-    text-align: center;
-    max-width: calc(100vw - .5em);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 10px;
+
 }
 .subjudul {
     font-size: 1.3em;
@@ -110,15 +119,12 @@ header h3 {
     color: #2C3639;
     width: fit-content;
 }
-.form {
-    margin-top: 0;
-}
 form {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     overflow: hidden;
-    border: 1px solid #A27B5C;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
 }
 
 .form-title {
@@ -220,7 +226,6 @@ input[type="text"], input[type="date"] {
 .buang {
     border: .1em solid #774360;
 }
-
 .belum .subjudul {
     border-bottom: .1em solid #0D7377;
 }
