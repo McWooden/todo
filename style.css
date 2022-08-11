@@ -94,6 +94,15 @@ header h3 {
 }
 #quote, #author {
     color: #EEE;
+    z-index: 1;
+}
+#author {
+    background-color: #c4900f;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 .5em;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .quotes {
     border-radius: 5px;
