@@ -41,6 +41,7 @@ nav a, nav button {
     transition: .1s;
     padding: .5em 1.3em;
     flex-basis: 20%;
+    cursor: pointer;
 }
 nav a:nth-child(1) {
     background-color: #0D7377;
@@ -60,8 +61,10 @@ nav a img, nav button img {
     width: 1em;
 }
 header {
+    position: relative;
     background-color: #2C3639;
     padding: .5em 1em;
+    overflow: hidden;
 }
 header img {
     width: 3em;
@@ -72,6 +75,19 @@ header a {
     flex-direction: row-reverse;
     color: #EEE;
     text-decoration: none;
+}
+header h2 , header h3{
+    position: absolute;
+    font-size: 3em;
+    opacity: 0.1;
+}
+header h2 {
+    bottom: -.5em;
+    left: -.5em;
+}
+header h3 {
+    top: -.5em;
+    right: -.5em;
 }
 .container, form {
     display: flex;
