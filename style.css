@@ -10,7 +10,9 @@ html {
 }
 body {
     transition: .3s;
-    background-color: var(--2);
+}
+section div {
+    background-color: #fff;
 }
 nav {
     position: fixed;
@@ -18,7 +20,6 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: #2C3639 solid .2em;
     background-color: #2c36398a;
     padding: .5em;
     width: 100vw;
@@ -43,16 +44,16 @@ nav a, nav button {
     padding: .5em 1.3em;
     flex-basis: 20%;
     cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 nav a:nth-child(1) {
     background-color: #0D7377;
 }
 nav button {
-    background-color: #A27B5C;
     border: none;
     flex-basis: 50%;
 }
-nav a:nth-child(3) {
+nav a:nth-child(2) {
     background-color: #c4900f;
 }
 nav a:active {
@@ -66,7 +67,6 @@ header {
     background: #2C3639;
     padding: .5em 1em;
     overflow: hidden;
-    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 header img {
@@ -81,16 +81,17 @@ header a {
 }
 header h2 , header h3{
     position: absolute;
-    font-size: 3em;
-    opacity: 0.1;
+    opacity: 0.2;
 }
 header h2 {
-    bottom: -.5em;
-    left: -.5em;
+    font-size: 3em;
+    bottom: -.25em;
+    left: -.25em;
 }
 header h3 {
-    top: -.5em;
-    right: -.5em;
+    font-size: 2.5em;
+    top: -.25em;
+    right: -.25em;
 }
 #quote, #author {
     color: #EEE;
@@ -109,6 +110,7 @@ header h3 {
     text-align: center;
     max-width: calc(100vw - .5em);
     border: 1px solid #EEE;
+    box-shadow: none !important;
 }
 .container, form {
     display: flex;
@@ -116,7 +118,7 @@ header h3 {
     padding: .5em;
 }
 .container {
-    max-width: 1024px;
+    max-width: calc(100vw - .5em);
     margin: .5em auto;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 10px;
@@ -132,7 +134,6 @@ form {
     flex-direction: column;
     border-radius: 5px;
     overflow: hidden;
-    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
 }
 
 .form-title {
@@ -254,6 +255,10 @@ input[type="text"], input[type="date"] {
 }
 #sudah .card p:first-child {
     text-decoration: line-through;
+    background-color: #774360;
+}
+#sudah .card-btn {
+    background-color: transparent;
 }
 #copyBtn {
     display: inline;
@@ -301,6 +306,11 @@ footer a {
 @keyframes rotate {
     from {transform: rotate(0deg);}
     to {transform: rotate(360deg);}
+}
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
 }
 @media screen and (max-width: 490px) {
     #dateInput {

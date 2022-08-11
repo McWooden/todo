@@ -86,7 +86,7 @@ function copyClipboard() {
 fetch("https://jservice.io/api/random")
 .then(res => res.json())
 .then(x => {
-    document.getElementById('quote').innerHTML = `"${x[0].question}"`
+    document.getElementById('quote').innerHTML = x[0].question
     document.getElementById('author').innerHTML = `Level ${x[0].value}`
     document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
 })
