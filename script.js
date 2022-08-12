@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
     ambilProggress()
     document.dispatchEvent(new Event('renderTugas'))
     document.getElementById('loader').style.display = 'none'
+    minimize()
 })
 
 // render Element
@@ -90,5 +91,25 @@ fetch("https://jservice.io/api/random")
     document.getElementById('author').innerHTML = `Level ${x[0].value}`
     document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
 })
+
+// styling
 // make footer marginBottom = height nav
 document.getElementById('footer').style.marginBottom = (document.getElementById('nav').offsetHeight + 15) + 'px'
+
+// form state
+let formState = {
+    normalSize : document.getElementById('form').offsetHeight,
+    isMinimize: true
+}
+function minimize() {
+    if (formState.isMinimize) {
+        document.getElementById('form').style.height = '4em'
+        formState.isMinimize = false
+        document.getElementById('minimize').style.transform = 'rotate(0deg)'
+    } else {
+        document.getElementById('form').style.height = formState.normalSize + 'px'
+        formState.isMinimize = true
+        document.getElementById('minimize').style.transform = 'rotate(180deg)'
+    }
+}
+document.getElementById('minimize').addEventListener('click', minimize) 
