@@ -16,6 +16,7 @@ document.addEventListener('renderTugas', () => {
     document.getElementById('sudah').innerHTML = ''
     tugas.map(x => buatElement(x))
     simpanProggress()
+    updateProggress()
 })
 
 //  form on submit
@@ -75,14 +76,14 @@ function copyClipboard() {
     document.getElementById('copyArea').innerHTML = ''
 }
 
-// quote with fetch
-// const indexQuote = Math.floor(Math.random()*1643)
-// fetch("https://type.fit/api/quotes")
-// .then(res => res.json())
-// .then(x => {
-//     document.getElementById('quote').innerText = `"${x[indexQuote].text}"`
-//     document.getElementById('author').innerText = '- '+x[indexQuote].author
-// })
+            // quote with fetch
+            // const indexQuote = Math.floor(Math.random()*1643)
+            // fetch("https://type.fit/api/quotes")
+            // .then(res => res.json())
+            // .then(x => {
+            //     document.getElementById('quote').innerText = `"${x[indexQuote].text}"`
+            //     document.getElementById('author').innerText = '- '+x[indexQuote].author
+            // })
 
 fetch("https://jservice.io/api/random")
 .then(res => res.json())
@@ -98,7 +99,8 @@ document.getElementById('footer').style.marginBottom = (document.getElementById(
 
 // form state
 let formState = {
-    normalSize : document.getElementById('form').offsetHeight,
+    // normalSize : document.getElementById('form').offsetHeight,
+    normalSize : 235,
     isMinimize: true
 }
 function minimize() {
@@ -113,3 +115,14 @@ function minimize() {
     }
 }
 document.getElementById('minimize').addEventListener('click', minimize) 
+
+// update proggres
+function updateProggress() {
+    if (tugas.length === 0) {
+        document.getElementById('proggress').style.display = 'none'
+    }
+    const tugasSelesai = tugas.filter(x => !x.selesai)
+    document.getElementById('tugasBelum').innerText = tugasSelesai.length
+    document.getElementById('tugasSelesai').innerText = tugas.length
+    document.getElementById('valueBar').style.width = Math.round((tugasSelesai.length / tugas.length)*100) + '%'
+}
