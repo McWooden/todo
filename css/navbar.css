@@ -1,0 +1,48 @@
+nav {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #31364c;
+    padding: .5em;
+    width: 100vw;
+}
+nav div {
+    max-width: 1024px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+nav a, nav button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1em;
+    background-color: #A27B5C;
+    padding: .5em;
+    border-radius: 5px;
+    color: #EEE;
+    transition: .1s;
+    padding: .5em 1.3em;
+    flex-basis: 20%;
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+nav a:nth-child(1) {
+    background-color: #0D7377;
+}
+nav button {
+    border: none;
+    flex-basis: 50%;
+}
+nav a:nth-child(2) {
+    background-color: #c4900f;
+}
+nav a:active {
+    opacity: 0;
+}
+nav a img, nav button img {
+    width: 1em;
+}

@@ -6,7 +6,6 @@ const myChache = 'todolist'
 window.addEventListener('load', () => {
     ambilProggress()
     document.dispatchEvent(new Event('renderTugas'))
-    document.getElementById('loader').style.display = 'none'
     minimize()
     greet()
 })

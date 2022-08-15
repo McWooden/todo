@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoApp</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/card.css">
     <link rel="shortcut icon" href="img/favico.png" type="image/x-icon">
 </head>
 <body>
+    <!-- header -->
     <header id="header">
         <p id="greet"></p>
         <div class="today container" id="today">
@@ -36,6 +40,7 @@
         </div>
     </header>
     
+    <!-- body -->
     <section>
         <div class="container quotes">
             <p id="quote"></p>
@@ -58,8 +63,10 @@
             <div id="sudah"></div>
         </div>
     </section>
+
+    <!-- footer -->
     <footer id="footer">
-        <p><a target="_blank" href="https://huddin.showwcase.com/">McWooden</a> | v1.15.16</p>
+        <p><a target="_blank" href="https://huddin.showwcase.com/">McWooden</a> | v1.16.0</p>
     </footer>
     <nav id="nav">
         <div class="link">
@@ -68,12 +75,8 @@
             <button type="submit" form="form"><img src="img/plus-solid.svg" alt="" id="submitImg"></button>
         </div>
     </nav>
-    <div id="loader">
-        <p>loading...</p>
-    </div>
-    <div id="testApi"></div>
     <script src="script.js"></script>
-    <script src="createElement.js"></script>
-    <script src="storage.js"></script>
+    <script src="js/createElement.js"></script>
+    <script src="js/storage.js"></script>
 </body>
 </html>
