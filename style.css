@@ -10,6 +10,7 @@ html {
 }
 body {
     transition: .3s;
+    background-color: #eee;
 }
 section div {
     background-color: #fff;
@@ -66,9 +67,9 @@ header {
     padding: .5em 1em;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1003%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(49%2c 54%2c 76%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c702.796C129.986%2c688.784%2c177.612%2c518.166%2c288.605%2c449.078C402.144%2c378.405%2c578.874%2c409.876%2c651.258%2c297.42C722.931%2c186.07%2c689.969%2c29.655%2c636.574%2c-91.526C588.515%2c-200.598%2c453.335%2c-235.118%2c376.473%2c-326.215C298.05%2c-419.162%2c295.658%2c-578.768%2c184.277%2c-627.59C73.473%2c-676.159%2c-51.877%2c-605.221%2c-165.547%2c-563.802C-272.822%2c-524.713%2c-379.624%2c-480.012%2c-455.319%2c-394.536C-531.48%2c-308.533%2c-563.926%2c-196.732%2c-589.742%2c-84.792C-617.592%2c35.966%2c-659.555%2c165.004%2c-610.622%2c278.862C-561.433%2c393.316%2c-433.901%2c444.886%2c-331.569%2c515.931C-225.202%2c589.778%2c-128.743%2c716.674%2c0%2c702.796' fill='%232f3348'%3e%3c/path%3e%3cpath d='M1440 842.4680000000001C1504.195 847.047 1569.093 877.781 1628.8220000000001 853.813 1692.204 828.379 1750.63 776.067 1769.23 710.354 1787.438 646.024 1744.173 582.823 1723.521 519.236 1706.464 466.719 1685.044 418.985 1658.816 370.395 1625.039 307.818 1610.701 226.26999999999998 1547.643 193.39999999999998 1483.359 159.89100000000002 1396.566 163.63400000000001 1334.722 201.457 1274.641 238.202 1274.347 324.278 1236.519 383.683 1205.965 431.66499999999996 1142.545 459.764 1134.3890000000001 516.06 1126.232 572.363 1172.3899999999999 619.69 1194.748 672.003 1217.783 725.899 1219.604 794.602 1267.732 828.054 1316.027 861.6220000000001 1381.334 838.283 1440 842.4680000000001' fill='%23343950'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1003'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
     border-bottom-left-radius: 35px;
     border-bottom-right-radius: 35px;
+    background-color: #323232 !important;
 }
 header a {
     display: flex;
@@ -91,21 +92,15 @@ header h3 {
     top: -.25em;
     right: -.25em;
 }
-#quote, #author {
-    color: #EEE;
-}
 #author {
-    background-color: #c4900f;
+    color: #c4900f;
     width: fit-content;
-    padding: 0 .5em;
-    border-radius: 5px;
     cursor: pointer;
 }
 .quotes {
-    background-color: #2C3639;
-    border-radius: 5px;
+    border-radius: 3px;
     max-width: calc(100vw - .5em);
-    box-shadow: none !important;
+    border-right: .5em solid #A27B5C;
 }
 .container, form {
     display: flex;
@@ -130,25 +125,24 @@ header h3 {
     align-items: center;
     width: 100%;
     cursor: pointer;
+    background-color: transparent;
+}
+.form {
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
 }
 .form img {
     width: 1em;
-    fill: #2C3639;
     transition: .3s;
+    color: #545a5c;
 }
 form {
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
     overflow: hidden;
     transition: .3s;
-}
-
-.form-title {
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: 500;
-    color: #2C3639;
+    padding: 0;
 }
 form .subjudul {
     border-bottom: 1px solid #A27B5C;
@@ -161,8 +155,8 @@ form input {
     font-size: 1em;
     border-radius: 5px;
     border: none;
-    border-bottom: 3px solid #A27B5C;
-    background-color: #eaeaea;
+    border-bottom: 3px solid #c4900f;
+    background-color: whitesmoke;
     outline: none;
 }
 #color {
@@ -179,7 +173,6 @@ input[type="text"], input[type="date"] {
     height: 3em;
     cursor: pointer;
     background-color: #A27B5C;
-    color: #EEE;
     transition: .1s;
     border: none;
     border-radius: 5px;
@@ -197,6 +190,7 @@ input[type="text"], input[type="date"] {
 .tanggal {
     display: flex;
     gap: 1em;
+    background-color: transparent;
 }
 .tanggal div:nth-child(1) {
     align-self: flex-end;
@@ -351,18 +345,26 @@ footer a {
 
 .today {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: .5em;
-    color: #EEE;
+    background-color: transparent;
+    color: #eee !important;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+}
+.today > * {
+    background-color: transparent;
 }
 #dateNow {
-    font-size: 4em;
-}
-#day {
     font-size: 2em;
 }
-#month {
+#day {
     font-size: 1em;
+}
+#month {
+    font-size: .5em;
 }
 .proggressBar {
     width: 100%;
@@ -376,4 +378,7 @@ footer a {
     border-radius: 5px;
     background-color: #0D7377;
     transition: .3s;
+}
+#greet {
+    color: goldenrod;
 }

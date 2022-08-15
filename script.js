@@ -8,6 +8,7 @@ window.addEventListener('load', () => {
     document.dispatchEvent(new Event('renderTugas'))
     document.getElementById('loader').style.display = 'none'
     minimize()
+    greet()
 })
 
 // render Element
@@ -105,7 +106,7 @@ let formState = {
 }
 function minimize() {
     if (formState.isMinimize) {
-        document.getElementById('form').style.height = '4em'
+        document.getElementById('form').style.height = '0'
         formState.isMinimize = false
         document.getElementById('minimize').style.transform = 'rotate(0deg)'
     } else {
@@ -122,7 +123,17 @@ function updateProggress() {
         document.getElementById('proggress').style.display = 'none'
     }
     const tugasSelesai = tugas.filter(x => !x.selesai)
-    document.getElementById('tugasBelum').innerText = tugasSelesai.length
-    document.getElementById('tugasSelesai').innerText = tugas.length
     document.getElementById('valueBar').style.width = Math.round((tugasSelesai.length / tugas.length)*100) + '%'
+}
+
+// greet
+function greet() {
+    const hours = new Date().getHours()
+    if (hours >= 18) {
+        document.getElementById('greet').innerText = 'Good evening'
+    } else if (hours >= 12) {
+        document.getElementById('greet').innerText = 'Good afternoon'
+    } else {
+        document.getElementById('greet').innerText = 'Good morning'
+    }
 }
