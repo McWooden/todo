@@ -10,7 +10,8 @@ html {
 }
 body {
     transition: .3s;
-    background-color: #eee;
+    /* background-color: #eee; */
+    background-color: #f7f5fd;
 }
 section div {
     background-color: #fff;
@@ -21,7 +22,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2c36398a;
+    background-color: #31364c;
     padding: .5em;
     width: 100vw;
 }
@@ -69,7 +70,8 @@ header {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-bottom-left-radius: 35px;
     border-bottom-right-radius: 35px;
-    background-color: #323232 !important;
+    background-color: #31364c !important;
+    padding-bottom: 0;
 }
 header a {
     display: flex;
@@ -100,7 +102,7 @@ header h3 {
 .quotes {
     border-radius: 3px;
     max-width: calc(100vw - .5em);
-    border-right: .5em solid #A27B5C;
+    border-left: .6em solid #31364c;
 }
 .container, form {
     display: flex;
@@ -134,7 +136,6 @@ header h3 {
 .form img {
     width: 1em;
     transition: .3s;
-    color: #545a5c;
 }
 form {
     display: flex;
@@ -147,7 +148,7 @@ form .subjudul {
     border-bottom: 1px solid #A27B5C;
 }
 form input {
-    box-shadow: #a27b5c5d 0px 25px 20px -20px;
+    box-shadow: #7253ee 0px 15px 25px -25px;
     padding: .5em;
     font-size: 1em;
     margin: .25em;
@@ -206,7 +207,7 @@ input[type="text"], input[type="date"] {
     padding-right: 0;
     overflow: auto;
     gap: .5em;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: large;
     font-weight: 400;
 }
@@ -246,7 +247,6 @@ input[type="text"], input[type="date"] {
 .sudah .subjudul {
     border-bottom: .1em solid #774360;
 }
-
 #belum .card {
     border-color: #0D7377;
 }
