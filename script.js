@@ -122,7 +122,9 @@ function updateProggress() {
         document.getElementById('proggress').style.display = 'none'
     }
     const tugasSelesai = tugas.filter(x => !x.selesai)
+    const tugasBelum = tugas.filter(x => x.selesai)
     document.getElementById('valueBar').style.width = Math.round((tugasSelesai.length / tugas.length)*100) + '%'
+    document.getElementById('valueBarRed').style.width = Math.round((tugasBelum.length / tugas.length)*100) + '%'
 }
 
 // greet
