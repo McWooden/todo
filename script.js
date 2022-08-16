@@ -136,3 +136,12 @@ function greet() {
         document.getElementById('greet').innerText = 'Good morning'
     }
 }
+function getDate() {
+    const locale = 'id-ID'
+    const date = new Date().toLocaleDateString()
+    document.getElementById('dateNow').innerText = new Date().getDate()
+    document.getElementById('day').innerText = new Date(date).toLocaleDateString(locale, {weekday: 'long'})
+    document.getElementById('month').innerText = new Date(date).toLocaleDateString(locale, {month: 'long'})
+    document.getElementById('year').innerText = new Date().getFullYear()
+}
+getDate()

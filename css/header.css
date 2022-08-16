@@ -32,13 +32,12 @@ header a {
     background-color: transparent;
 }
 #dateNow {
-    font-size: 2em;
+    font-size: 3em;
 }
-#day {
-    font-size: 1em;
-}
-#month {
-    font-size: .5em;
+.dateNowDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* greet */

@@ -12,15 +12,12 @@ body {
     transition: .3s;
     background-color: #f7f5fd;
 }
-section div {
-    background-color: #fff;
-}
 
 /* quote */
 .quotes {
-    border-radius: 3px;
+    border-radius: 5px !important;
     max-width: calc(100vw - .5em);
-    border-left: .6em solid #31364c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #author {
     color: #c4900f;
@@ -48,18 +45,17 @@ section div {
     width: fit-content;
 }
 /* container belum/sudah */
-.belum .subjudul {
-    border-bottom: .1em solid #0D7377;
-}
-.sudah .subjudul {
-    border-bottom: .1em solid #774360;
+.belum, #belum, #sudah {
+    background-color: transparent;
+    box-shadow: none;
 }
 #belum .card {
     border-color: #0D7377;
 }
 #sudah .card {
-    border-color: #774360 !important;
     background-color: #7743601e;
+    color: inherit;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 #sudah .card .card-text {
     background-color: transparent;
@@ -73,14 +69,13 @@ section div {
 
 /* copy button */
 #copyBtn {
-    display: inline;
     width: 1.5em;
     padding: .2em;
     border-radius: 5px;
     border: 1px solid #2C3639;
-    position: absolute;
     margin-left: .1em;
     cursor: pointer;
+    align-self: flex-end;
 }
 
 footer {

@@ -16,12 +16,12 @@
     <header id="header">
         <p id="greet"></p>
         <div class="today container" id="today">
-            <div>
-                <p id="dateNow">24</p>
-            </div>
+            <p id="dateNow"></p>
             <div class="dateNowDetail">
-                <p id="day">Monday</p>
-                <p id="month">August 2022</p>
+                <p id="day"></p>
+                <div>
+                    <span id="month"></span> <span id="year"></span>
+                </div>
             </div>
         </div>
         <div class="container form">
@@ -32,7 +32,7 @@
                     <input type="date" id="mulai">
                     <input type="date" id="tanggal">
                 </div>
-                <input type="color" id="color" value="#0D7377">
+                <input type="color" id="color" value="#31364c">
             </form>
             <div id="minimize">
                 <img src="img/caret-down-solid.svg">
@@ -54,12 +54,8 @@
         <div id="todoapp"></div>
         <div class="container belum" id="container-belum">
             <div id="copyArea"></div>
-            <p class="subjudul">belum dilakukan <img id="copyBtn" src="img/copy-solid.svg" alt=""></p>
-            <div id="belum">
-            </div>
-        </div>
-        <div class="container sudah" id="container-sudah">
-            <p class="subjudul">sudah dilakukan</p>
+            <img id="copyBtn" src="img/copy-solid.svg" alt="">
+            <div id="belum"></div>
             <div id="sudah"></div>
         </div>
     </section>
