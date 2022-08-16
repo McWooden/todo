@@ -60,7 +60,7 @@ function copyClipboard() {
                 result += `[${x.tugas}\n${x.deskripsi}]\n\n`
                 return
             }
-            result += `[${x.tugas}\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}]\n\n`
+            result += `${x.tugas}\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}\n\n`
         }
     })
     textResult.innerHTML = result + '\nhttps://mcwooden.github.io/todo/'
@@ -91,6 +91,7 @@ fetch("https://jservice.io/api/random")
     document.getElementById('quote').innerHTML = x[0].question
     document.getElementById('author').innerHTML = `Level ${x[0].value}`
     document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
+    document.getElementById('trivia').style.display = 'block'
 })
 
 // styling
@@ -138,12 +139,12 @@ function greet() {
         document.getElementById('greet').innerText = 'Good morning'
     }
 }
+const dayName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
+const monthName = ['Januari','Februari','Maret','April','Mei','Juni','Juni','Agustus','September','Oktober','November','November']
 function getDate() {
-    const locale = 'id-ID'
-    const date = new Date().toLocaleDateString()
     document.getElementById('dateNow').innerText = new Date().getDate()
-    document.getElementById('day').innerText = new Date(date).toLocaleDateString(locale, {weekday: 'long'})
-    document.getElementById('month').innerText = new Date(date).toLocaleDateString(locale, {month: 'long'})
+    document.getElementById('day').innerText = dayName[new Date().getDay()]
+    document.getElementById('month').innerText = monthName[new Date().getMonth()]
     document.getElementById('year').innerText = new Date().getFullYear()
 }
 getDate()
