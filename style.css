@@ -14,19 +14,18 @@ body {
 }
 
 /* quote */
-.container.quotes {
-    display: none;
-}
 .quotes {
-    border-radius: 5px !important;
-    max-width: calc(100vw - .5em);
+    display: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    background-color: #31364c;
     color: #eee;
+    margin: 0 auto !important;
+    width: 100%;
+    background-color: #2b2f42;
+    padding: .5em;
+    text-align: center;
 }
 #author {
     color: #daa520;
-    width: fit-content;
     cursor: pointer;
     text-decoration: underline;
 }
@@ -156,4 +155,12 @@ footer a {
 }
 #valueBarRed {
     background-color: #774360;
+}
+.history {
+    box-shadow: none;
+    display: none;
+}
+.history p {
+    font-size: .8em;
+    color: #774360;
 }

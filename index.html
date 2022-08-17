@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/editCard.css">
     <link rel="shortcut icon" href="img/favico.png" type="image/x-icon">
 </head>
 <body>
+    <!-- header -->
+    <div class="quotes" id="trivia">
+        <p id="quote"></p>
+        <p id="author"></p>
+    </div>
     <!-- header -->
     <header id="header">
         <p id="greet"></p>
@@ -24,6 +30,7 @@
                 </div>
             </div>
         </div>
+        <!-- form -->
         <div class="container form">
             <form action="" id="form">
                 <input type="text" id="tugas" placeholder="Judul Tugas" required>
@@ -42,10 +49,6 @@
     
     <!-- body -->
     <section>
-        <div class="container quotes" id="trivia">
-            <p id="quote"></p>
-            <p id="author"></p>
-        </div>
         <div id="todoapp"></div>
         <div class="container" id="proggress">
             <div class="proggressBar">
@@ -57,13 +60,17 @@
             <div id="copyArea"></div>
             <img id="copyBtn" src="img/copy-solid.svg" alt="">
             <div id="belum"></div>
+            <br>
             <div id="sudah"></div>
+        </div>
+        <div class="container history" id="historyContainer">
+            <p id="history">mtk-pramuka-makan-minum</p>
         </div>
     </section>
 
     <!-- footer -->
     <footer id="footer">
-        <p><a target="_blank" href="https://huddin.showwcase.com/">McWooden</a> | v1.16.4</p>
+        <p><a target="_blank" href="https://huddin.showwcase.com/">McWooden</a> | v1.16.6</p>
     </footer>
     <nav id="nav">
         <div class="link">
@@ -72,6 +79,18 @@
             <button type="submit" form="form"><img src="img/plus-solid.svg" alt="" id="submitImg"></button>
         </div>
     </nav>
+    <!-- dalam pembangunan -->
+    <!-- <div id="editable">
+        <form id="editForm">
+            <input type="text" id="newTugas" placeholder="Judul Tugas" required>
+            <input type="text" id="newDeskripsi" placeholder="Deskripsi">
+            <div class="tanggal" id="dateInput">
+                <input type="date" id="newMulai">
+                <input type="date" id="newAkhir">
+            </div>
+            <input type="color" id="color" value="#31364c">
+        </form>
+    </div> -->
     <script src="script.js"></script>
     <script src="js/createElement.js"></script>
     <script src="js/storage.js"></script>

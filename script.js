@@ -1,4 +1,5 @@
 let tugas = []
+let myHistory = []
 const myChache = 'todolist'
 
 
@@ -148,3 +149,18 @@ function getDate() {
     document.getElementById('year').innerText = new Date().getFullYear()
 }
 getDate()
+
+// history
+function getHistory() {
+    if (myHistory.length == 0) {
+        document.getElementById('historyContainer').style.display = 'none'
+        return
+    }
+    document.getElementById('historyContainer').style.display = 'inline-block'
+    document.getElementById('history').innerText = myHistory.join(' - ')
+}
+getHistory()
+
+function editCard() {
+    document.getElementById('')
+}

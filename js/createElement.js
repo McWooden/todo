@@ -45,6 +45,8 @@ function buatElement(x) {
     buang.setAttribute('src', 'img/trash-solid.svg')
     buang.addEventListener('click', (e) => {
         buangDariSudahSelesai(e.target.parentElement.parentElement.id)
+        myHistory.push(x.tugas)
+        getHistory()
     })
 
     // penggabungan
