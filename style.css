@@ -9,7 +9,7 @@ html {
     scroll-behavior: smooth;
 }
 body {
-    transition: .3s;
+    transition: .1s;
     background-color: #f7f5fd;
 }
 
@@ -42,12 +42,6 @@ body {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 10px;
 }
-.subjudul {
-    font-size: 1.3em;
-    font-weight: 400;
-    color: #2C3639;
-    width: fit-content;
-}
 /* container belum/sudah */
 .belum, #belum, #sudah {
     background-color: transparent;
@@ -60,7 +54,6 @@ body {
     background-color: transparent;
     color: inherit;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-
 }
 #sudah .card .card-text {
     background-color: transparent;
@@ -80,7 +73,6 @@ body {
     width: 1.5em;
     padding: .2em;
     border-radius: 5px;
-    border: 1px solid #2C3639;
     margin-left: .1em;
     cursor: pointer;
     align-self: flex-end;
@@ -155,12 +147,4 @@ footer a {
 }
 #valueBarRed {
     background-color: #774360;
-}
-.history {
-    box-shadow: none;
-    display: none;
-}
-.history p {
-    font-size: .8em;
-    color: #774360;
 }

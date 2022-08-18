@@ -68,9 +68,6 @@ form {
     transition: .3s;
     padding: 0;
 }
-form .subjudul {
-    border-bottom: 1px solid #A27B5C;
-}
 form input {
     box-shadow: #7253ee 0px 15px 25px -25px;
     padding: .5em;

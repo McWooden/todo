@@ -1,5 +1,4 @@
 let tugas = []
-let myHistory = []
 const myChache = 'todolist'
 
 
@@ -38,6 +37,7 @@ form.addEventListener('submit', (e) => {
     document.dispatchEvent(new Event('renderTugas'))
     rotateSubmitButton()
 })
+
 // animate btn submit 
 function rotateSubmitButton() {
     const btnSubmit = document.getElementById('submitImg')
@@ -77,15 +77,6 @@ function copyClipboard() {
     document.getElementById('copyArea').innerHTML = ''
 }
 
-            // quote with fetch
-            // const indexQuote = Math.floor(Math.random()*1643)
-            // fetch("https://type.fit/api/quotes")
-            // .then(res => res.json())
-            // .then(x => {
-            //     document.getElementById('quote').innerText = `"${x[indexQuote].text}"`
-            //     document.getElementById('author').innerText = '- '+x[indexQuote].author
-            // })
-
 fetch("https://jservice.io/api/random")
 .then(res => res.json())
 .then(x => {
@@ -101,17 +92,15 @@ document.getElementById('footer').style.marginBottom = (document.getElementById(
 
 // form state
 let formState = {
-    // normalSize : document.getElementById('form').offsetHeight,
-    normalSize : 235,
     isMinimize: true
 }
-function minimize() {
+function minimize(e) {
     if (formState.isMinimize) {
         document.getElementById('form').style.height = '0'
         formState.isMinimize = false
         document.getElementById('minimize').style.transform = 'rotate(0deg)'
     } else {
-        document.getElementById('form').style.height = formState.normalSize + 'px'
+        document.getElementById('form').style.height = '235px'
         formState.isMinimize = true
         document.getElementById('minimize').style.transform = 'rotate(180deg)'
     }
@@ -133,11 +122,11 @@ function updateProggress() {
 function greet() {
     const hours = new Date().getHours()
     if (hours >= 18) {
-        document.getElementById('greet').innerText = 'Good evening'
+        document.getElementById('greet').innerText = 'Good malam'
     } else if (hours >= 12) {
-        document.getElementById('greet').innerText = 'Good afternoon'
+        document.getElementById('greet').innerText = 'Good Siang'
     } else {
-        document.getElementById('greet').innerText = 'Good morning'
+        document.getElementById('greet').innerText = 'Good Pagi'
     }
 }
 const dayName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
@@ -151,16 +140,11 @@ function getDate() {
 getDate()
 
 // history
-function getHistory() {
-    if (myHistory.length == 0) {
-        document.getElementById('historyContainer').style.display = 'none'
-        return
-    }
-    document.getElementById('historyContainer').style.display = 'inline-block'
-    document.getElementById('history').innerText = myHistory.join(' - ')
-}
-getHistory()
 
 function editCard() {
-    document.getElementById('')
+    document.getElementById('tugas').value = tugas[0].tugas
+    document.getElementById('deskripsi').value = tugas[0].deskripsi
+    document.getElementById('mulai').value = tugas[0].mulai
+    document.getElementById('tanggal').value = tugas[0].berakhir
+    document.getElementById('color').value = tugas[0].color
 }
