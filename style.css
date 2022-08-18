@@ -12,6 +12,9 @@ body {
     transition: .1s;
     background-color: #f7f5fd;
 }
+section {
+    margin-top: 152px;
+}
 
 /* quote */
 .quotes {

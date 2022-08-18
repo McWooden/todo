@@ -7,6 +7,10 @@ header {
     border-bottom-right-radius: 35px;
     background-color: #31364c !important;
     padding-bottom: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
 }
 header a {
     display: flex;

@@ -84,6 +84,7 @@ fetch("https://jservice.io/api/random")
     document.getElementById('author').innerHTML = `Level ${x[0].value}`
     document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
     document.getElementById('trivia').style.display = 'block'
+    document.getElementById('header').style.top = 'auto'
 })
 
 // styling
@@ -99,10 +100,12 @@ function minimize(e) {
         document.getElementById('form').style.height = '0'
         formState.isMinimize = false
         document.getElementById('minimize').style.transform = 'rotate(0deg)'
+        document.getElementById('buttonToSubmit').style.visibility = 'hidden'
     } else {
         document.getElementById('form').style.height = '235px'
         formState.isMinimize = true
         document.getElementById('minimize').style.transform = 'rotate(180deg)'
+        document.getElementById('buttonToSubmit').style.visibility = 'visible'
     }
 }
 document.getElementById('minimize').addEventListener('click', minimize) 
@@ -122,11 +125,11 @@ function updateProggress() {
 function greet() {
     const hours = new Date().getHours()
     if (hours >= 18) {
-        document.getElementById('greet').innerText = 'Good malam'
+        document.getElementById('greet').innerText = 'Selamat malam'
     } else if (hours >= 12) {
-        document.getElementById('greet').innerText = 'Good Siang'
+        document.getElementById('greet').innerText = 'Selamat Siang'
     } else {
-        document.getElementById('greet').innerText = 'Good Pagi'
+        document.getElementById('greet').innerText = 'Selamat Pagi'
     }
 }
 const dayName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
