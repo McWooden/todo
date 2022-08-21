@@ -1,5 +1,5 @@
 // create element
-function buatElement(x) {   
+function buatElement(x, index) {   
     // card
     const card = document.createElement('div')
     card.classList.add('card')
@@ -48,10 +48,17 @@ function buatElement(x) {
         myHistory.push(x.tugas)
         getHistory()
     })
+    // edit btn
+    const editBtn = document.createElement('img')
+    editBtn.classList.add('editBtn')
+    editBtn.setAttribute('src', 'img/pen-to-square-solid.svg')
+    editBtn.addEventListener('click', () => {
+        editCard(index)
+    })
 
     // penggabungan
     cardText.append(textTitle, deskripsiText)
-    card.append(cardText, cardBtn)
+    card.append(cardText, cardBtn, editBtn)
 
     card.addEventListener('click', () => {
         deskripsiText.innerText = x.deskripsi
@@ -59,6 +66,8 @@ function buatElement(x) {
     card.addEventListener('mouseleave', () => {
         deskripsiText.innerHTML = deadline
     })
+    // dataset
+    card.dataset.cardIndex = index
     // style
     card.style.borderLeftColor = x.color
     

@@ -8,13 +8,14 @@ window.addEventListener('load', () => {
     document.dispatchEvent(new Event('renderTugas'))
     minimize()
     greet()
+    getDate()
 })
 
 // render Element
 document.addEventListener('renderTugas', () => {
     document.getElementById('belum').innerHTML = ''
     document.getElementById('sudah').innerHTML = ''
-    tugas.map(x => buatElement(x))
+    tugas.map((x, index) => buatElement(x, index))
     simpanProggress()
     updateProggress()
 })
@@ -75,6 +76,7 @@ function copyClipboard() {
 
     // hide textarea
     document.getElementById('copyArea').innerHTML = ''
+    document.getElementById('CopyState').innerHTML = 'tersalin!'
 }
 
 fetch("https://jservice.io/api/random")
@@ -93,7 +95,8 @@ document.getElementById('footer').style.marginBottom = (document.getElementById(
 
 // form state
 let formState = {
-    isMinimize: true
+    isMinimize: true,
+    isEdit: false,
 }
 function minimize(e) {
     if (formState.isMinimize) {
@@ -105,7 +108,11 @@ function minimize(e) {
         document.getElementById('form').style.height = '235px'
         formState.isMinimize = true
         document.getElementById('minimize').style.transform = 'rotate(180deg)'
-        document.getElementById('buttonToSubmit').style.visibility = 'visible'
+        if (!formState.isEdit) {
+            document.getElementById('buttonToSubmit').style.visibility = 'visible'
+        } else {
+            document.getElementById('buttonToSubmit').style.visibility = 'hidden'
+        }
     }
 }
 document.getElementById('minimize').addEventListener('click', minimize) 
@@ -140,14 +147,53 @@ function getDate() {
     document.getElementById('month').innerText = monthName[new Date().getMonth()]
     document.getElementById('year').innerText = new Date().getFullYear()
 }
-getDate()
 
-// history
-
-function editCard() {
-    document.getElementById('tugas').value = tugas[0].tugas
-    document.getElementById('deskripsi').value = tugas[0].deskripsi
-    document.getElementById('mulai').value = tugas[0].mulai
-    document.getElementById('tanggal').value = tugas[0].berakhir
-    document.getElementById('color').value = tugas[0].color
+// edit area
+function editCard(x) {
+    formState.isEdit = true
+    document.getElementById('tugas').value = tugas[x].tugas
+    document.getElementById('deskripsi').value = tugas[x].deskripsi
+    document.getElementById('mulai').value = tugas[x].mulai
+    document.getElementById('tanggal').value = tugas[x].berakhir
+    document.getElementById('color').value = tugas[x].color
+    if (document.getElementById('color').value == '#000000') {
+        document.getElementById('color').value = '#31364c'
+    }
+    document.getElementById('btnUpdate').style.visibility = 'visible'
+    document.getElementById('btnUpdate').dataset.key = x
+    minimize()
+    getEditStatus(x)
+}
+document.getElementById('btnUpdate').addEventListener('click', (e) => {
+    e.preventDefault()
+    saveEdit(document.getElementById('btnUpdate').dataset.key)
+    kembalikanKeDefault()
+})
+function getEditStatus(x) {
+    document.getElementById('dateNow').innerText = x
+    document.getElementById('day').innerText = tugas[x].tugas
+    document.getElementById('month').innerText = '#' + tugas[x].id
+    document.getElementById('year').innerText = tugas[x].selesai
+    document.getElementById('greet').innerText = 'Mengubah data:' 
+}
+// save edit
+function saveEdit(x) {
+    tugas[x].tugas = document.getElementById('tugas').value
+    tugas[x].deskripsi = document.getElementById('deskripsi').value
+    tugas[x].color = document.getElementById('color').value
+    tugas[x].mulai = document.getElementById('mulai').value
+    tugas[x].berakhir = document.getElementById('tanggal').value
+    document.dispatchEvent(new Event('renderTugas'))
+}
+function kembalikanKeDefault() {
+    document.getElementById('tugas').value = ''
+    document.getElementById('deskripsi').value = ''
+    document.getElementById('mulai').value = ''
+    document.getElementById('tanggal').value = ''
+    document.getElementById('color').value = '#31364c'
+    greet()
+    getDate()
+    formState.isEdit = false
+    document.getElementById('btnUpdate').style.visibility = 'hidden'
+    minimize()
 }

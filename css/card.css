@@ -1,4 +1,5 @@
 .card {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,6 +16,32 @@
     color: #eee;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+/* advance card */
+.belum, #belum, #sudah {
+    background-color: transparent;
+    box-shadow: none;
+}
+#belum .card {
+    border-color: #31364c;
+}
+#sudah .card {
+    background-color: transparent;
+    color: inherit;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+#sudah .card .card-text {
+    background-color: transparent;
+}
+#sudah .card p:first-child {
+    text-decoration: line-through;
+}
+#sudah .card-btn {
+    background-color: transparent;
+}
+#sudah img {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+/* button */
 .card-btn {
     display: flex;
     align-content: center;
@@ -41,4 +68,16 @@
 }
 .buang {
     border: .1em solid #774360;
+}
+/* edit */
+.editBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: .5em;
+    padding: .1em .3em;
+    border-bottom-left-radius: 3px;
+    cursor: pointer;
+    width: 1.6em;
+    background-color: #31364c;
 }
