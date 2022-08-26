@@ -37,6 +37,7 @@ form.addEventListener('submit', (e) => {
     
     document.dispatchEvent(new Event('renderTugas'))
     rotateSubmitButton()
+    popup(alertMsg.add)
 })
 
 // animate btn submit 
@@ -161,7 +162,6 @@ function editCard(x) {
     }
     document.getElementById('btnUpdate').style.visibility = 'visible'
     document.getElementById('btnUpdate').dataset.key = x
-    minimize()
     getEditStatus(x)
 }
 document.getElementById('btnUpdate').addEventListener('click', (e) => {
@@ -184,6 +184,7 @@ function saveEdit(x) {
     tugas[x].mulai = document.getElementById('mulai').value
     tugas[x].berakhir = document.getElementById('tanggal').value
     document.dispatchEvent(new Event('renderTugas'))
+    popup(alertMsg.save)
 }
 function kembalikanKeDefault() {
     document.getElementById('tugas').value = ''
@@ -195,5 +196,27 @@ function kembalikanKeDefault() {
     getDate()
     formState.isEdit = false
     document.getElementById('btnUpdate').style.visibility = 'hidden'
-    minimize()
+}
+
+// pop up :)
+alertMsg = {
+    add: 'Tugas telah ditambahkan!',
+    delete: 'Tugas telah dihapus!',
+    edit: 'Merubah data tugas...',
+    save: 'Perubahan disimpan!'
+}
+
+function popup(msg) {
+    const alertContainer = document.getElementById('alert')
+
+    alertContainer.style.opacity = '1'
+    document.getElementById('alertText').innerText = msg
+    alertContainer.style.visibility = 'visible'
+
+    setTimeout(() => {
+        alertContainer.style.opacity = '0'
+    }, 2000);
+    setTimeout(() => {
+        alertContainer.style.visibility = 'hidden'
+    }, 2300);
 }

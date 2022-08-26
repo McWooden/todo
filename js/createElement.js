@@ -45,8 +45,7 @@ function buatElement(x, index) {
     buang.setAttribute('src', 'img/trash-solid.svg')
     buang.addEventListener('click', (e) => {
         buangDariSudahSelesai(e.target.parentElement.parentElement.id)
-        myHistory.push(x.tugas)
-        getHistory()
+        popup(alertMsg.delete)
     })
     // edit btn
     const editBtn = document.createElement('img')
@@ -58,6 +57,7 @@ function buatElement(x, index) {
     }
     editBtn.addEventListener('click', () => {
         editCard(index)
+        popup(alertMsg.edit)
     })
 
     // penggabungan
