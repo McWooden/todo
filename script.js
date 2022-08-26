@@ -200,23 +200,25 @@ function kembalikanKeDefault() {
 
 // pop up :)
 alertMsg = {
-    add: 'Tugas telah ditambahkan!',
-    delete: 'Tugas telah dihapus!',
-    edit: 'Merubah data tugas...',
-    save: 'Perubahan disimpan!'
+    add: 'img/plus-solid.svg',
+    delete: 'img/trash-solid.svg',
+    check: 'img/check-solid.svg',
+    reply: 'img/reply-solid.svg',
+    edit: 'img/pen-to-square-solid.svg',
+    save: 'img/floppy-disk-solid.svg'
 }
 
-function popup(msg) {
+function popup(imgLink) {
     const alertContainer = document.getElementById('alert')
 
-    alertContainer.style.opacity = '1'
-    document.getElementById('alertText').innerText = msg
+    alertContainer.style.opacity = '.9'
+    document.getElementById('alertImg').src = imgLink
     alertContainer.style.visibility = 'visible'
 
     setTimeout(() => {
         alertContainer.style.opacity = '0'
-    }, 2000);
+    }, 3000);
     setTimeout(() => {
         alertContainer.style.visibility = 'hidden'
-    }, 2300);
+    }, 3300);
 }

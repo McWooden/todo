@@ -31,6 +31,7 @@ function buatElement(x, index) {
     centang.setAttribute('src', 'img/check-solid.svg')
     centang.addEventListener('click', (e) => {
         pindahKeSudahSelesai(e.target.parentElement.parentElement.id)
+        popup(alertMsg.check)
     })
 
     const ulangi = document.createElement('img')
@@ -38,6 +39,7 @@ function buatElement(x, index) {
     ulangi.setAttribute('src', 'img/reply-solid.svg')
     ulangi.addEventListener('click', (e) => {
         pindahKeBelumSelesai(e.target.parentElement.parentElement.id)
+        popup(alertMsg.reply)
     })
 
     const buang = document.createElement('img')
