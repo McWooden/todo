@@ -51,7 +51,11 @@ function buatElement(x, index) {
     // edit btn
     const editBtn = document.createElement('img')
     editBtn.classList.add('editBtn')
-    editBtn.setAttribute('src', 'img/pen-to-square-solid.svg')
+    if (x.selesai) {
+        editBtn.setAttribute('src', 'img/pen-to-square-solid-dark.svg')
+    } else {
+        editBtn.setAttribute('src', 'img/pen-to-square-solid.svg')
+    }
     editBtn.addEventListener('click', () => {
         editCard(index)
     })

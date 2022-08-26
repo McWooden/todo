@@ -23,6 +23,7 @@ nav a, nav button {
     font-size: 1em;
     background-color: #A27B5C;
     padding: .5em;
+    margin: .25em;
     border-radius: 5px;
     color: #EEE;
     transition: .1s;

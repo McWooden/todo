@@ -38,7 +38,7 @@ header a {
 }
 #dateNow {
     font-size: 3em;
-    margin-top: 5px;
+    margin-top: .1em;
 }
 .dateNowDetail {
     display: flex;
@@ -47,6 +47,7 @@ header a {
 }
 #day {
     font-size: 1.5em;
+    height: 1em;
 }
 #month, #year {
     font-size: .7em;
