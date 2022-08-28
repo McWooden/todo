@@ -200,25 +200,44 @@ function kembalikanKeDefault() {
 
 // pop up :)
 alertMsg = {
-    add: 'img/plus-solid.svg',
-    delete: 'img/trash-solid.svg',
-    check: 'img/check-solid.svg',
-    reply: 'img/reply-solid.svg',
-    edit: 'img/pen-to-square-solid.svg',
-    save: 'img/floppy-disk-solid.svg'
+    add: {
+        link: 'img/plus-solid.svg',
+        bgColor: '#A27B5C'
+    },
+    delete: {
+        link: 'img/trash-solid-white.svg',
+        bgColor: '#774360'
+    },
+    check: {
+        link: 'img/check-solid.svg',
+        bgColor: '#0D7377'
+    },
+    reply: {
+        link: 'img/reply-solid.svg',
+        bgColor: '#A27B5C'
+    },
+    edit: {
+        link: 'img/pen-to-square-solid.svg',
+        bgColor: '#2b2f42'
+    },
+    save: {
+        link: 'img/floppy-disk-solid.svg',
+        bgColor: '#277BC0'
+    }
 }
 
 function popup(imgLink) {
-    const alertContainer = document.getElementById('alert')
+    const alertImg = document.createElement('img')
+    alertImg.src = imgLink.link
+    alertImg.style.backgroundColor = imgLink.bgColor
+    document.getElementById('alert').appendChild(alertImg)
 
-    alertContainer.style.opacity = '.9'
-    document.getElementById('alertImg').src = imgLink
-    alertContainer.style.visibility = 'visible'
 
     setTimeout(() => {
-        alertContainer.style.opacity = '0'
-    }, 3000);
+        alertImg.style.opacity = '0'
+        alertImg.style.transform = 'translateX(-5px)'
+    }, 2000)
     setTimeout(() => {
-        alertContainer.style.visibility = 'hidden'
-    }, 3300);
+        alertImg.remove()
+    }, 2100)
 }

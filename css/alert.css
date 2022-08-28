@@ -7,13 +7,18 @@
     justify-content: center;
     align-items: center;
     max-width: 900px;
-    background-color: #277BC0;
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    padding: .5em 1em;
-    visibility: hidden;
-    transition: .1s;
 }
 #alert img {
-    width: 1em;
+    width: 2em;
+    border-radius: 3px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: .25em .5em;
+    transition: .1s;
+    border-left: .2em solid #eeee;
+    animation: .1s alertFadeIn;
+}
+
+@keyframes alertFadeIn {
+    from {transform: translateX(10px)}
+    to {transform: translateX(0px)}
 }
