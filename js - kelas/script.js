@@ -1,7 +1,3 @@
-let tugas = []
-const myChache = 'todolist'
-
-
 // window on load
 window.addEventListener('load', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -20,14 +16,28 @@ document.addEventListener('renderTugas', () => {
         let tugas = tasks
         tugas.map((item, index) => buatElement(item, index))
     })
-    updateProggress()
+    // updateProggress()
 })
 
 //  form on submit
 const form = document.getElementById('form')
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {    
     e.preventDefault()
-    
+    const data = {
+        tugas: document.getElementById('tugas').value,
+        deskripsi: document.getElementById('deskripsi').value,
+        color: document.getElementById('color').value,
+        mulai: document.getElementById('mulai').value,
+        berakhir: document.getElementById('tanggal').value,
+        selesai: false
+    }
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {'Content-Type': 'application/json'}
+    }
+    fetch('https://x6todo.herokuapp.com/x6', options)
+
     document.dispatchEvent(new Event('renderTugas'))
     rotateSubmitButton()
     popup(alertMsg.add)
@@ -73,15 +83,15 @@ function copyClipboard() {
     document.getElementById('CopyState').innerHTML = 'tersalin!'
 }
 
-fetch("https://jservice.io/api/random")
-.then(res => res.json())
-.then(x => {
-    document.getElementById('quote').innerHTML = x[0].question
-    document.getElementById('author').innerHTML = `Level ${x[0].value}`
-    document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
+// fetch("https://jservice.io/api/random")
+// .then(res => res.json())
+// .then(x => {
+//     document.getElementById('quote').innerHTML = x[0].question
+//     document.getElementById('author').innerHTML = `Level ${x[0].value}`
+//     document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
     document.getElementById('trivia').style.display = 'block'
     document.getElementById('header').style.top = 'auto'
-})
+// })
 
 // styling
 // make footer marginBottom = height nav
@@ -112,15 +122,15 @@ function minimize(e) {
 document.getElementById('minimize').addEventListener('click', minimize) 
 
 // update proggres
-function updateProggress() {
-    if (tugas.length === 0) {
-        document.getElementById('proggress').style.display = 'none'
-    }
-    const tugasSelesai = tugas.filter(x => !x.selesai)
-    const tugasBelum = tugas.filter(x => x.selesai)
-    document.getElementById('valueBar').style.width = Math.round((tugasSelesai.length / tugas.length)*100) + '%'
-    document.getElementById('valueBarRed').style.width = Math.round((tugasBelum.length / tugas.length)*100) + '%'
-}
+// function updateProggress() {
+//     if (tugas.length === 0) {
+//         document.getElementById('proggress').style.display = 'none'
+//     }
+//     const tugasSelesai = tugas.filter(x => !x.selesai)
+//     const tugasBelum = tugas.filter(x => x.selesai)
+//     document.getElementById('valueBar').style.width = Math.round((tugasSelesai.length / tugas.length)*100) + '%'
+//     document.getElementById('valueBarRed').style.width = Math.round((tugasBelum.length / tugas.length)*100) + '%'
+// }
 
 // greet
 function greet() {
