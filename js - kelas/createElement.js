@@ -47,7 +47,7 @@ function buatElement(x, index) {
     buang.classList.add('buang')
     buang.setAttribute('src', 'img/trash-solid.svg')
     buang.addEventListener('click', (e) => {
-        buangDariSudahSelesai(e.target.parentElement.parentElement.id)
+        deleteItem(x._id)
         popup(alertMsg.delete)
     })
     // edit btn
@@ -95,4 +95,7 @@ function reverse(json) {
             "Content-Type": "application/json",
         },
     })
+}
+function deleteItem(id) {
+    fetch(`${url}/${id}`,  { method: 'delete' })
 }
