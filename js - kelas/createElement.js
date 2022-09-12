@@ -1,9 +1,10 @@
 // create element
+const url = 'https://x6todo.herokuapp.com/x6'
 function buatElement(x, index) {   
     // card
     const card = document.createElement('div')
     card.classList.add('card')
-    card.setAttribute('id', x.id)
+    card.setAttribute('id', x._id)
 
     // text card
     const cardText = document.createElement('div')
@@ -30,7 +31,7 @@ function buatElement(x, index) {
     centang.classList.add('centang')
     centang.setAttribute('src', 'img/check-solid.svg')
     centang.addEventListener('click', (e) => {
-        pindahKeSudahSelesai(e.target.parentElement.parentElement.id)
+        reverse({id: x._id, selesai: x.selesai})
         popup(alertMsg.check)
     })
 
@@ -38,7 +39,7 @@ function buatElement(x, index) {
     ulangi.classList.add('ulangi')
     ulangi.setAttribute('src', 'img/reply-solid.svg')
     ulangi.addEventListener('click', (e) => {
-        pindahKeBelumSelesai(e.target.parentElement.parentElement.id)
+        reverse({id: x._id, selesai: x.selesai})
         popup(alertMsg.reply)
     })
 
@@ -86,30 +87,12 @@ function buatElement(x, index) {
     }
 }
 
-// element option
-function pindahKeSudahSelesai(idYangDiCari) {
-    for (let i in tugas) {
-        if (tugas[i].id == idYangDiCari) {
-            tugas[i].selesai = true
-            document.dispatchEvent(new Event('renderTugas'))
-        }
-    }
-}
-
-function pindahKeBelumSelesai(idYangDiCari) {
-    for (let i in tugas) {
-        if (tugas[i].id == idYangDiCari) {
-            tugas[i].selesai = false
-            document.dispatchEvent(new Event('renderTugas'))
-        }
-    }
-}
-
-function buangDariSudahSelesai(idYangDiCari) {
-    for (let i in tugas) {
-        if (tugas[i].id == idYangDiCari) {
-            tugas.splice(i, 1)
-            document.dispatchEvent(new Event('renderTugas'))
-        }
-    }
+function reverse(json) {
+    fetch(`${url}/reverse`, {
+        method: "PUT",
+        body: JSON.stringify(json),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
 }
