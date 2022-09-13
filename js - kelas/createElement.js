@@ -33,6 +33,7 @@ function buatElement(x, index) {
     centang.addEventListener('click', (e) => {
         reverse({id: x._id, selesai: x.selesai})
         popup(alertMsg.check)
+        cardHilang(x._id)
     })
 
     const ulangi = document.createElement('img')
@@ -41,6 +42,7 @@ function buatElement(x, index) {
     ulangi.addEventListener('click', (e) => {
         reverse({id: x._id, selesai: x.selesai})
         popup(alertMsg.reply)
+        cardHilang(x._id)
     })
 
     const buang = document.createElement('img')
@@ -49,6 +51,7 @@ function buatElement(x, index) {
     buang.addEventListener('click', (e) => {
         deleteItem(x._id)
         popup(alertMsg.delete)
+        cardHilang(x._id)
     })
     // edit btn
     const editBtn = document.createElement('img')
@@ -59,7 +62,7 @@ function buatElement(x, index) {
         editBtn.setAttribute('src', 'img/pen-to-square-solid.svg')
     }
     editBtn.addEventListener('click', () => {
-        editCard(index)
+        editCard(x._id)
         popup(alertMsg.edit)
     })
 
@@ -98,4 +101,55 @@ function reverse(json) {
 }
 function deleteItem(id) {
     fetch(`${url}/${id}`,  { method: 'delete' })
+}
+function editCard(id) {
+    fetch(`${url}/${id}`).then(res => res.json()).then(x => {
+            formState.isEdit = true
+            document.getElementById('tugas').value = x.tugas
+            document.getElementById('deskripsi').value = x.deskripsi
+            document.getElementById('mulai').value = x.mulai
+            document.getElementById('tanggal').value = x.berakhir
+            document.getElementById('color').value = x.color
+            if (document.getElementById('color').value == '#000000') {
+                document.getElementById('color').value = '#31364c'
+            }
+            document.getElementById('btnUpdate').style.visibility = 'visible'
+            getEditStatus(x)
+    })
+}
+function getEditStatus(x) {
+    document.getElementById('dateNow').innerText = ''
+    document.getElementById('day').innerText = x.tugas
+    document.getElementById('month').innerText = x._id
+    document.getElementById('year').innerText = x.selesai
+    document.getElementById('greet').innerText = 'Mengubah data:' 
+}
+document.getElementById('btnUpdate').addEventListener('click', (e) => {
+    e.preventDefault()
+    saveEdit()
+    kembalikanKeDefault()
+})
+async function saveEdit() {
+    await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify({
+            id: document.getElementById('month').textContent,
+            tugas: document.getElementById('tugas').value,
+            deskripsi: document.getElementById('deskripsi').value,
+            color: document.getElementById('color').value,
+            mulai: document.getElementById('mulai').value,
+            berakhir: document.getElementById('tanggal').value
+        }),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    document.dispatchEvent(new Event('renderTugas'))
+    popup(alertMsg.save)
+}
+function cardHilang(x) {
+    document.getElementById(x).style.opacity = '0'
+    setTimeout(() => {
+        document.getElementById(x).style.visibility = 'hidden'
+    }, 300)
 }

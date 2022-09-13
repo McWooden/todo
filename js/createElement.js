@@ -113,3 +113,41 @@ function buangDariSudahSelesai(idYangDiCari) {
         }
     }
 }
+
+// edit area
+function editCard(x) {
+    formState.isEdit = true
+    document.getElementById('tugas').value = tugas[x].tugas
+    document.getElementById('deskripsi').value = tugas[x].deskripsi
+    document.getElementById('mulai').value = tugas[x].mulai
+    document.getElementById('tanggal').value = tugas[x].berakhir
+    document.getElementById('color').value = tugas[x].color
+    if (document.getElementById('color').value == '#000000') {
+        document.getElementById('color').value = '#31364c'
+    }
+    document.getElementById('btnUpdate').style.visibility = 'visible'
+    document.getElementById('btnUpdate').dataset.key = x
+    getEditStatus(x)
+}
+document.getElementById('btnUpdate').addEventListener('click', (e) => {
+    e.preventDefault()
+    saveEdit(document.getElementById('btnUpdate').dataset.key)
+    kembalikanKeDefault()
+})
+function getEditStatus(x) {
+    document.getElementById('dateNow').innerText = x
+    document.getElementById('day').innerText = tugas[x].tugas
+    document.getElementById('month').innerText = '#' + tugas[x].id
+    document.getElementById('year').innerText = tugas[x].selesai
+    document.getElementById('greet').innerText = 'Mengubah data:' 
+}
+// save edit
+function saveEdit(x) {
+    tugas[x].tugas = document.getElementById('tugas').value
+    tugas[x].deskripsi = document.getElementById('deskripsi').value
+    tugas[x].color = document.getElementById('color').value
+    tugas[x].mulai = document.getElementById('mulai').value
+    tugas[x].berakhir = document.getElementById('tanggal').value
+    document.dispatchEvent(new Event('renderTugas'))
+    popup(alertMsg.save)
+}
