@@ -33,7 +33,6 @@ function buatElement(x, index) {
     centang.addEventListener('click', (e) => {
         reverse({id: x._id, selesai: x.selesai})
         popup(alertMsg.check)
-        cardHilang(x._id)
     })
 
     const ulangi = document.createElement('img')
@@ -42,7 +41,6 @@ function buatElement(x, index) {
     ulangi.addEventListener('click', (e) => {
         reverse({id: x._id, selesai: x.selesai})
         popup(alertMsg.reply)
-        cardHilang(x._id)
     })
 
     const buang = document.createElement('img')
@@ -51,7 +49,6 @@ function buatElement(x, index) {
     buang.addEventListener('click', (e) => {
         deleteItem(x._id)
         popup(alertMsg.delete)
-        cardHilang(x._id)
     })
     // edit btn
     const editBtn = document.createElement('img')
@@ -61,8 +58,8 @@ function buatElement(x, index) {
     } else {
         editBtn.setAttribute('src', 'img/pen-to-square-solid.svg')
     }
-    editBtn.addEventListener('click', () => {
-        editCard(x._id)
+    editBtn.addEventListener('click', async () => {
+        await editCard(x._id)
         popup(alertMsg.edit)
     })
 
@@ -90,20 +87,20 @@ function buatElement(x, index) {
     }
 }
 
-function reverse(json) {
-    fetch(`${url}/reverse`, {
+async function reverse(json) {
+    await fetch(`${url}/reverse`, {
         method: "PUT",
         body: JSON.stringify(json),
         headers: {
             "Content-Type": "application/json",
         },
-    })
+    }).then(cardHilang(json.id))
 }
-function deleteItem(id) {
-    fetch(`${url}/${id}`,  { method: 'delete' })
+async function deleteItem(id) {
+    await fetch(`${url}/${id}`,  { method: 'delete' }).then(cardHilang(id))
 }
-function editCard(id) {
-    fetch(`${url}/${id}`).then(res => res.json()).then(x => {
+async function editCard(id) {
+    await fetch(`${url}/${id}`).then(res => res.json()).then(x => {
             formState.isEdit = true
             document.getElementById('tugas').value = x.tugas
             document.getElementById('deskripsi').value = x.deskripsi

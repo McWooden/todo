@@ -5,18 +5,22 @@ window.addEventListener('load', () => {
     greet()
     getDate()
 })
+document.getElementById('reload').addEventListener('click', () => {
+    document.dispatchEvent(new Event('renderTugas'))
+})
 
 // render Element
 document.addEventListener('renderTugas', () => {
-    document.getElementById('belum').innerHTML = ''
-    document.getElementById('sudah').innerHTML = ''
     fetch('https://x6todo.herokuapp.com/x6')
     .then(res => res.json())
     .then(tasks => {
+        document.getElementById('belum').innerHTML = ''
+        document.getElementById('sudah').innerHTML = ''
         let tugas = tasks
         tugas.map((item, index) => buatElement(item, index))
+        popup(alertMsg.reload)
+        updateProggress(tasks)
     })
-    // updateProggress()
 })
 
 //  form on submit
@@ -36,7 +40,7 @@ form.addEventListener('submit', async (e) => {
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json'}
     }
-    await fetch('https://x6todo.herokuapp.com/x6', options)
+    await fetch('https://x6todo.herokuapp.com/x6', options).then(form.reset())
 
     document.dispatchEvent(new Event('renderTugas'))
     rotateSubmitButton()
@@ -102,19 +106,21 @@ let formState = {
     isMinimize: true,
     isEdit: false,
 }
-function minimize(e) {
+function minimize() {
     if (formState.isMinimize) {
         document.getElementById('form').style.height = '0'
         formState.isMinimize = false
         document.getElementById('minimize').style.transform = 'rotate(0deg)'
-        document.getElementById('buttonToSubmit').style.visibility = 'hidden'
+        if (document.getElementById('tugas').value == '') {
+            document.getElementById('buttonToSubmit').style.visibility = 'hidden'
+        }
     } else {
         document.getElementById('form').style.height = '235px'
         formState.isMinimize = true
         document.getElementById('minimize').style.transform = 'rotate(180deg)'
         if (!formState.isEdit) {
             document.getElementById('buttonToSubmit').style.visibility = 'visible'
-        } else {
+        } else if (!formState.isEdit) {
             document.getElementById('buttonToSubmit').style.visibility = 'hidden'
         }
     }
@@ -122,15 +128,15 @@ function minimize(e) {
 document.getElementById('minimize').addEventListener('click', minimize) 
 
 // update proggres
-// function updateProggress() {
-//     if (tugas.length === 0) {
-//         document.getElementById('proggress').style.display = 'none'
-//     }
-//     const tugasSelesai = tugas.filter(x => !x.selesai)
-//     const tugasBelum = tugas.filter(x => x.selesai)
-//     document.getElementById('valueBar').style.width = Math.round((tugasSelesai.length / tugas.length)*100) + '%'
-//     document.getElementById('valueBarRed').style.width = Math.round((tugasBelum.length / tugas.length)*100) + '%'
-// }
+function updateProggress(tasks) {
+    if (tasks.length === 0) {
+        document.getElementById('proggress').style.display = 'none'
+    }
+    const tugasSelesai = tasks.filter(x => !x.selesai)
+    const tugasBelum = tasks.filter(x => x.selesai)
+    document.getElementById('valueBar').style.width = Math.round((tugasSelesai.length / tasks.length)*100) + '%'
+    document.getElementById('valueBarRed').style.width = Math.round((tugasBelum.length / tasks.length)*100) + '%'
+}
 
 // greet
 function greet() {
@@ -166,6 +172,10 @@ function kembalikanKeDefault() {
 
 // pop up :)
 alertMsg = {
+    reload: {
+        link: 'img/rotate-right-solid.svg',
+        bgColor: '#A27B5C'
+    },
     add: {
         link: 'img/plus-solid.svg',
         bgColor: '#A27B5C'

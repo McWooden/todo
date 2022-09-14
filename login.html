@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="shortcut icon" href="img/favico.png" type="image/x-icon">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #645CAA;
+            flex-direction: column;
+        }
+        .card {
+            border-color: #277BC0;
+            padding: .5em;
+        }
+        .login-container {
+            background-color: #31364c;
+            border-bottom: 4px solid #1b1e2b;
+        }
+        form input {
+            background-color: #2b2f42;
+            border-color: transparent;
+            color: #eee;
+        }
+        form input[type="submit"] {
+            background-color: #277BC0;
+            border-color: #1e6096;
+            color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="text-card">
+                <p><span id="nama"></span> - <span id="rank"></span></p>
+            </div>
+        </div>
+    </div>
+    <div class="login-container container">
+        <form action="" id="form">
+            <input type="text" placeholder="Nickname" required id="nickname" autocomplete="off">
+            <input type="text" placeholder="title" required id="title" autocomplete="off">
+            <input type="password" placeholder="password" required id="pass">
+            <input type="submit" value="Login" onclick="addAccountStorage()">
+        </form>
+    </div>
+    <script>
+        document.addEventListener('load', refresh())
+        document.getElementById('form').addEventListener('submit', (e) => {
+            e.preventDefault()
+        })
+        function refresh() {
+            let akun = JSON.parse(localStorage.getItem('akun'))
+            document.getElementById('nama').textContent = akun.nickname
+            document.getElementById('rank').textContent = akun.title
+        }
+    </script>
+    <script src="js/storage.js"></script>
+</body>
+</html>
