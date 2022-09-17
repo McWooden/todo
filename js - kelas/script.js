@@ -56,37 +56,6 @@ function rotateSubmitButton() {
     }, 300)
 }
 
-// copy "belumDilakukan" list
-document.getElementById('copyBtn').addEventListener('click', copyClipboard)
-function copyClipboard() {
-    let result = ''
-    let textResult = document.createElement('textarea')
-    textResult.style.userSelect = 'all'
-
-    // creating text
-    tugas.map(x => {
-        if(x.selesai == false) {
-            if (x.mulai == '' && x.berakhir == '') {
-                result += `[${x.tugas}\n${x.deskripsi}]\n\n`
-                return
-            }
-            result += `${x.tugas}\n${x.mulai} | ${x.berakhir}\n${x.deskripsi}\n\n`
-        }
-    })
-    textResult.innerHTML = result + '\nhttps://mcwooden.github.io/todo/'
-
-    // append textarea
-    document.getElementById('copyArea').append(textResult)
-
-    // copy
-    textResult.select()
-    document.execCommand("Copy")
-
-    // hide textarea
-    document.getElementById('copyArea').innerHTML = ''
-    document.getElementById('CopyState').innerHTML = 'tersalin!'
-}
-
 // fetch("https://jservice.io/api/random")
 // .then(res => res.json())
 // .then(x => {
@@ -207,7 +176,6 @@ function popup(imgLink) {
     alertImg.src = imgLink.link
     alertImg.style.backgroundColor = imgLink.bgColor
     document.getElementById('alert').appendChild(alertImg)
-
 
     setTimeout(() => {
         alertImg.style.opacity = '0'
