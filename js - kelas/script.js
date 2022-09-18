@@ -5,6 +5,7 @@ window.addEventListener('load', () => {
     greet()
     getDate()
     refresh()
+    roles()
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -60,18 +61,9 @@ function rotateSubmitButton() {
     }, 300)
 }
 
-// fetch("https://jservice.io/api/random")
-// .then(res => res.json())
-// .then(x => {
-//     document.getElementById('quote').innerHTML = x[0].question
-//     document.getElementById('author').innerHTML = `Level ${x[0].value}`
-//     document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
-    document.getElementById('trivia').style.display = 'block'
-    document.getElementById('header').style.top = 'auto'
-// })
-
 // styling
-// make footer marginBottom = height nav
+document.getElementById('trivia').style.display = 'block'
+document.getElementById('header').style.top = 'auto'
 document.getElementById('footer').style.marginBottom = (document.getElementById('nav').offsetHeight + 15) + 'px'
 
 // form state
@@ -198,5 +190,12 @@ function refresh() {
         document.getElementById('login').style.display = 'inherit'
     } else {
         document.getElementById('login').style.display = 'none'
+    }
+}
+
+function roles() {
+    if (title != 'Owner' || title != 'Admin') {
+        document.getElementById('buttonToSubmit').style.opacity = '.5'
+        form.style.opacity = '.5'
     }
 }

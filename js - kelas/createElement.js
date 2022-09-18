@@ -1,8 +1,11 @@
 // create element
 const url = 'https://x6todo.herokuapp.com/x6'
 const urlLocal = 'http://localhost:3000/x6'
-const token = JSON.parse(localStorage.getItem('akun')).pass
-const nickname = JSON.parse(localStorage.getItem('akun')).nickname
+
+const akun = JSON.parse(localStorage.getItem('akun'))
+const nickname = akun.nickname
+const title = akun.title
+const token = akun.pass
 
 function buatElement(x, index) {   
     // card
@@ -81,6 +84,13 @@ function buatElement(x, index) {
     card.dataset.cardIndex = index
     // style
     card.style.borderLeftColor = x.color
+
+    if (title != 'Owner' || title != 'Admin') {
+        editBtn.style.display = 'none'
+    }
+    if (title != 'Owner' || title != 'Admin' || title != 'X-6') {
+        cardBtn.style.display = 'none'
+    }
     
     if (x.selesai) {
         cardBtn.append(ulangi, buang)
