@@ -28,12 +28,15 @@ document.addEventListener('renderTugas', () => {
 const form = document.getElementById('form')
 form.addEventListener('submit', async (e) => {    
     e.preventDefault()
+    const akun = JSON.parse(localStorage.getItem('akun'))
     const data = {
         tugas: document.getElementById('tugas').value,
         deskripsi: document.getElementById('deskripsi').value,
         color: document.getElementById('color').value,
         mulai: document.getElementById('mulai').value,
         berakhir: document.getElementById('tanggal').value,
+        by: akun.nickname,
+        token: akun.pass,
         selesai: false
     }
     const options = {

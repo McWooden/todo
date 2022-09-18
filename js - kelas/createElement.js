@@ -1,6 +1,9 @@
 // create element
 const url = 'https://x6todo.herokuapp.com/x6'
+const urlLocal = 'http://localhost:3000/x6'
 const token = JSON.parse(localStorage.getItem('akun')).pass
+const nickname = JSON.parse(localStorage.getItem('akun')).nickname
+
 function buatElement(x, index) {   
     // card
     const card = document.createElement('div')
@@ -98,10 +101,22 @@ async function reverse(json) {
     }).then(cardHilang(json.id))
 }
 async function deleteItem(id) {
-    await fetch(`${url}/${id}/${token}`,  { method: 'delete', body:{token} }).then(cardHilang(id))
+    await fetch(`${url}/${id}`, {
+        method: 'DELETE',
+        body: JSON.stringify({token: token}),
+        headers: {
+            'Content-Type': "application/json"
+        }
+    }).then(cardHilang(id))
 }
 async function editCard(id) {
-    await fetch(`${url}/${id}/${token}`).then(res => res.json()).then(x => {
+    await fetch(`${url}/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({token}),
+            headers: {
+                'Content-Type': "application/json"
+            }
+        }).then(res => res.json()).then(x => {
             formState.isEdit = true
             document.getElementById('tugas').value = x.tugas
             document.getElementById('deskripsi').value = x.deskripsi
@@ -128,7 +143,7 @@ document.getElementById('btnUpdate').addEventListener('click', (e) => {
     kembalikanKeDefault()
 })
 async function saveEdit() {
-    await fetch(`${url}/${token}`, {
+    await fetch(`${url}/`, {
         method: "PUT",
         body: JSON.stringify({
             id: document.getElementById('month').textContent,
@@ -137,7 +152,8 @@ async function saveEdit() {
             color: document.getElementById('color').value,
             mulai: document.getElementById('mulai').value,
             berakhir: document.getElementById('tanggal').value,
-            token
+            token,
+            nickname
         }),
         headers: {
             "Content-Type": "application/json",
