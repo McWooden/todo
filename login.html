@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To login</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/card.css">
@@ -17,6 +17,12 @@
             align-items: center;
             background-color: #645CAA;
             flex-direction: column;
+        }
+        #profile-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .5em;
         }
         .card {
             border-color: #277BC0;
@@ -31,28 +37,44 @@
             border-color: transparent;
             color: #eee;
         }
-        form input[type="submit"] {
-            background-color: #277BC0;
-            border-color: #1e6096;
+        #login {
+            background-color: #267abf;
             color: #eee;
+            margin: .25em;
+            padding: .5em;
+            border-radius: 5px;
+            border: none;
+            border-bottom: 3px solid #1e6096;
+            font-size: 1em;
+        }
+        #logout {
+            background-color: #774360;
+            color: #eee;
+            margin: .25em;
+            padding: .5em;
+            border-radius: 5px;
+            border: none;
+            border-bottom: 3px solid #573146;
+            font-size: 1em;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
+        <div class="card" id="profile">
             <div class="text-card">
-                <p><span id="nama"></span> - <span id="rank"></span></p>
+                <p id="profile-content"><span id="nama"></span><span id="rank"></span> <input type="button" value="Logout" onclick="deleteAccountStorage()" id="logout"></p>
             </div>
         </div>
     </div>
-    <div class="login-container container">
-        <form action="" id="form">
+    <div class="login-container container" id="login-container">
+        <form id="form">
             <input type="text" placeholder="Nickname" required id="nickname" autocomplete="off">
             <input type="text" placeholder="title" required id="title" autocomplete="off">
             <input type="password" placeholder="password" required id="pass">
-            <input type="submit" value="Login" onclick="addAccountStorage()">
         </form>
+        <input type="submit" value="Login" onclick="addAccountStorage()" form="form" id="login">
     </div>
     <script>
         document.addEventListener('load', refresh())
@@ -63,8 +85,15 @@
             let akun = JSON.parse(localStorage.getItem('akun'))
             document.getElementById('nama').textContent = akun.nickname
             document.getElementById('rank').textContent = akun.title
+            if (akun.nickname == '') {
+                document.getElementById('profile').style.display = 'none'
+                document.getElementById('login-container').style.display = 'inherit'
+            } else {
+                document.getElementById('profile').style.display = 'inline'
+                document.getElementById('login-container').style.display = 'none'
+            }
         }
     </script>
-    <script src="js/storage.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>
