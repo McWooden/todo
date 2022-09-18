@@ -9,7 +9,7 @@ if (localStorage.getItem('akun') == null) {
 }
 async function addAccountStorage() {
     console.log('wait')
-    await fetch('https://x6todo.herokuapp.com/x6/getTitle', {
+    await fetch('https://x6todo.herokuapp.com/x6/title', {
         method: "PUT",
         body: JSON.stringify({pass: document.getElementById('pass').value}),
         headers: {
