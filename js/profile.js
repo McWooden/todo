@@ -8,6 +8,7 @@ if (localStorage.getItem('akun') == null) {
     localStorage.setItem('akun', JSON.stringify(defaultAccount))
 }
 async function addAccountStorage() {
+    console.log('wait')
     await fetch('https://x6todo.herokuapp.com/x6/getTitle', {
         method: "PUT",
         body: JSON.stringify({pass: document.getElementById('pass').value}),
@@ -23,6 +24,7 @@ async function addAccountStorage() {
         localStorage.setItem('akun', JSON.stringify(account))
     })
     refresh()
+    console.log('done')
 }
 function deleteAccountStorage() {
     localStorage.setItem('akun',JSON.stringify(defaultAccount))
