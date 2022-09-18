@@ -85,12 +85,12 @@ function buatElement(x, index) {
     // style
     card.style.borderLeftColor = x.color
 
-    if (title != 'Owner' || title != 'Admin') {
-        editBtn.style.display = 'none'
-    }
-    if (title != 'Owner' || title != 'Admin' || title != 'X-6') {
-        cardBtn.style.display = 'none'
-    }
+    // if (title != 'Owner' || title != 'Admin') {
+    //     editBtn.style.display = 'none'
+    // }
+    // if (title != 'Owner' || title != 'Admin' || title != 'X-6') {
+    //     cardBtn.style.display = 'none'
+    // }
     
     if (x.selesai) {
         cardBtn.append(ulangi, buang)
