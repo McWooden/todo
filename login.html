@@ -71,12 +71,14 @@
     <div class="login-container container" id="login-container">
         <form id="form">
             <input type="text" placeholder="Nickname" required id="nickname" autocomplete="off">
-            <input type="text" placeholder="title" required id="title" autocomplete="off">
-            <input type="password" placeholder="password" required id="pass">
+            <input type="password" placeholder="password" required id="pass" autocomplete="off">
         </form>
         <input type="submit" value="Login" onclick="addAccountStorage()" form="form" id="login">
     </div>
     <script>
+        const url = 'https://x6todo.herokuapp.com/x6'
+        const localhost = 'http://localhost:3000'
+
         document.addEventListener('load', refresh())
         document.getElementById('form').addEventListener('submit', (e) => {
             e.preventDefault()

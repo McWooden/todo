@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
     minimize()
     greet()
     getDate()
+    refresh()
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -184,4 +185,15 @@ function popup(imgLink) {
     setTimeout(() => {
         alertImg.remove()
     }, 2100)
+}
+
+function refresh() {
+    let akun = JSON.parse(localStorage.getItem('akun'))
+    document.getElementById('nama').textContent = akun.nickname
+    document.getElementById('rank').textContent = akun.title
+    if (akun.nickname == '') {
+        document.getElementById('login').style.display = 'inherit'
+    } else {
+        document.getElementById('login').style.display = 'none'
+    }
 }

@@ -27,6 +27,9 @@ section {
     padding: .5em;
     text-align: center;
 }
+.quotes a {
+    color: #daa520;
+}
 #author {
     color: #daa520;
     cursor: pointer;
@@ -47,7 +50,7 @@ section {
 }
 /* card loading */
 .card-loading {
-    height: 2.5em;
+    height: 54px;
     background-size: 200% 100% !important;
     border: none !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05) !important;

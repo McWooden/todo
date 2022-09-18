@@ -1,5 +1,6 @@
 // create element
 const url = 'https://x6todo.herokuapp.com/x6'
+const token = JSON.parse(localStorage.getItem('akun')).pass
 function buatElement(x, index) {   
     // card
     const card = document.createElement('div')
@@ -31,7 +32,7 @@ function buatElement(x, index) {
     centang.classList.add('centang')
     centang.setAttribute('src', 'img/check-solid.svg')
     centang.addEventListener('click', (e) => {
-        reverse({id: x._id, selesai: x.selesai})
+        reverse({id: x._id, selesai: x.selesai, token})
         popup(alertMsg.check)
     })
 
@@ -39,7 +40,7 @@ function buatElement(x, index) {
     ulangi.classList.add('ulangi')
     ulangi.setAttribute('src', 'img/reply-solid.svg')
     ulangi.addEventListener('click', (e) => {
-        reverse({id: x._id, selesai: x.selesai})
+        reverse({id: x._id, selesai: x.selesai, token})
         popup(alertMsg.reply)
     })
 
@@ -97,10 +98,10 @@ async function reverse(json) {
     }).then(cardHilang(json.id))
 }
 async function deleteItem(id) {
-    await fetch(`${url}/${id}`,  { method: 'delete' }).then(cardHilang(id))
+    await fetch(`${url}/${id}/${token}`,  { method: 'delete', body:{token} }).then(cardHilang(id))
 }
 async function editCard(id) {
-    await fetch(`${url}/${id}`).then(res => res.json()).then(x => {
+    await fetch(`${url}/${id}/${token}`).then(res => res.json()).then(x => {
             formState.isEdit = true
             document.getElementById('tugas').value = x.tugas
             document.getElementById('deskripsi').value = x.deskripsi
@@ -127,7 +128,7 @@ document.getElementById('btnUpdate').addEventListener('click', (e) => {
     kembalikanKeDefault()
 })
 async function saveEdit() {
-    await fetch(url, {
+    await fetch(`${url}/${token}`, {
         method: "PUT",
         body: JSON.stringify({
             id: document.getElementById('month').textContent,
@@ -135,7 +136,8 @@ async function saveEdit() {
             deskripsi: document.getElementById('deskripsi').value,
             color: document.getElementById('color').value,
             mulai: document.getElementById('mulai').value,
-            berakhir: document.getElementById('tanggal').value
+            berakhir: document.getElementById('tanggal').value,
+            token
         }),
         headers: {
             "Content-Type": "application/json",
