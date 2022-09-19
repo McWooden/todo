@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
     greet()
     getDate()
     refresh()
-    roles()
+    // roles()
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -193,9 +193,9 @@ function refresh() {
     }
 }
 
-function roles() {
-    if (title != 'Owner' || title != 'Admin') {
-        document.getElementById('buttonToSubmit').style.opacity = '.5'
-        form.style.opacity = '.5'
-    }
-}
+// function roles() {
+    // if (title != 'Owner' || title != 'Admin') {
+        // document.getElementById('buttonToSubmit').style.opacity = '.5'
+        //form.style.opacity = '.5'
+    // }
+// }
