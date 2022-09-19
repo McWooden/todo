@@ -1,6 +1,10 @@
 # Apa yang baru?
+## Offline Todo
     v1.18.2
     `pop up` menampilkan informasi aksi seperti menambah, menghapus, mengedit, menyimpan diatas kiri layar
+## X-6 Edition
+    v2.1.4
+    role system [Owner, Admin, X-6]
 
 # Todo App
     membuat daftar tugas sederhana dengan menyimpan di web storage
