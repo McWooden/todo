@@ -194,9 +194,9 @@ function refresh() {
 }
 
 function roles() {
-    document.getElementById('buttonToSubmit').style.opacity = '.5'
+    document.getElementById('buttonToSubmit').style.opacity = '.1'
     form.style.opacity = '.5'
-    if (title != 'Owner' || title != 'Admin') {
+    if (title == 'Owner' || title == 'Admin') {
         document.getElementById('buttonToSubmit').style.opacity = '1'
         form.style.opacity = '1'
     }
