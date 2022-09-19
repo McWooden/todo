@@ -7,7 +7,7 @@ const nickname = akun.nickname
 const title = akun.title
 const token = akun.pass
 
-function buatElement(x, index) {   
+function buatElement(x) {   
     // card
     const card = document.createElement('div')
     card.classList.add('card')
@@ -80,17 +80,18 @@ function buatElement(x, index) {
     card.addEventListener('mouseleave', () => {
         deskripsiText.innerHTML = deadline
     })
-    // dataset
-    card.dataset.cardIndex = index
+
     // style
     card.style.borderLeftColor = x.color
+    cardBtn.style.display = 'none'
+    editBtn.style.display = 'none'
 
-    // if (title != 'Owner' || title != 'Admin') {
-    //     editBtn.style.display = 'none'
-    // }
-    // if (title != 'Owner' || title != 'Admin' || title != 'X-6') {
-    //     cardBtn.style.display = 'none'
-    // }
+    if (title == 'Owner' || title == 'Admin') {
+        editBtn.style.display = 'inherit'
+    }
+    if (title == 'Owner' || title == 'Admin' || title == 'X-6') {
+        cardBtn.style.display = 'inherit'
+    }
     
     if (x.selesai) {
         cardBtn.append(ulangi, buang)

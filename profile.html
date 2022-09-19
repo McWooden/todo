@@ -28,6 +28,47 @@
             border-color: #277BC0;
             padding: .5em;
         }
+        .card-back {
+            background-color: #774360;
+            border: none !important;
+            width: fit-content;
+            padding: .5em 1em;
+            position: absolute !important;
+            top: .25em;
+            left: .25em;
+        }
+        .card-back img {
+            width: 1em;
+        }
+        .card-news {
+            flex-direction: column;
+            gap: 0 !important;
+            align-items: flex-start !important;
+            font-weight: 300;
+            font-size: .8em;
+        }
+        .card-news p:first-child {
+            font-weight: 500;
+            font-size: 1em;
+        }
+        .owner {
+            border-color: #F57328;
+        }
+        .owner p:first-child {
+            color: #F57328;
+        }
+        .admin {
+            border-color: #42855B;
+        }
+        .admin p:first-child {
+            color: #42855B;
+        }
+        .x-6 {
+            border-color: #A5F1E9;
+        }
+        .x-6 p:first-child {
+            color: #A5F1E9;
+        }
         .login-container {
             background-color: #31364c;
             border-bottom: 4px solid #1b1e2b;
@@ -63,6 +104,9 @@
     </style>
 </head>
 <body>
+    <div class="card card-news card-back">
+        <img src="img/reply-solid.svg">
+    </div>
     <div class="container">
         <div class="card" id="profile">
             <div class="text-card">
@@ -70,6 +114,7 @@
             </div>
         </div>
     </div>
+
     <div class="login-container container" id="login-container">
         <form id="form">
             <input type="text" placeholder="Nickname" required id="nickname" autocomplete="off">
@@ -77,6 +122,30 @@
         </form>
         <input type="submit" value="Login" onclick="addAccountStorage()" form="form" id="login">
     </div>
+
+    <div class="container">
+        <div class="card card-news owner">
+            <p>Owner</p>
+            <p>Menambah</p>
+            <p>Mengubah</p>
+            <p>Menyelesaikan</p>
+            <p>Menunda</p>
+            <p>jejak tidak dapat dilihat</p>
+        </div>
+        <div class="card card-news admin">
+            <p>Admin</p>
+            <p>Menambah</p>
+            <p>Mengubah</p>
+            <p>Menyelesaikan</p>
+            <p>Menunda</p>
+        </div>
+        <div class="card card-news x-6">
+            <p>X-6</p>
+            <p>Menyelesaikan</p>
+            <p>Menunda</p>
+        </div>
+    </div>
+    
     <script>
         const url = 'https://x6todo.herokuapp.com/x6'
         const localhost = 'http://localhost:3000'
