@@ -5,7 +5,7 @@ const defaultAccount = {
     pass: ''
 }
 if (localStorage.getItem('akun') == null) {
-    localStorage.setItem('akun', JSON.stringify(defaultAccount))
+    localStorage.setItem('akun', JSON.stringify({}))
 }
 async function addAccountStorage() {
     await fetch('https://x6todo.herokuapp.com/x6/title', {

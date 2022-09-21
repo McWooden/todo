@@ -37,7 +37,6 @@ form.addEventListener('submit', async (e) => {
         mulai: document.getElementById('mulai').value,
         berakhir: document.getElementById('tanggal').value,
         by: akun.nickname,
-        token: akun.pass,
         selesai: false
     }
     const options = {
@@ -139,7 +138,7 @@ function kembalikanKeDefault() {
 alertMsg = {
     reload: {
         link: 'img/rotate-right-solid.svg',
-        bgColor: '#A27B5C'
+        bgColor: '#0D7377'
     },
     add: {
         link: 'img/plus-solid.svg',
