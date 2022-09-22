@@ -44,7 +44,7 @@ form.addEventListener('submit', async (e) => {
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json'}
     }
-    await fetch(url, options)
+    await fetch(url, options).then(form.reset())
 
     document.dispatchEvent(new Event('renderTugas'))
     rotateSubmitButton()
