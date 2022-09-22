@@ -13,7 +13,7 @@ document.getElementById('reload').addEventListener('click', () => {
 
 // render Element
 document.addEventListener('renderTugas', () => {
-    fetch('https://x6todo.herokuapp.com/x6')
+    fetch(url)
     .then(res => res.json())
     .then(tasks => {
         document.getElementById('belum').innerHTML = ''
@@ -29,14 +29,14 @@ document.addEventListener('renderTugas', () => {
 const form = document.getElementById('form')
 form.addEventListener('submit', async (e) => {    
     e.preventDefault()
-    const akun = JSON.parse(localStorage.getItem('akun'))
     const data = {
         tugas: document.getElementById('tugas').value,
         deskripsi: document.getElementById('deskripsi').value,
         color: document.getElementById('color').value,
         mulai: document.getElementById('mulai').value,
         berakhir: document.getElementById('tanggal').value,
-        by: akun.nickname,
+        by: nickname,
+        token,
         selesai: false
     }
     const options = {
@@ -44,7 +44,7 @@ form.addEventListener('submit', async (e) => {
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json'}
     }
-    await fetch('https://x6todo.herokuapp.com/x6', options).then(form.reset())
+    await fetch(url, options).then(x => x.json()).then(console.log)
 
     document.dispatchEvent(new Event('renderTugas'))
     rotateSubmitButton()
