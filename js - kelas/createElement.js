@@ -74,10 +74,10 @@ function buatElement(x) {
     cardText.append(textTitle, deskripsiText)
     card.append(cardText, cardBtn, editBtn)
 
-    card.addEventListener('click', () => {
+    cardText.addEventListener('click', () => {
         deskripsiText.innerText = x.deskripsi
     })
-    card.addEventListener('mouseleave', () => {
+    cardText.addEventListener('mouseleave', () => {
         deskripsiText.innerHTML = deadline
     })
 
@@ -85,6 +85,9 @@ function buatElement(x) {
     card.style.borderLeftColor = x.color
     cardBtn.style.display = 'none'
     editBtn.style.display = 'none'
+    // dataset
+    card.dataset.by = x.by
+    card.dataset.color = x.color
 
     if (title == 'Owner' || title == 'Admin') {
         editBtn.style.display = 'inherit'

@@ -7,7 +7,7 @@
     padding: .5em;
     border-left: .5em solid;
     padding-right: 0;
-    overflow: auto;
+    /* overflow: auto; */
     gap: .5em;
     border-radius: 5px;
     font-size: large;
@@ -41,6 +41,9 @@
 }
 #sudah img {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.card-text {
+    width: 100%;
 }
 /* button */
 .card-btn {
@@ -80,4 +83,21 @@
     border-bottom-left-radius: 3px;
     cursor: pointer;
     width: 1.6em;
+}
+/* before */
+.card::before {
+    content: 'by 'attr(data-by);
+    padding: .2em .5em;
+    border-radius: 5px;
+    position: absolute;
+    display: inline-block;
+    font-size: small;
+    top: -1em;
+    left: .1em;
+    color: #eee;
+    background-color: #2b2f42;
+    visibility: hidden;
+}
+.card:hover::before {
+    visibility: visible;
 }
