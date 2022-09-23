@@ -22,13 +22,7 @@ function buatElement(x) {
 
     const deskripsiText = document.createElement('p')
     deskripsiText.classList.add('text-time')
-    let deadline;
-    if (x.mulai == '' && x.berakhir == '') {
-        deadline = x.deskripsi
-    } else {
-        deadline = `${x.mulai} | ${x.berakhir}`
-    }
-    deskripsiText.innerHTML = deadline
+    deskripsiText.innerHTML = x.deskripsi
 
     // btn card
     const cardBtn = document.createElement('div')
@@ -74,13 +68,6 @@ function buatElement(x) {
     cardText.append(textTitle, deskripsiText)
     card.append(cardText, cardBtn, editBtn)
 
-    cardText.addEventListener('click', () => {
-        deskripsiText.innerText = x.deskripsi
-    })
-    cardText.addEventListener('mouseleave', () => {
-        deskripsiText.innerHTML = deadline
-    })
-
     // style
     card.style.borderLeftColor = x.color
     cardBtn.style.display = 'none'
@@ -88,6 +75,7 @@ function buatElement(x) {
     // dataset
     card.dataset.by = x.by
     card.dataset.color = x.color
+    card.dataset.date = deadline = `${x.mulai} | ${x.berakhir}`
 
     if (title == 'Owner' || title == 'Admin') {
         editBtn.style.display = 'inherit'

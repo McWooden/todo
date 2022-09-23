@@ -58,6 +58,15 @@ section {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 10px;
 }
+.container-mode {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+.container-mode img {
+    width: 1.5em;
+    cursor: pointer;
+}
 /* card loading */
 .card-loading {
     height: 54px;

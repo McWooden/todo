@@ -18,10 +18,23 @@ document.addEventListener('renderTugas', () => {
     .then(tasks => {
         document.getElementById('belum').innerHTML = ''
         document.getElementById('sudah').innerHTML = ''
-        let tugas = tasks
+        let tugas = tasks.reverse()
         tugas.map(item => buatElement(item))
         popup(alertMsg.reload)
         updateProggress(tasks)
+    }).catch((err) => {
+        const card = document.createElement('div')
+        const cardText = document.createElement('div')
+        const textTitle = document.createElement('p')
+        textTitle.textContent = 'ERR_INTERNET_DISCONNECTED'
+        const deskripsiText = document.createElement('p')
+        deskripsiText.textContent = err
+        cardText.append(textTitle, deskripsiText)
+        card.classList.add('card')
+        card.append(cardText)
+        document.getElementById('belum').innerHTML = ''
+        document.getElementById('sudah').innerHTML = ''
+        document.getElementById('belum').appendChild(card)
     })
 })
 
