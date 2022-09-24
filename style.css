@@ -61,8 +61,17 @@ section {
 }
 .container-mode {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em 1em;
     margin-top: 1em;
+}
+.container-mode div {
+    width: 45%;
+}
+.container-mode .mode-btn {
+    display: flex;
+    justify-content: space-around;
 }
 .container-mode img {
     width: 1.5em;

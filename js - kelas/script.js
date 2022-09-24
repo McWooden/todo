@@ -1,6 +1,14 @@
 const url = 'https://x6todo.herokuapp.com/x6'
 const urlLocal = 'http://localhost:3000/x6'
 
+let link = {
+    Beranda: '/',
+    Twit: '/twit',
+    Log: '/log'
+}
+
+let modeState = 'Beranda'
+
 const akun = JSON.parse(localStorage.getItem('akun'))
 const nickname = akun.nickname
 const title = akun.title
@@ -14,6 +22,7 @@ window.addEventListener('load', () => {
     getDate()
     refresh()
     roles()
+    mode()
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -21,29 +30,33 @@ document.getElementById('reload').addEventListener('click', () => {
 
 // render Element
 document.addEventListener('renderTugas', () => {
-    fetch(url)
-    .then(res => res.json())
-    .then(tasks => {
-        document.getElementById('belum').innerHTML = ''
-        document.getElementById('sudah').innerHTML = ''
-        let tugas = tasks.reverse()
-        tugas.map(item => new Card(item).showCard())
-        popup(alertMsg.reload)
-        updateProggress(tasks)
-    }).catch((err) => {
-        const card = document.createElement('div')
-        const cardText = document.createElement('div')
-        const textTitle = document.createElement('p')
-        textTitle.textContent = 'ERR_INTERNET_DISCONNECTED'
-        const deskripsiText = document.createElement('p')
-        deskripsiText.textContent = err
-        cardText.append(textTitle, deskripsiText)
-        card.classList.add('card')
-        card.append(cardText)
-        document.getElementById('belum').innerHTML = ''
-        document.getElementById('sudah').innerHTML = ''
-        document.getElementById('belum').appendChild(card)
-    })
+    if (modeState == 'Twit') {
+        fetch(`${url}${link.Twit}`)
+        .then(res => res.json())
+        .then(twits => {
+            document.getElementById('belum').innerHTML = ''
+            document.getElementById('sudah').innerHTML = ''
+            let twit = twits.reverse()
+            twit.map(item => new Twit(item).showTwit())
+            popup(alertMsg.reload)
+            updateProggress(twits)
+        }).catch((err) => {
+            showError(err)
+        })
+    } else {
+        fetch(url)
+        .then(res => res.json())
+        .then(tasks => {
+            document.getElementById('belum').innerHTML = ''
+            document.getElementById('sudah').innerHTML = ''
+            let tugas = tasks.reverse()
+            tugas.map(item => new Card(item).showCard())
+            popup(alertMsg.reload)
+            updateProggress(tasks)
+        }).catch((err) => {
+            showError(err)
+        })
+    }
 })
 
 //  form on submit
@@ -116,7 +129,8 @@ let formState = {
     isMinimize: true,
     isEdit: false,
 }
-document.getElementById('deskripsi').style.width = document.getElementById('tugas').offsetWidth + 'px'
+document.getElementById('deskripsi').style.width = (document.getElementById('tugas').offsetWidth - 1) + 'px'
+
 function minimize() {
     if (formState.isMinimize) {
         document.getElementById('form').style.height = '0'
@@ -140,7 +154,7 @@ document.getElementById('minimize').addEventListener('click', minimize)
 
 // update proggres
 function updateProggress(tasks) {
-    if (tasks.length === 0) {
+    if (tasks.length === 0 || modeState != 'Beranda') {
         document.getElementById('proggress').style.display = 'none'
     }
     const tugasSelesai = tasks.filter(x => !x.selesai)
@@ -248,9 +262,57 @@ function roles() {
     }
 }
 
-function testTextArea() {
-    const commentContainer = document.getElementById('commentArea')
-    const comment = document.getElementById('comment').value
-    commentContainer.innerHTML = comment
-    console.log(commentContainer, comment)
+function showError(msg) {
+    const card = document.createElement('div')
+    const cardText = document.createElement('div')
+    const textTitle = document.createElement('p')
+    textTitle.textContent = 'Err'
+    const deskripsiText = document.createElement('p')
+    deskripsiText.textContent = msg
+    cardText.append(textTitle, deskripsiText)
+    card.classList.add('card')
+    card.append(cardText)
+    document.getElementById('belum').innerHTML = ''
+    document.getElementById('sudah').innerHTML = ''
+    document.getElementById('belum').appendChild(card)
+}
+
+function mode() {
+    const textMode = document.createElement('div')
+    textMode.textContent = modeState
+    textMode.setAttribute('id', 'modeInfo')
+
+
+    const beranda = document.createElement('img')
+    beranda.setAttribute('src', 'img/house-solid.svg')
+    beranda.setAttribute('title', 'Beranda')
+    beranda.addEventListener('click', (e) => {
+        textMode.textContent = e.target.title
+        modeState = e.target.title
+    })
+
+    const twit = document.createElement('img')
+    twit.setAttribute('src', 'img/magnifying-glass-solid.svg')
+    twit.setAttribute('title', 'Twit')
+    twit.addEventListener('click', (e) => {
+        textMode.textContent = e.target.title
+        modeState = e.target.title
+    })
+
+    const log = document.createElement('img')
+    log.setAttribute('src', 'img/terminal-solid.svg')
+    log.setAttribute('title', 'Log')
+    log.addEventListener('click', (e) => {
+        textMode.textContent = e.target.title
+        modeState = e.target.title
+    })
+
+    const modeInfo = document.createElement('div')
+    modeInfo.append(textMode)
+
+    const modeBtn = document.createElement('div')
+    modeBtn.classList.add('mode-btn')
+    modeBtn.append(beranda, twit, log)
+
+    document.getElementById('mode').append(modeInfo, modeBtn)
 }
