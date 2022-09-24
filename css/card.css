@@ -5,9 +5,8 @@
     align-items: center;
     margin: .5em 0;
     padding: .5em;
-    border-left: .5em solid;
     padding-right: 0;
-    /* overflow: auto; */
+    border-left: .5em solid;
     gap: .5em;
     border-radius: 5px;
     font-size: large;
@@ -44,10 +43,10 @@
 }
 .card-text {
     width: 100%;
+    overflow: auto;
 }
 /* button */
 .card-btn {
-    display: flex;
     align-content: center;
     justify-content: center;
 }
@@ -109,7 +108,7 @@
     position: absolute;
     display: inline-block;
     font-size: small;
-    top: -1em;
+    bottom: -1em;
     right: .1em;
     color: #eee;
     background-color: #2b2f42;

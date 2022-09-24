@@ -73,7 +73,7 @@ form {
     transition: .3s;
     padding: 0;
 }
-form input {
+form input, form textarea {
     box-shadow: #7253ee 0px 15px 25px -25px;
     padding: .5em;
     font-size: 1em;

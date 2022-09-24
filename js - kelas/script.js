@@ -1,3 +1,11 @@
+const url = 'https://x6todo.herokuapp.com/x6'
+const urlLocal = 'http://localhost:3000/x6'
+
+const akun = JSON.parse(localStorage.getItem('akun'))
+const nickname = akun.nickname
+const title = akun.title
+const token = akun.pass
+
 // window on load
 window.addEventListener('load', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -19,7 +27,7 @@ document.addEventListener('renderTugas', () => {
         document.getElementById('belum').innerHTML = ''
         document.getElementById('sudah').innerHTML = ''
         let tugas = tasks.reverse()
-        tugas.map(item => buatElement(item))
+        tugas.map(item => new Card(item).showCard())
         popup(alertMsg.reload)
         updateProggress(tasks)
     }).catch((err) => {
@@ -63,6 +71,31 @@ form.addEventListener('submit', async (e) => {
     rotateSubmitButton()
     popup(alertMsg.add)
 })
+document.getElementById('btnUpdate').addEventListener('click', (e) => {
+    e.preventDefault()
+    saveEdit()
+    kembalikanKeDefault()
+})
+async function saveEdit() {
+    await fetch(`${url}/`, {
+        method: "PUT",
+        body: JSON.stringify({
+            id: document.getElementById('month').textContent,
+            tugas: document.getElementById('tugas').value,
+            deskripsi: document.getElementById('deskripsi').value,
+            color: document.getElementById('color').value,
+            mulai: document.getElementById('mulai').value,
+            berakhir: document.getElementById('tanggal').value,
+            token,
+            nickname
+        }),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    document.dispatchEvent(new Event('renderTugas'))
+    popup(alertMsg.save)
+}
 
 // animate btn submit 
 function rotateSubmitButton() {
@@ -83,6 +116,7 @@ let formState = {
     isMinimize: true,
     isEdit: false,
 }
+document.getElementById('deskripsi').style.width = document.getElementById('tugas').offsetWidth + 'px'
 function minimize() {
     if (formState.isMinimize) {
         document.getElementById('form').style.height = '0'
@@ -212,4 +246,11 @@ function roles() {
         document.getElementById('buttonToSubmit').style.opacity = '1'
         form.style.opacity = '1'
     }
+}
+
+function testTextArea() {
+    const commentContainer = document.getElementById('commentArea')
+    const comment = document.getElementById('comment').value
+    commentContainer.innerHTML = comment
+    console.log(commentContainer, comment)
 }
