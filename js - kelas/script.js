@@ -384,7 +384,7 @@ class formTwit {
                 body: JSON.stringify(data),
                 headers: {'Content-Type': 'application/json'}
             }
-            await fetch(`${urlLocal}${link[modeState]}`, options).then(form.reset())
+            await fetch(`${url}${link[modeState]}`, options).then(form.reset())
             popup(alertMsg.feather)
         })
 
@@ -401,7 +401,7 @@ class formTwit {
 
         const title = document.createElement('p')
         title.classList.add('twitForm-title')
-        title.textContent = `${this.title} | ${dayName[new Date().getDay()]}`
+        title.textContent = `${this.title}`
         
         formHeader.append(nickname, title)
 
@@ -409,11 +409,15 @@ class formTwit {
     }
 
     formDescription() {
+        const deskripsiContainer = document.createElement('div')
+
         const deskripsi = document.createElement('textarea')
         deskripsi.setAttribute('id', 'twit-deskripsi')
         deskripsi.setAttribute('placeholder', 'apa yang sedang terjadi?')
 
-        return deskripsi
+        deskripsiContainer.append(deskripsi)
+
+        return deskripsiContainer
     }
 
     formTag() {

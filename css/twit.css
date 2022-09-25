@@ -1,8 +1,8 @@
 #formTwit {
     width: 100%;
     background-color: #2b2f42;
-    border-radius: 3px;
-    border-left: 1em solid #31364c;
+    border-radius: 5px;
+    border-left: 1em solid #383e57;
 }
 #formTwit .form-header {
     display: flex;
@@ -18,19 +18,19 @@
     font-size: medium;
 }
 #formTwit textarea, #formTwit input {
-    background-color: #2b2f42;
+    background-color: #34384d;
     border: none;
     border-radius: 3px;
     color: #eee;
-    margin-bottom: 0;
     width: 99% !important;
     box-shadow: none;
     align-self: center;
-    padding: 0;
+    padding: .25em;
 }
 
 #formTwit textarea {
     font-size: medium;
+    margin-bottom: 0;
 }
 #formTwit .tagAndSubmit {
     display: flex;
@@ -40,7 +40,7 @@
 #formTwit input {
     color: #1d9bf0;
     font-size: small;
-    width: 50% !important;
+    height: 3em;
 }
 #formTwit button {
     display: flex;
