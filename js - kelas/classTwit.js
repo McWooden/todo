@@ -9,7 +9,6 @@ class Twit {
         this.color = data.color
         this.token = data.token
         this.twit = this.createTwitElement()
-        this.body = data
     }
 
     createTwitElement() {

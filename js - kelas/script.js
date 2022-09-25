@@ -7,7 +7,7 @@ let link = {
     Log: '/log'
 }
 
-let modeState = 'Twit'
+let modeState = 'Beranda'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
 const nickname = akun.nickname
@@ -229,6 +229,10 @@ alertMsg = {
     save: {
         link: 'img/floppy-disk-solid.svg',
         bgColor: '#277BC0'
+    },
+    feather: {
+        link: 'img/feather-light-solid.svg',
+        bgColor: '#1d9bf0'
     }
 }
 
@@ -299,7 +303,7 @@ function mode() {
     })
 
     const twit = document.createElement('img')
-    twit.setAttribute('src', 'img/magnifying-glass-solid.svg')
+    twit.setAttribute('src', 'img/feather-solid.svg')
     twit.setAttribute('title', 'Twit')
     twit.addEventListener('click', (e) => {
         textMode.textContent = e.target.title
@@ -329,17 +333,114 @@ function mode() {
 
     document.getElementById('mode').append(modeInfo, modeBtn)
 }
+
 function modeNav() {
     if (modeState == 'Beranda') {
-        document.getElementById('container-form').style.display = 'inherit'
+        document.getElementById('header').style.display = 'inherit'
         document.getElementById('proggress').style.display = 'inherit'
+        document.getElementById('TwitForm').style.display = 'none'
+    } else if (modeState == 'Twit') {
+        document.getElementById('header').style.display = 'none'
+        document.getElementById('proggress').style.display = 'none'
+        new formTwit(akun).showFormTwit()
+        document.getElementById('TwitForm').style.display = 'inherit'
     } else {
-        document.getElementById('container-form').style.display = 'none'
+        document.getElementById('TwitForm').style.display = 'none'
+        document.getElementById('header').style.display = 'none'
         document.getElementById('proggress').style.display = 'none'
     }
     document.getElementById('todoapp').style.marginTop = document.getElementById('header').offsetHeight + 'px'
 }
+
 function loaderCard() {
     document.getElementById('sudah').innerHTML = ''
     document.getElementById('belum').innerHTML = '<div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-light"></div>'
+}
+
+class formTwit {
+    constructor(akun) {
+        this.nickname = akun.nickname
+        this.title = akun.title
+        this.formTwit = this.createFormTwit()
+        this.token = akun.pass
+    }
+
+    createFormTwit() {
+        const form = document.createElement('form')
+        form.setAttribute('id', 'formTwit')
+        form.append(this.formHeader(), this.formDescription(), this.formTag())
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const data = {
+                nickname: this.nickname,
+                title: this.title,
+                isi: document.getElementById('twit-deskripsi').value,
+                tag: document.getElementById('twit-tag').value,
+                token: this.token
+            }
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {'Content-Type': 'application/json'}
+            }
+            await fetch(`${urlLocal}${link[modeState]}`, options).then(form.reset())
+            popup(alertMsg.feather)
+        })
+
+        return form
+    }
+
+    formHeader() {
+        const formHeader = document.createElement('div')
+        formHeader.classList.add('form-header')
+
+        const nickname = document.createElement('p')
+        nickname.classList.add('twitForm-nickname')
+        nickname.textContent = `@${this.nickname}`
+
+        const title = document.createElement('p')
+        title.classList.add('twitForm-title')
+        title.textContent = `${this.title} | ${dayName[new Date().getDay()]}`
+        
+        formHeader.append(nickname, title)
+
+        return formHeader
+    }
+
+    formDescription() {
+        const deskripsi = document.createElement('textarea')
+        deskripsi.setAttribute('id', 'twit-deskripsi')
+        deskripsi.setAttribute('placeholder', 'apa yang sedang terjadi?')
+
+        return deskripsi
+    }
+
+    formTag() {
+        const tagAndSubmit = document.createElement('div')
+        tagAndSubmit.classList.add('tagAndSubmit')
+
+        const tag = document.createElement('input')
+        tag.setAttribute('id', 'twit-tag')
+        tag.setAttribute('placeholder', '#tag')
+
+        const submit = document.createElement('button')
+        submit.setAttribute('id', 'twitSubmit')
+        submit.setAttribute('type', 'submit')
+        submit.setAttribute('form', 'formTwit')
+
+        const submitIcon = document.createElement('img')
+        submitIcon.setAttribute('src', 'img/feather-light-solid.svg')
+
+        submit.append(submitIcon)
+
+        tagAndSubmit.append(tag, submit)
+
+        return tagAndSubmit
+    }
+
+    showFormTwit() {
+        document.getElementById('TwitForm').innerHTML = ''
+        return document.getElementById('TwitForm').append(this.formTwit)
+    }
 }

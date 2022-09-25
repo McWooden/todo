@@ -1,3 +1,64 @@
+#formTwit {
+    width: 100%;
+    background-color: #2b2f42;
+    border-radius: 3px;
+    border-left: 1em solid #31364c;
+}
+#formTwit .form-header {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    gap: .25em;
+    padding: .25em;
+    color: #eee;
+    background-color: #31364c;
+}
+#formTwit .form-header .twitForm-title {
+    color: rgb(113, 118, 123);
+    font-size: medium;
+}
+#formTwit textarea, #formTwit input {
+    background-color: #2b2f42;
+    border: none;
+    border-radius: 3px;
+    color: #eee;
+    margin-bottom: 0;
+    width: 99% !important;
+    box-shadow: none;
+    align-self: center;
+    padding: 0;
+}
+
+#formTwit textarea {
+    font-size: medium;
+}
+#formTwit .tagAndSubmit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#formTwit input {
+    color: #1d9bf0;
+    font-size: small;
+    width: 50% !important;
+}
+#formTwit button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1d9bf0;
+    border: none;
+    padding: .5em 1.3em;
+    margin: .5em;
+    border-radius: 3px;
+    width: 5em;
+    align-self: flex-end;
+    cursor: pointer;
+}
+#formTwit button img {
+    width: 1.5em;
+}
+
 .twit {
     position:relative;
     display: flex;
