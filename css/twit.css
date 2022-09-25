@@ -1,0 +1,46 @@
+.twit {
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: .5em 0;
+    padding: .5em;
+    border-left: 1em solid;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: 300;
+    background-color: #2b2f42;
+    color: #eee;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .3s;
+}
+
+.twit-header {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    gap: .25em;
+}
+
+.twit-title, .twit-time {
+    color: rgb(113, 118, 123);
+    font-size: medium;
+}
+.twit-time {
+    align-self: flex-end;
+    font-size: small;
+}
+.twit-isi {
+    font-size: medium;
+}
+.twit-body {
+    display: flex;
+    flex-direction: column;
+}
+.twit-body > * {
+    overflow: auto;
+}
+.twit-tag {
+    color: rgb(29 155 240);
+    font-size: small;
+}

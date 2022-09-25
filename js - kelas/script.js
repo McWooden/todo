@@ -7,7 +7,7 @@ let link = {
     Log: '/log'
 }
 
-let modeState = 'Beranda'
+let modeState = 'Twit'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
 const nickname = akun.nickname
@@ -16,6 +16,7 @@ const token = akun.pass
 
 // window on load
 window.addEventListener('load', () => {
+    loaderCard()
     document.dispatchEvent(new Event('renderTugas'))
     minimize()
     greet()
@@ -23,6 +24,7 @@ window.addEventListener('load', () => {
     refresh()
     roles()
     mode()
+    modeNav()
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -43,6 +45,9 @@ document.addEventListener('renderTugas', () => {
         }).catch((err) => {
             showError(err)
         })
+    } else if (modeState == 'Log') {
+        document.getElementById('belum').innerHTML = 'Comming Soon...'
+        document.getElementById('sudah').innerHTML = ''
     } else {
         fetch(url)
         .then(res => res.json())
@@ -154,7 +159,7 @@ document.getElementById('minimize').addEventListener('click', minimize)
 
 // update proggres
 function updateProggress(tasks) {
-    if (tasks.length === 0 || modeState != 'Beranda') {
+    if (tasks.length === 0) {
         document.getElementById('proggress').style.display = 'none'
     }
     const tugasSelesai = tasks.filter(x => !x.selesai)
@@ -282,13 +287,15 @@ function mode() {
     textMode.textContent = modeState
     textMode.setAttribute('id', 'modeInfo')
 
-
     const beranda = document.createElement('img')
     beranda.setAttribute('src', 'img/house-solid.svg')
     beranda.setAttribute('title', 'Beranda')
     beranda.addEventListener('click', (e) => {
         textMode.textContent = e.target.title
         modeState = e.target.title
+        modeNav()
+        loaderCard()
+        document.dispatchEvent(new Event('renderTugas'))
     })
 
     const twit = document.createElement('img')
@@ -297,6 +304,9 @@ function mode() {
     twit.addEventListener('click', (e) => {
         textMode.textContent = e.target.title
         modeState = e.target.title
+        modeNav()
+        loaderCard()
+        document.dispatchEvent(new Event('renderTugas'))
     })
 
     const log = document.createElement('img')
@@ -305,6 +315,9 @@ function mode() {
     log.addEventListener('click', (e) => {
         textMode.textContent = e.target.title
         modeState = e.target.title
+        modeNav()
+        loaderCard()
+        document.dispatchEvent(new Event('renderTugas'))
     })
 
     const modeInfo = document.createElement('div')
@@ -315,4 +328,18 @@ function mode() {
     modeBtn.append(beranda, twit, log)
 
     document.getElementById('mode').append(modeInfo, modeBtn)
+}
+function modeNav() {
+    if (modeState == 'Beranda') {
+        document.getElementById('container-form').style.display = 'inherit'
+        document.getElementById('proggress').style.display = 'inherit'
+    } else {
+        document.getElementById('container-form').style.display = 'none'
+        document.getElementById('proggress').style.display = 'none'
+    }
+    document.getElementById('todoapp').style.marginTop = document.getElementById('header').offsetHeight + 'px'
+}
+function loaderCard() {
+    document.getElementById('sudah').innerHTML = ''
+    document.getElementById('belum').innerHTML = '<div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-light"></div>'
 }
