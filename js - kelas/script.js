@@ -10,9 +10,7 @@ let link = {
 let modeState = 'Beranda'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
-const nickname = akun.nickname
-const title = akun.title
-const token = akun.pass
+const {nickname, title, pass: token} = akun
 
 // window on load
 window.addEventListener('load', () => {
