@@ -370,6 +370,14 @@ class formTwit {
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
+            if (document.getElementById('twit-deskripsi').value == '') {
+                document.querySelector('.twitForm-title').textContent = 'Apa yang terjadi!?'
+                document.querySelector('.twitForm-title').style.color = '#774360'
+                return
+            } else {
+                document.querySelector('.twitForm-title').textContent = this.title
+                document.querySelector('.twitForm-title').style.color = '#71767b'
+            }
             const data = {
                 nickname: this.nickname,
                 title: this.title,
@@ -383,6 +391,7 @@ class formTwit {
                 headers: {'Content-Type': 'application/json'}
             }
             await fetch(`${url}${link[modeState]}`, options).then(form.reset())
+            document.dispatchEvent(new Event('renderTugas'))
             popup(alertMsg.feather)
         })
 
@@ -408,6 +417,7 @@ class formTwit {
 
     formDescription() {
         const deskripsiContainer = document.createElement('div')
+        deskripsiContainer.classList.add('deskripsi-container')
 
         const deskripsi = document.createElement('textarea')
         deskripsi.setAttribute('id', 'twit-deskripsi')

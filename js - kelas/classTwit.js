@@ -14,7 +14,6 @@ class Twit {
     createTwitElement() {
         const twit = document.createElement('div')
         twit.classList.add('twit')
-        twit.style.borderLeftColor = this.color
         twit.append(this.twitHeader(), this.twitBody())
         return twit
     }
