@@ -13,7 +13,7 @@ class Card {
 
     createCardELement() {
         const card = document.createElement('div')
-        card.classList.add('card')
+        card.classList.add('card', 'card-info')
         card.setAttribute('id', this.id)
         card.append(this.createText(), this.createButton(), this.edit())
         card.style.borderLeftColor = this.color

@@ -43,7 +43,7 @@ class Twit {
         const twitBody = document.createElement('div')
         twitBody.classList.add('twit-body')
 
-        const isi = document.createElement('pre')
+        const isi = document.createElement('p')
         isi.classList.add('twit-isi')
         isi.innerHTML = this.isi
 
@@ -51,7 +51,7 @@ class Twit {
         tag.classList.add('twit-tag')
         tag.innerHTML = this.tag
 
-        const date = document.createElement('pre')
+        const date = document.createElement('p')
         date.classList.add('twit-time')
         date.innerHTML = this.date
 

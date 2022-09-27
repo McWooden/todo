@@ -1,8 +1,10 @@
 #formTwit {
     width: 100%;
     background-color: #2b2f42;
-    border-radius: 5px;
     border-left: 1em solid #383e57;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 0 auto;
 }
 #formTwit .form-header {
     display: flex;
@@ -12,10 +14,15 @@
     padding: .25em;
     color: #eee;
     background-color: #31364c;
+    cursor: pointer;
 }
 #formTwit .form-header .twitForm-title {
     color: #71767b;
     font-size: medium;
+}
+#formTwit .twitForm-title {
+    color: goldenrod !important;
+    text-decoration: underline;
 }
 #formTwit textarea, #formTwit input {
     background-color: #34384d;
@@ -57,7 +64,7 @@
     background-color: #1d9bf0;
     border: none;
     padding: .5em 1.3em;
-    margin: .5em;
+    margin: auto .25em;
     border-radius: 3px;
     width: 5em;
     align-self: flex-end;
@@ -75,12 +82,14 @@
     margin: .5em 0;
     border-left: 1em solid #343a50;
     border-radius: 5px;
+    overflow: hidden;
     font-size: large;
     font-weight: 300;
     background-color: #272a3b;
     color: #eee;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+
 .twit-header {
     background-color: #303449;
     display: flex;
@@ -114,4 +123,20 @@
 .twit-tag {
     color: rgb(29 155 240);
     font-size: small;
+}
+@media screen and (min-width: 1024px) {
+    #formTwit {
+        max-width: 1024px;
+    }
+}
+@media screen and (max-width: 370px) {
+    .twit-header, .twit-time, .twit-title {
+        font-size: small;
+    }
+    .twit-isi {
+        font-size: smaller;
+    }
+    .twit-time, .twit-tag {
+        font-size:x-small;
+    }
 }

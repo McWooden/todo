@@ -84,7 +84,7 @@
     width: 1.6em;
 }
 /* before */
-.card::before {
+.card-info::before {
     content: 'by 'attr(data-by);
     padding: .2em .5em;
     border-radius: 5px;
@@ -97,11 +97,11 @@
     background-color: #2b2f42;
     visibility: hidden;
 }
-.card:hover::before {
+.card-info:hover::before {
     visibility: visible;
 }
 /* after */
-.card::after {
+.card-info::after {
     content: attr(data-date);
     padding: .2em .5em;
     border-radius: 5px;
@@ -114,6 +114,6 @@
     background-color: #2b2f42;
     visibility: hidden;
 }
-.card:hover::after {
+.card-info:hover::after {
     visibility: visible;
 }

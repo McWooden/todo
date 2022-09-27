@@ -1,8 +1,8 @@
 // account secure stonk 100% :)
 const defaultAccount = {
-    nickname: '',
-    title: '',
-    pass: ''
+    nickname: 'User',
+    title: 'Guest',
+    pass: '0'
 }
 if (localStorage.getItem('akun') == null) {
     localStorage.setItem('akun', JSON.stringify({}))
