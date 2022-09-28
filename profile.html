@@ -56,6 +56,17 @@
         .card-news img {
             width: 1em;
         }
+        #back {
+            position: absolute;
+            top: .25em;
+            left: .25em;
+            background-color: #774360;
+            border-radius: 5px;
+            padding: .5em 1em;
+            width: 3em;
+            border-bottom: 3px solid #573146;
+            cursor: pointer;
+        }
         .owner {
             border-color: #F57328;
         }
@@ -109,9 +120,7 @@
     </style>
 </head>
 <body>
-    <div class="card card-news card-back">
-        <a href="https://mcwooden.github.io/todo/x6"><img src="img/reply-solid.svg"></a>
-    </div>
+    <img src="img/reply-solid.svg" id="back">
     <div class="container">
         <div class="card" id="profile">
             <div class="text-card">
@@ -167,15 +176,19 @@
         const url = 'https://x6todo.herokuapp.com/x6'
         const localhost = 'http://localhost:3000'
 
+        document.getElementById('back').addEventListener('click', () => window.location = 'https://mcwooden.github.io/todo/x6')
+
         document.addEventListener('load', refresh())
         document.getElementById('form').addEventListener('submit', (e) => {
             e.preventDefault()
+            document.getElementById('login').style.opacity = '.5'
         })
+
         function refresh() {
             let akun = JSON.parse(localStorage.getItem('akun'))
-            document.getElementById('nama').textContent = akun.nickname
-            document.getElementById('rank').textContent = akun.title
-            if (akun.nickname == '') {
+                document.getElementById('nama').textContent = akun.nickname
+                document.getElementById('rank').textContent = akun.title
+            if (akun.nickname == 'User') {
                 document.getElementById('profile').style.display = 'none'
                 document.getElementById('login-container').style.display = 'inherit'
             } else {
