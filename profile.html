@@ -53,8 +53,18 @@
             font-weight: 500;
             font-size: 1em;
         }
+        .card-news .login-btn {
+            cursor: pointer;
+            color: #eee;
+        }
         .card-news img {
             width: 1em;
+        }
+        .card-news.buat-akun {
+            font-weight: 400;
+        }
+        .card-news.buat-akun a {
+            color: goldenrod;
         }
         #back {
             position: absolute;
@@ -136,7 +146,9 @@
         </form>
         <input type="submit" value="Login" onclick="addAccountStorage()" form="form" id="login">
     </div>
-
+    <div class="card card-news buat-akun">
+        <p>Tidak memiliki akun? <a class="login-btn" href="https://x6todo.herokuapp.com/google">Buat dengan Google</a></p>
+    </div>
     <div class="container">
         <div class="card card-news owner">
             <p>Owner</p>
