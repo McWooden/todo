@@ -203,27 +203,10 @@
                 headers: {'Content-Type': 'application/json',}
             }
 
-            await fetch(`https://x6todo.herokuapp.com/get-my-profile`, options).then(res => res.json()).then(console.log)
+            await fetch(`https://x6todo.herokuapp.com/get-my-profile`, options).then(res => res.json()).then(res => {
+                addAccountStorage(JSON.stringify(res))
+            })
         })
-
-        // document.addEventListener('load', refresh())
-        // document.getElementById('form').addEventListener('submit', (e) => {
-        //     e.preventDefault()
-        //     document.getElementById('login').style.opacity = '.5'
-        // })
-
-        // function refresh() {
-        //     let akun = JSON.parse(localStorage.getItem('akun'))
-        //         document.getElementById('nama').textContent = akun.nickname
-        //         document.getElementById('rank').textContent = akun.title
-        //     if (akun.nickname == 'User') {
-        //         document.getElementById('profile').style.display = 'none'
-        //         document.getElementById('login-container').style.display = 'inherit'
-        //     } else {
-        //         document.getElementById('profile').style.display = 'inline'
-        //         document.getElementById('login-container').style.display = 'none'
-        //     }
-        // }
     </script>
     <script src="js/profile.js"></script>
 </body>
