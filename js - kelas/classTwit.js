@@ -1,5 +1,6 @@
 class Twit {
     constructor(data) {
+        this.picture = data.picture
         this.nickname = data.nickname
         this.title = data.title
         this.isi = data.isi
@@ -14,10 +15,31 @@ class Twit {
     createTwitElement() {
         const twit = document.createElement('div')
         twit.classList.add('twit')
-        twit.append(this.twitHeader(), this.twitBody())
+        twit.append(this.formPicture(), this.formContainer())
         return twit
     }
 
+    formPicture() {
+        const imgContainer = document.createElement('div')
+        imgContainer.classList.add('twit-img')
+
+        const picture = document.createElement('img')
+        picture.classList.add('user-img')
+        picture.src = this.picture
+
+        imgContainer.append(picture)
+
+        return imgContainer
+    }
+
+    formContainer() {
+        const container = document.createElement('div')
+        container.classList.add('twit-container')
+        container.append(this.twitHeader(), this.twitBody())
+
+        return container
+    }
+    
     twitHeader() {
         const twitHeader = document.createElement('div')
         twitHeader.classList.add('twit-header')

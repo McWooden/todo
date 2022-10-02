@@ -1,7 +1,8 @@
 class formTwit {
     constructor(akun) {
+        this.picture = akun.picture
         this.nickname = akun.nickname
-        this.title = akun.title
+        this.title = akun.rank
         this.formTwit = this.createFormTwit()
         this.token = akun.pass
     }
@@ -9,7 +10,7 @@ class formTwit {
     createFormTwit() {
         const form = document.createElement('form')
         form.setAttribute('id', 'formTwit')
-        form.append(this.formHeader(), this.formDescription(), this.formTag())
+        form.append(this.formPicture(), this.formContainer())
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
@@ -22,6 +23,7 @@ class formTwit {
                 document.querySelector('.twitForm-title').style.color = '#71767b'
             }
             const data = {
+                picture: this.picture,
                 nickname: this.nickname,
                 title: this.title,
                 isi: document.getElementById('twit-deskripsi').value,
@@ -41,6 +43,26 @@ class formTwit {
         return form
     }
 
+    formPicture() {
+        const imgContainer = document.createElement('div')
+        imgContainer.classList.add('img-container')
+
+        const picture = document.createElement('img')
+        picture.classList.add('pp-form')
+        picture.src = this.picture
+
+        imgContainer.append(picture)
+
+        return imgContainer
+    }
+
+    formContainer() {
+        const container = document.createElement('div')
+        container.classList.add('form-container')
+        container.append(this.formHeader(), this.formDescription(), this.formTag())
+
+        return container
+    }
     formHeader() {
         const formHeader = document.createElement('div')
         formHeader.classList.add('form-header')

@@ -7,10 +7,10 @@ let link = {
     Log: '/log'
 }
 
-let modeState = 'Beranda'
+let modeState = 'Twit'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
-const {nickname, title, pass: token} = akun
+const {nickname, rank: title, pass: token} = akun
 
 // window on load
 window.addEventListener('load', () => {
@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
     minimize()
     greet()
     getDate()
-    refresh()
+    getProfile()
     roles()
     mode()
     modeNav()
@@ -31,6 +31,7 @@ document.getElementById('reload').addEventListener('click', () => {
 // render Element
 document.addEventListener('renderTugas', () => {
     if (modeState == 'Twit') {
+        document.getElementById('trivia').style.display = 'none'
         fetch(`${url}${link.Twit}`)
         .then(res => res.json())
         .then(twits => {
@@ -44,9 +45,11 @@ document.addEventListener('renderTugas', () => {
             showError(err)
         })
     } else if (modeState == 'Log') {
+        document.getElementById('trivia').style.display = 'none'
         document.getElementById('belum').innerHTML = 'Comming Soon...'
         document.getElementById('sudah').innerHTML = ''
     } else {
+        document.getElementById('trivia').style.display = 'flex'
         fetch(url)
         .then(res => res.json())
         .then(tasks => {
@@ -123,7 +126,6 @@ function rotateSubmitButton() {
 }
 
 // styling
-document.getElementById('trivia').style.display = 'block'
 document.getElementById('header').style.top = 'auto'
 document.getElementById('footer').style.marginBottom = (document.getElementById('nav').offsetHeight + 15) + 'px'
 
@@ -249,10 +251,11 @@ function popup(imgLink) {
     }, 2100)
 }
 
-function refresh() {
+function getProfile() {
     let akun = JSON.parse(localStorage.getItem('akun'))
     document.getElementById('nama').textContent = akun.nickname
-    document.getElementById('rank').textContent = akun.title
+    document.getElementById('rank').textContent = akun.rank
+    document.getElementById('pp').src = akun.picture
     if (akun.nickname == '') {
         document.getElementById('login').style.display = 'inherit'
     } else {

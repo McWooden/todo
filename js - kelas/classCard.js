@@ -94,7 +94,6 @@ class Card {
         }
         editBtn.addEventListener('click', () => {
             this.editCard(this.id)
-            popup(alertMsg.edit)
         })
         if (title == 'Owner' || title == 'Admin') {
             editBtn.style.display = 'inherit'
@@ -132,6 +131,7 @@ class Card {
                     'Content-Type': "application/json"
                 }
             }).then(res => res.json()).then(x => {
+                popup(alertMsg.edit)
                 formState.isEdit = true
                 document.getElementById('tugas').value = x.tugas
                 document.getElementById('deskripsi').value = x.deskripsi

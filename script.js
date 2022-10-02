@@ -86,7 +86,6 @@ fetch("https://jservice.io/api/random")
     document.getElementById('quote').innerHTML = x[0].question
     document.getElementById('author').innerHTML = `Level ${x[0].value}`
     document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
-    document.getElementById('trivia').style.display = 'block'
     document.getElementById('header').style.top = 'auto'
 })
 
