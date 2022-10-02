@@ -1,0 +1,183 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #645CAA;
+    flex-direction: column;
+}
+.container {
+    width: 100%;
+    max-width: calc(100vw-.5em);
+}
+#profile-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+.card {
+    border-color: #277BC0;
+    padding: .5em;
+}
+.card-back {
+    background-color: #774360;
+    border: none !important;
+    width: fit-content;
+    padding: .5em 1em;
+    position: absolute !important;
+    top: .25em;
+    left: .25em;
+    cursor: pointer;
+}
+.card-back a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-back img {
+    width: 1em;
+}
+.card-news {
+    flex-direction: column;
+    gap: 0 !important;
+    align-items: flex-start !important;
+    font-weight: 500;
+    font-size: 1em;
+}
+.card-news .login-btn {
+    cursor: pointer;
+    color: #eee;
+}
+.card-news img {
+    width: 1em;
+}
+.card-news.buat-akun {
+    font-weight: 400;
+    max-width: calc(100vw - .5em);
+    font-size: .8em;
+    border: none;
+}
+.card-news.buat-akun a {
+    color: goldenrod;
+}
+#back {
+    position: absolute;
+    top: .25em;
+    left: .25em;
+    background-color: #774360;
+    border-radius: 5px;
+    padding: .5em 1em;
+    width: 3em;
+    border-bottom: 3px solid #573146;
+    cursor: pointer;
+}
+.owner {
+    border-color: #F57328;
+}
+.owner p:first-child {
+    color: #F57328;
+}
+.admin {
+    border-color: #42855B;
+}
+.admin p:first-child {
+    color: #42855B;
+}
+.x-6 {
+    border-color: #A5F1E9;
+}
+.x-6 p:first-child {
+    color: #A5F1E9;
+}
+.login-container {
+    background-color: #31364c;
+    border-bottom: 4px solid #1b1e2b;
+}
+form input {
+    background-color: #2b2f42;
+    border-color: transparent;
+    color: #eee;
+}
+#login {
+    background-color: #267abf;
+    color: #eee;
+    margin: .25em;
+    padding: .5em;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 3px solid #1e6096;
+    font-size: 1em;
+    cursor: pointer;
+}
+#logout {
+    background-color: #774360;
+    color: #eee;
+    margin: .25em;
+    padding: .5em;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 3px solid #573146;
+    font-size: 1em;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 2em;
+}
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 100%;
+    max-width: calc(100vw - .5em);
+    margin-top: 2.5em;
+    border-top: .5em solid #267abf;
+    border-bottom: .5em solid goldenrod;
+}
+#profile .profile-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b2f42;
+    width: 100%;
+    padding: .25em;
+    border-radius: 5px;
+}
+#pp {
+    border-radius: 50px;
+    border-top: .25em solid goldenrod;
+    border-right: .25em solid goldenrod;
+    border-left: .25em solid #277BC0;
+    border-bottom: .25em solid #277BC0;
+    width: 5.5em;
+}
+.text-profile, .text-card-more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#nick {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+#profileId {
+    font-weight: 400;
+    color: #929292;
+    font-size: .5em;
+    margin-top: -5px;
+}
+#name {
+    font-size: 1em;
+}
+#rank {
+    font-weight: 300;
+}
+
+@media screen and (min-width: 512px) {
+    .container, #profile {
+        width: 512px;
+    }
+}

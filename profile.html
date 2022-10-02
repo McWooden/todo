@@ -8,135 +8,23 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/profile.css">
     <link rel="shortcut icon" href="img/favico.png" type="image/x-icon">
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #645CAA;
-            flex-direction: column;
-        }
-        #profile-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: .5em;
-        }
-        .card {
-            border-color: #277BC0;
-            padding: .5em;
-        }
-        .card-back {
-            background-color: #774360;
-            border: none !important;
-            width: fit-content;
-            padding: .5em 1em;
-            position: absolute !important;
-            top: .25em;
-            left: .25em;
-            cursor: pointer;
-        }
-        .card-back a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .card-back img {
-            width: 1em;
-        }
-        .card-news {
-            flex-direction: column;
-            gap: 0 !important;
-            align-items: flex-start !important;
-            font-weight: 500;
-            font-size: 1em;
-        }
-        .card-news .login-btn {
-            cursor: pointer;
-            color: #eee;
-        }
-        .card-news img {
-            width: 1em;
-        }
-        .card-news.buat-akun {
-            font-weight: 400;
-        }
-        .card-news.buat-akun a {
-            color: goldenrod;
-        }
-        #back {
-            position: absolute;
-            top: .25em;
-            left: .25em;
-            background-color: #774360;
-            border-radius: 5px;
-            padding: .5em 1em;
-            width: 3em;
-            border-bottom: 3px solid #573146;
-            cursor: pointer;
-        }
-        .owner {
-            border-color: #F57328;
-        }
-        .owner p:first-child {
-            color: #F57328;
-        }
-        .admin {
-            border-color: #42855B;
-        }
-        .admin p:first-child {
-            color: #42855B;
-        }
-        .x-6 {
-            border-color: #A5F1E9;
-        }
-        .x-6 p:first-child {
-            color: #A5F1E9;
-        }
-        .login-container {
-            background-color: #31364c;
-            border-bottom: 4px solid #1b1e2b;
-        }
-        form input {
-            background-color: #2b2f42;
-            border-color: transparent;
-            color: #eee;
-        }
-        #login {
-            background-color: #267abf;
-            color: #eee;
-            margin: .25em;
-            padding: .5em;
-            border-radius: 5px;
-            border: none;
-            border-bottom: 3px solid #1e6096;
-            font-size: 1em;
-            cursor: pointer;
-        }
-        #logout {
-            background-color: #774360;
-            color: #eee;
-            margin: .25em;
-            padding: .5em;
-            border-radius: 5px;
-            border: none;
-            border-bottom: 3px solid #573146;
-            font-size: 1em;
-            text-align: center;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <img src="img/reply-solid.svg" id="back">
-    <div class="container">
-        <div class="card" id="profile">
-            <div class="text-card">
-                <p id="profile-content"><span id="nama"></span><span id="rank"></span> <input type="button" value="Logout" onclick="deleteAccountStorage()" id="logout"></p>
+    <div class="card" id="profile">
+        <div class="profile-header">
+            <img id="pp">
+            <div class="text-card text-profile">
+                <p id="name"></p>
+                <p id="profileId"></p>
             </div>
         </div>
+        <div class="text-card-more">
+            <p><span id="nick"></span> <span id="rank"></span></p>
+        </div>
+        <input type="button" value="Logout" onclick="deleteAccountStorage()" id="logout">
     </div>
 
     <div class="login-container container" id="login-container">
@@ -145,9 +33,9 @@
             <input type="password" placeholder="password" required id="password" autocomplete="off">
         </form>
         <input type="submit" value="Login" form="form" id="login">
-    </div>
-    <div class="card card-news buat-akun">
-        <p>Tidak memiliki akun? <a class="login-btn" href="https://x6todo.herokuapp.com/google">Buat dengan Google</a></p>
+        <div class="card card-news buat-akun">
+            <p>Tidak memiliki akun? <a class="login-btn" href="https://x6todo.herokuapp.com/google">Buat dengan Google</a></p>
+        </div>
     </div>
     <div class="container">
         <div class="card card-news owner">
@@ -205,8 +93,19 @@
 
             await fetch(`https://x6todo.herokuapp.com/get-my-profile`, options).then(res => res.json()).then(res => {
                 addAccountStorage(JSON.stringify(res))
+                form.reset()
             })
         })
+
+        function getProfile() {
+            const akun = JSON.parse(localStorage.getItem('akun'))
+            document.getElementById('pp').src = akun.picture
+            document.getElementById('nick').textContent = akun.nickname
+            document.getElementById('name').textContent = akun.name
+            document.getElementById('profileId').textContent = akun.sub
+            document.getElementById('rank').textContent = akun.rank
+        }
+        window.onload = getProfile()
     </script>
     <script src="js/profile.js"></script>
 </body>

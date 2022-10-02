@@ -12,7 +12,9 @@ if (localStorage.getItem('akun') == null) {
 }
 async function addAccountStorage(object) {
     localStorage.setItem('akun', object)
+    getProfile()
 }
 function deleteAccountStorage() {
     localStorage.setItem('akun',JSON.stringify(defaultAccount))
+    getProfile()
 }
