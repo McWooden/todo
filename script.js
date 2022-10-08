@@ -80,15 +80,6 @@ function copyClipboard() {
     document.getElementById('CopyState').innerHTML = 'tersalin!'
 }
 
-fetch("https://jservice.io/api/random")
-.then(res => res.json())
-.then(x => {
-    document.getElementById('quote').innerHTML = x[0].question
-    document.getElementById('author').innerHTML = `Level ${x[0].value}`
-    document.getElementById('author').addEventListener('click', () => document.getElementById('author').innerHTML = x[0].answer)
-    document.getElementById('header').style.top = 'auto'
-})
-
 // styling
 // make footer marginBottom = height nav
 document.getElementById('footer').style.marginBottom = (document.getElementById('nav').offsetHeight + 15) + 'px'

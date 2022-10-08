@@ -67,7 +67,7 @@ class Twit {
 
         const isi = document.createElement('p')
         isi.classList.add('twit-isi')
-        isi.innerHTML = this.isi
+        isi.innerHTML = this.isi.replace(regex, x => `<a href="${x}" target="_blank">${x}</a>`)
 
         const tag = document.createElement('p')
         tag.classList.add('twit-tag')

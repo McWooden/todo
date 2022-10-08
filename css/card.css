@@ -45,6 +45,9 @@
     width: 100%;
     overflow: auto;
 }
+.card-text a {
+    color: goldenrod;
+}
 /* button */
 .card-btn {
     align-content: center;

@@ -26,11 +26,15 @@ class Card {
     createText() {
         const cardText = document.createElement('div')
         cardText.classList.add('card-text')
+
         const textTitle = document.createElement('p')
         textTitle.innerText = this.tugas
+
         const deskripsiText = document.createElement('pre')
         deskripsiText.classList.add('text-time')
-        deskripsiText.innerHTML = this.deskripsi
+
+        deskripsiText.innerHTML = this.deskripsi.replace(regex, x => `<a href="${x}" target="_blank">${x}</a>`)
+
         cardText.append(textTitle, deskripsiText)
         return cardText
     }

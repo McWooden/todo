@@ -1,5 +1,7 @@
 const url = 'https://x6todo.herokuapp.com/x6'
 const urlLocal = 'http://localhost:3000/x6'
+const regex = /(https?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/g
+
 
 let link = {
     Beranda: '/',
