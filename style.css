@@ -63,8 +63,8 @@ section {
     padding: .5em;
 }
 .container {
-    max-width: calc(100vw - .5em);
-    margin: .5em auto;
+    max-width: calc(100vw - .25em);
+    margin: .25em auto;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 10px;
 }
@@ -73,7 +73,7 @@ section {
     justify-content: space-between;
     align-items: center;
     padding: .5em 1em;
-    margin-top: 1em;
+    margin-top: 1.5em;
 }
 .container-mode div {
     width: 45%;
