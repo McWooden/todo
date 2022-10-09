@@ -66,9 +66,11 @@ class Twit {
         menu.classList.add('twit-menu')
 
         const like = document.createElement('img')
-        like.src = '../img/heart-regular.svg'
+        like.setAttribute('src', 'img/heart-regular.svg')
+
         const comment = document.createElement('img')
-        comment.src = '../img/comment-regular.svg'
+        comment.setAttribute('src', 'img/comment-regular.svg')
+
 
         menu.append(like, comment)
 
