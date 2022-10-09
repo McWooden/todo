@@ -44,6 +44,7 @@
 .card-text {
     width: 100%;
     overflow: auto;
+    max-height: 80vh;
 }
 .card-text a {
     color: goldenrod;
@@ -52,6 +53,7 @@
 .card-btn {
     align-content: center;
     justify-content: center;
+    height: 100% !important;
 }
 .card-btn img {
     margin-right: .5em;
@@ -68,12 +70,15 @@
 }
 .centang {
     background-color: #0D7377;
+    border-bottom: 3px solid #084244;
 }
 .ulangi {
     background-color: #A27B5C;
+    border-bottom: 3px solid #7b5e46;
 }
 .buang {
     border: .1em solid #774360;
+    border-bottom: 3px solid #553044;
 }
 /* edit */
 .editBtn {

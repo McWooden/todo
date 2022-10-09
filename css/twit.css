@@ -2,14 +2,15 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: #2b2f42;
+    background-color: #272a3b;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     margin: 0 auto;
 }
 #formTwit .img-container {
-    background-color: #32384d;
-    padding: .35em;
+    background-color: #272a3b;
+    padding-top: .35em;
+    padding-left: .35em;
 }
 #formTwit .form-container {
     width: 100%;
@@ -25,7 +26,7 @@
     gap: .25em;
     padding: .25em;
     color: #eee;
-    background-color: #31364c;
+    background-color: #272a3b;
     cursor: pointer;
 }
 #formTwit .form-header .twitForm-title {
@@ -37,7 +38,7 @@
     text-decoration: underline;
 }
 #formTwit textarea, #formTwit input {
-    background-color: #34384d;
+    background-color: #1f222f;
     border: none;
     border-radius: 3px;
     color: #eee;
@@ -69,16 +70,20 @@
     height: 3em;
     border: 1px solid #1d9bf0;
 }
+#formTwit #twitSubmit {
+    height: 100%;
+}
 #formTwit button {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1d9bf0;
     border: none;
-    padding: .5em 1.3em;
-    margin: auto .25em;
+    padding: .7em 1.7em;
+    margin: auto 0;
     border-radius: 3px;
     width: 5em;
+    height: 100%;
     align-self: flex-end;
     cursor: pointer;
 }
@@ -99,11 +104,9 @@
     color: #eee;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-.twit-img {
-    background-color: #343a50;
-}
 .user-img {
-    padding: .25em;
+    padding-top: .25em;
+    padding-left: .25em;
     width: 2em;
     border-radius: 50px;
     box-shadow: none !important;
@@ -113,22 +116,21 @@
 }
 
 .twit-header {
-    background-color: #303449;
     display: flex;
     align-items: center;
     font-weight: 400;
     gap: .25em;
     padding: .25em;
+    padding-left: .5em;
     padding-bottom: 0;
 }
 
 .twit-title, .twit-time {
     color: #71767b;
-    font-size: medium;
 }
 .twit-time {
-    align-self: flex-end;
     font-size: small;
+    margin-top: -3px;
 }
 .twit-isi {
     font-size: medium;
@@ -146,6 +148,17 @@
     color: rgb(29 155 240);
     font-size: small;
 }
+.twit-menu {
+    display: flex;
+    align-items: center;
+    padding: .25em;
+    gap: 1em;
+}
+.twit-menu img {
+    width: 1em;
+    opacity: .5;
+    cursor: pointer;
+}
 @media screen and (min-width: 1024px) {
     #formTwit {
         max-width: 1024px;
@@ -156,7 +169,7 @@
         font-size: small;
     }
     .twit-isi {
-        font-size: smaller;
+        font-size: small;
     }
     .twit-time, .twit-tag {
         font-size:x-small;

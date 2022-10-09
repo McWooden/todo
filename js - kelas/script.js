@@ -9,7 +9,7 @@ let link = {
     Log: '/log'
 }
 
-let modeState = 'Beranda'
+let modeState = 'Twit'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
 const {nickname, rank: title, pass: token} = akun
@@ -34,6 +34,7 @@ document.getElementById('reload').addEventListener('click', () => {
 document.addEventListener('renderTugas', () => {
     if (modeState == 'Twit') {
         document.getElementById('trivia').style.display = 'none'
+        document.getElementById('mode').style.marginTop = 0
         fetch(`${url}${link.Twit}`)
         .then(res => res.json())
         .then(twits => {
@@ -50,8 +51,10 @@ document.addEventListener('renderTugas', () => {
         document.getElementById('trivia').style.display = 'none'
         document.getElementById('belum').innerHTML = 'Comming Soon...'
         document.getElementById('sudah').innerHTML = ''
+        document.getElementById('mode').style.marginTop = 0
     } else {
         document.getElementById('trivia').style.display = 'flex'
+        document.getElementById('mode').style.marginTop = '1.5em'
         fetch(url)
         .then(res => res.json())
         .then(tasks => {
@@ -258,11 +261,6 @@ function getProfile() {
     document.getElementById('nama').textContent = akun.nickname
     document.getElementById('rank').textContent = akun.rank
     document.getElementById('pp').src = akun.picture
-    if (akun.nickname == '') {
-        document.getElementById('login').style.display = 'inherit'
-    } else {
-        document.getElementById('login').style.display = 'none'
-    }
 }
 
 function roles() {

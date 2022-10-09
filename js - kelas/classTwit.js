@@ -54,11 +54,25 @@ class Twit {
 
         const time = document.createElement('p')
         time.classList.add('twit-title')
-        time.textContent = this.time
+        time.textContent = this.date
 
         twitHeader.append(nickname, title, time)
 
         return twitHeader
+    }
+
+    twitMenu() {
+        const menu = document.createElement('div')
+        menu.classList.add('twit-menu')
+
+        const like = document.createElement('img')
+        like.src = '../img/heart-regular.svg'
+        const comment = document.createElement('img')
+        comment.src = '../img/comment-regular.svg'
+
+        menu.append(like, comment)
+
+        return menu
     }
 
     twitBody() {
@@ -77,7 +91,7 @@ class Twit {
         date.classList.add('twit-time')
         date.innerHTML = this.date
 
-        twitBody.append(isi, tag, date)
+        twitBody.append(isi, tag, this.twitMenu())
 
         return twitBody
     }
