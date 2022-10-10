@@ -14,7 +14,6 @@ class formTwit {
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
-            const getLocaleTime = new Date().toLocaleTimeString().split(':')
             if (document.getElementById('twit-deskripsi').value == '') {
                 document.querySelector('.twitForm-title').textContent = 'Apa yang terjadi!?'
                 document.querySelector('.twitForm-title').style.color = '#774360'
@@ -30,7 +29,6 @@ class formTwit {
                 isi: document.getElementById('twit-deskripsi').value,
                 tag: document.getElementById('twit-tag').value,
                 token: this.token,
-                time: `${getLocaleTime[0]}.${getLocaleTime[1]}`
             }
             const options = {
                 method: 'POST',
