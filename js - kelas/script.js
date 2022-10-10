@@ -34,7 +34,6 @@ document.getElementById('reload').addEventListener('click', () => {
 document.addEventListener('renderTugas', () => {
     if (modeState == 'Twit') {
         document.getElementById('trivia').style.display = 'none'
-        document.getElementById('mode').style.marginTop = 0
         fetch(`${url}${link.Twit}`)
         .then(res => res.json())
         .then(twits => {
@@ -51,10 +50,8 @@ document.addEventListener('renderTugas', () => {
         document.getElementById('trivia').style.display = 'none'
         document.getElementById('belum').innerHTML = 'Comming Soon...'
         document.getElementById('sudah').innerHTML = ''
-        document.getElementById('mode').style.marginTop = 0
     } else {
         document.getElementById('trivia').style.display = 'flex'
-        document.getElementById('mode').style.marginTop = '1.5em'
         fetch(url)
         .then(res => res.json())
         .then(tasks => {

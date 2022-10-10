@@ -3,12 +3,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #645CAA;
+    background-color: #1b1e2b;
     flex-direction: column;
 }
 .container {
     width: 100%;
     max-width: calc(100vw-.5em);
+    box-shadow: none;
 }
 #profile-content {
     display: flex;

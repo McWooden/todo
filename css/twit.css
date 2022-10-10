@@ -154,6 +154,9 @@
     padding: .25em;
     gap: 1em;
 }
+.twit a {
+    color: goldenrod;
+}
 .twit-menu img {
     width: 1em;
     opacity: .5;

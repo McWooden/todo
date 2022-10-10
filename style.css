@@ -79,11 +79,16 @@ section {
     border-radius: 10px;
 }
 .container-mode {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 1em;
-    margin-top: 1.5em;
+    padding: .5em;
+    background-color: #2b2f42;
+    color: #eaeaea;
+    border-radius: 0;
+    margin: 0;
+    width: 100vw;
 }
 .container-mode div {
     width: 45%;

@@ -45,6 +45,7 @@
     width: 100%;
     overflow: auto;
     max-height: 80vh;
+    padding: 1px;
 }
 .card-text a {
     color: goldenrod;
