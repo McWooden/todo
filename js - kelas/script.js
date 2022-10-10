@@ -352,5 +352,5 @@ function modeNav() {
 
 function loaderCard() {
     document.getElementById('sudah').innerHTML = ''
-    document.getElementById('belum').innerHTML = '<div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-light"></div>'
+    document.getElementById('belum').innerHTML = '<div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div>'
 }
