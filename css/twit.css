@@ -157,10 +157,14 @@
 .twit a {
     color: goldenrod;
 }
+.twit-count {
+    color: #62657a;
+}
 .twit-menu img {
     width: 1em;
     opacity: .5;
     cursor: pointer;
+    margin-left: 1em;
 }
 @media screen and (min-width: 1024px) {
     #formTwit {

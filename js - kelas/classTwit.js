@@ -1,5 +1,6 @@
 class Twit {
     constructor(data) {
+        this.id = data._id
         this.picture = data.picture
         this.nickname = data.nickname
         this.title = data.title
@@ -9,6 +10,8 @@ class Twit {
         this.time = data.time
         this.color = data.color
         this.token = data.token
+        this.likeCount = data.like
+        this.commentCount = data.comment
         this.twit = this.createTwitElement()
     }
 
@@ -67,12 +70,23 @@ class Twit {
 
         const like = document.createElement('img')
         like.setAttribute('src', 'img/heart-regular.svg')
+        like.addEventListener('click', () => {
+            this.addLike()
+        })
+
+        const likeCount = document.createElement('span')
+        likeCount.classList.add('twit-count')
+        likeCount.textContent = this.likeCount.length
 
         const comment = document.createElement('img')
         comment.setAttribute('src', 'img/comment-regular.svg')
 
+        const commentCount = document.createElement('span')
+        commentCount.classList.add('twit-count')
+        commentCount.textContent = 0
 
-        menu.append(like, comment)
+
+        menu.append(like, likeCount, comment, commentCount)
 
         return menu
     }
@@ -96,6 +110,16 @@ class Twit {
         twitBody.append(isi, tag, this.twitMenu())
 
         return twitBody
+    }
+
+    async addLike() {
+        await fetch(`${urlLocal}/twit/addLike`, {
+            method: "PUT",
+            body: JSON.stringify({id: this.id, nickname, token}),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(popup(alertMsg.save))
     }
 
     showTwit() {
