@@ -113,7 +113,7 @@ class Twit {
     }
 
     async addLike() {
-        await fetch(`${urlLocal}/twit/addLike`, {
+        await fetch(`${url}/twit/addLike`, {
             method: "PUT",
             body: JSON.stringify({id: this.id, nickname, token}),
             headers: {
