@@ -21,7 +21,6 @@ window.addEventListener('load', () => {
     minimize()
     greet()
     getDate()
-    getProfile()
     roles()
     mode()
     modeNav()
@@ -33,7 +32,6 @@ document.getElementById('reload').addEventListener('click', () => {
 // render Element
 document.addEventListener('renderTugas', () => {
     if (modeState == 'Twit') {
-        document.getElementById('trivia').style.display = 'none'
         fetch(`${url}${link.Twit}`)
         .then(res => res.json())
         .then(twits => {
@@ -47,11 +45,9 @@ document.addEventListener('renderTugas', () => {
             showError(err)
         })
     } else if (modeState == 'Log') {
-        document.getElementById('trivia').style.display = 'none'
         document.getElementById('belum').innerHTML = 'Comming Soon...'
         document.getElementById('sudah').innerHTML = ''
     } else {
-        document.getElementById('trivia').style.display = 'flex'
         fetch(url)
         .then(res => res.json())
         .then(tasks => {
@@ -253,13 +249,6 @@ function popup(imgLink) {
     }, 2100)
 }
 
-function getProfile() {
-    let akun = JSON.parse(localStorage.getItem('akun'))
-    document.getElementById('nama').textContent = akun.nickname
-    document.getElementById('rank').textContent = akun.rank
-    document.getElementById('pp').src = akun.picture
-}
-
 function roles() {
     document.getElementById('buttonToSubmit').style.opacity = '.1'
     form.style.opacity = '.5'
@@ -285,15 +274,20 @@ function showError(msg) {
 }
 
 function mode() {
-    const textMode = document.createElement('div')
-    textMode.textContent = modeState
-    textMode.setAttribute('id', 'modeInfo')
+    const profile = document.createElement('img')
+    profile.setAttribute('src', akun.picture)
+    profile.setAttribute('id', 'pp')
+    profile.addEventListener('click', () => {
+        window.location = 'https://mcwooden.github.io/todo/profile'
+    })
+    const nickname = document.createElement('span')
+    nickname.setAttribute('id', 'nickname')
+    nickname.textContent = akun.nickname
 
     const beranda = document.createElement('img')
     beranda.setAttribute('src', 'img/house-solid.svg')
     beranda.setAttribute('title', 'Beranda')
     beranda.addEventListener('click', (e) => {
-        textMode.textContent = e.target.title
         modeState = e.target.title
         modeNav()
         loaderCard()
@@ -304,8 +298,6 @@ function mode() {
     twit.setAttribute('src', 'img/feather-solid.svg')
     twit.setAttribute('title', 'Twit')
     twit.addEventListener('click', (e) => {
-        textMode.textContent = e.target.title
-        modeState = e.target.title
         modeNav()
         loaderCard()
         document.dispatchEvent(new Event('renderTugas'))
@@ -315,7 +307,6 @@ function mode() {
     log.setAttribute('src', 'img/terminal-solid.svg')
     log.setAttribute('title', 'Log')
     log.addEventListener('click', (e) => {
-        textMode.textContent = e.target.title
         modeState = e.target.title
         modeNav()
         loaderCard()
@@ -323,7 +314,11 @@ function mode() {
     })
 
     const modeInfo = document.createElement('div')
-    modeInfo.append(textMode)
+    modeInfo.classList.add('profile')
+    modeInfo.append(profile, nickname)
+    modeInfo.addEventListener('click', () => {
+        window.location = 'https://mcwooden.github.io/todo/profile'
+    })
 
     const modeBtn = document.createElement('div')
     modeBtn.classList.add('mode-btn')
