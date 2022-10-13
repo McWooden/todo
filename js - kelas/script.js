@@ -298,6 +298,7 @@ function mode() {
     twit.setAttribute('src', 'img/feather-solid.svg')
     twit.setAttribute('title', 'Twit')
     twit.addEventListener('click', (e) => {
+        modeState = e.target.title
         modeNav()
         loaderCard()
         document.dispatchEvent(new Event('renderTugas'))
