@@ -10,7 +10,7 @@ class formTwit {
     createFormTwit() {
         const form = document.createElement('form')
         form.setAttribute('id', 'formTwit')
-        form.append(this.formPicture(), this.formContainer())
+        form.append(this.formContainer())
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
@@ -43,43 +43,43 @@ class formTwit {
         return form
     }
 
-    formPicture() {
-        const imgContainer = document.createElement('div')
-        imgContainer.classList.add('img-container')
+    // formPicture() {
+    //     const imgContainer = document.createElement('div')
+    //     imgContainer.classList.add('img-container')
 
-        const picture = document.createElement('img')
-        picture.classList.add('pp-form')
-        picture.src = this.picture
+    //     const picture = document.createElement('img')
+    //     picture.classList.add('pp-form')
+    //     picture.src = this.picture
 
-        imgContainer.append(picture)
+    //     imgContainer.append(picture)
 
-        return imgContainer
-    }
+    //     return imgContainer
+    // }
 
     formContainer() {
         const container = document.createElement('div')
         container.classList.add('form-container')
-        container.append(this.formHeader(), this.formDescription(), this.formTag())
+        container.append(this.formDescription(), this.formTag())
 
         return container
     }
-    formHeader() {
-        const formHeader = document.createElement('div')
-        formHeader.classList.add('form-header')
+    // formHeader() {
+    //     const formHeader = document.createElement('div')
+    //     formHeader.classList.add('form-header')
 
-        const nickname = document.createElement('p')
-        nickname.classList.add('twitForm-nickname')
-        nickname.textContent = `${this.nickname}`
+    //     const nickname = document.createElement('p')
+    //     nickname.classList.add('twitForm-nickname')
+    //     nickname.textContent = `${this.nickname}`
 
-        const title = document.createElement('p')
-        title.classList.add('twitForm-title')
-        title.textContent = `${this.title}`
+    //     const title = document.createElement('p')
+    //     title.classList.add('twitForm-title')
+    //     title.textContent = `${this.title}`
         
-        formHeader.append(nickname, title)
-        formHeader.addEventListener('click', () => window.location = 'https://mcwooden.github.io/todo/profile')
+    //     formHeader.append(nickname, title)
+    //     formHeader.addEventListener('click', () => window.location = 'https://mcwooden.github.io/todo/profile')
 
-        return formHeader
-    }
+    //     return formHeader
+    // }
 
     formDescription() {
         const deskripsiContainer = document.createElement('div')
