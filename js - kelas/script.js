@@ -132,7 +132,6 @@ let formState = {
     isMinimize: true,
     isEdit: false,
 }
-document.getElementById('deskripsi').style.width = (document.getElementById('tugas').offsetWidth - 1) + 'px'
 
 function minimize() {
     if (formState.isMinimize) {

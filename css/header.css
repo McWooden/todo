@@ -76,21 +76,17 @@ form {
 form input, form textarea {
     box-shadow: #7253ee 0px 15px 25px -25px;
     padding: .5em;
-    font-size: 1em;
     margin: .25em;
     font-size: 1em;
     border-radius: 5px;
     border: none;
-    border-bottom: 3px solid #c4900f;
+    border-bottom: 2px solid #c4900f;
     background-color: whitesmoke;
     outline: none;
 }
 #color {
     padding: 0;
     flex-basis: 20%;
-}
-input[type="text"], input[type="date"] {
-    font-size: 1.2em;
 }
 .tanggal {
     display: flex;
