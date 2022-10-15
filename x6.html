@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/alert.css">
     <link rel="stylesheet" href="css/twit.css">
+    <link rel="stylesheet" href="css/shadow.css">
     <link rel="shortcut icon" href="img/x6.png" type="image/x-icon">
 </head>
 <body>
@@ -49,7 +50,6 @@
     <!-- body -->
     <section id="todoapp">
         <div id="TwitForm"></div>
-
         <div class="container" id="proggress">
             <div class="proggressBar">
                 <div id="valueBar"></div>
@@ -82,11 +82,27 @@
             </div>
         </div>
     </nav>
+    <div id="shadow">
+        <div id="more-option">
+            <p style="padding: .5em;">fitur sedang dikerjakan</p>
+            <div class="option">
+                <img src="img/pen-to-square-solid.svg" class="option-icon">
+                <p>Edit</p>
+                <div class="option-btn" data-option="edit"></div>
+            </div>
+            <div class="option">
+                <img src="img/trash-solid.svg" class="option-icon">
+                <p class="danger-text">Buang</p>
+                <div class="option-btn" data-option="buang"></div>
+            </div>
+        </div>
+    </div>
     <div id="alert"></div>
     <script src="js/profile.js"></script>
     <script src="js - kelas/script.js"></script>
     <script src="js - kelas/classCard.js"></script>
     <script src="js - kelas/classTwit.js"></script>
     <script src="js - kelas/twit.js"></script>
+    <script src="js - kelas/shadow.js"></script>
 </body>
 </html>

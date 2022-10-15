@@ -84,6 +84,9 @@ form input, form textarea {
     background-color: whitesmoke;
     outline: none;
 }
+form textarea {
+    font-size: .9em;
+}
 #color {
     padding: 0;
     flex-basis: 20%;

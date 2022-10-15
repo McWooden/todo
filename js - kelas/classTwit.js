@@ -18,7 +18,7 @@ class Twit {
     createTwitElement() {
         const twit = document.createElement('div')
         twit.classList.add('twit')
-        twit.append(this.formPicture(), this.formContainer())
+        twit.append(this.formPicture(), this.formContainer(), this.twitOption())
         return twit
     }
 
@@ -95,7 +95,7 @@ class Twit {
         const twitBody = document.createElement('div')
         twitBody.classList.add('twit-body')
 
-        const isi = document.createElement('p')
+        const isi = document.createElement('span')
         isi.classList.add('twit-isi')
         isi.innerHTML = this.isi.replace(regex, x => `<a href="${x}" target="_blank">${x}</a>`)
 
@@ -110,6 +110,13 @@ class Twit {
         twitBody.append(isi, tag, this.twitMenu())
 
         return twitBody
+    }
+    twitOption() {
+        const option = document.createElement('img')
+        option.classList.add('twit-option')
+        option.setAttribute('src', 'img/ellipsis-solid.svg')
+        option.addEventListener('click', () => showShadow())
+        return option
     }
 
     async addLike() {

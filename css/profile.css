@@ -73,24 +73,6 @@ body {
     border-bottom: 3px solid #573146;
     cursor: pointer;
 }
-.owner {
-    border-color: #F57328;
-}
-.owner p:first-child {
-    color: #F57328;
-}
-.admin {
-    border-color: #42855B;
-}
-.admin p:first-child {
-    color: #42855B;
-}
-.x-6 {
-    border-color: #A5F1E9;
-}
-.x-6 p:first-child {
-    color: #A5F1E9;
-}
 .login-container {
     background-color: #31364c;
     border-bottom: 4px solid #1b1e2b;

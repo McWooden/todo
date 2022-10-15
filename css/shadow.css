@@ -1,0 +1,41 @@
+#shadow {
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #1f222f5d;
+    display: none;
+}
+#more-option {
+    background-color: #31364c;
+    color: #eeeeee;
+    height: fit-content;
+    width: 100%;
+}
+.option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: .5em;
+    gap: .5em;
+    font-size: 1.1em;
+}
+.option-icon {
+    width: 1.2em;
+}
+.option-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0%;
+    bottom: 0;
+}
+@media screen and (min-width: 1024px) {
+    #more-option {
+        max-width: 1024px;
+    }
+}
