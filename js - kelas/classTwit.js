@@ -115,7 +115,9 @@ class Twit {
         const option = document.createElement('img')
         option.classList.add('twit-option')
         option.setAttribute('src', 'img/ellipsis-solid.svg')
-        option.addEventListener('click', () => showShadow())
+        option.addEventListener('click', () => {
+            new twitShadow().showOption()
+        })
         return option
     }
 
