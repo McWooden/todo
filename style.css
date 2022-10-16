@@ -60,7 +60,6 @@ section {
     padding: .5em;
 }
 .container {
-    max-width: calc(100vw - .25em);
     margin: .25em auto;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 10px;
@@ -106,28 +105,6 @@ section {
     to {
         background-position-x: -200%;
     }
-}
-
-/* copy button */
-#copyBtn {
-    display: flex;
-    padding: .2em;
-    border-radius: 5px;
-    margin-left: .1em;
-    cursor: pointer;
-    align-self: flex-end;
-    position: relative;
-}
-#copyBtn img {
-    width: 1.5em;
-}
-#CopyState {
-    position: absolute;
-    left: -3px;
-    top: -10px;
-    font-size: .5em;
-    color: #31364c;
-    border-radius: 5px;
 }
 
 footer {

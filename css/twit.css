@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: #272a3b;
+    background-color: #1f222f;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     margin: 0 auto;
@@ -87,7 +87,6 @@
     font-weight: 300;
     background-color: #1f222f;
     color: #eee;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .user-img {
     padding-top: .25em;

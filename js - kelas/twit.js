@@ -15,12 +15,7 @@ class formTwit {
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
             if (document.getElementById('twit-deskripsi').value == '') {
-                document.querySelector('.twitForm-title').textContent = 'Apa yang terjadi!?'
-                document.querySelector('.twitForm-title').style.color = '#774360'
                 return
-            } else {
-                document.querySelector('.twitForm-title').textContent = this.title
-                document.querySelector('.twitForm-title').style.color = '#71767b'
             }
             const data = {
                 picture: this.picture,
@@ -43,19 +38,6 @@ class formTwit {
         return form
     }
 
-    // formPicture() {
-    //     const imgContainer = document.createElement('div')
-    //     imgContainer.classList.add('img-container')
-
-    //     const picture = document.createElement('img')
-    //     picture.classList.add('pp-form')
-    //     picture.src = this.picture
-
-    //     imgContainer.append(picture)
-
-    //     return imgContainer
-    // }
-
     formContainer() {
         const container = document.createElement('div')
         container.classList.add('form-container')
@@ -63,23 +45,6 @@ class formTwit {
 
         return container
     }
-    // formHeader() {
-    //     const formHeader = document.createElement('div')
-    //     formHeader.classList.add('form-header')
-
-    //     const nickname = document.createElement('p')
-    //     nickname.classList.add('twitForm-nickname')
-    //     nickname.textContent = `${this.nickname}`
-
-    //     const title = document.createElement('p')
-    //     title.classList.add('twitForm-title')
-    //     title.textContent = `${this.title}`
-        
-    //     formHeader.append(nickname, title)
-    //     formHeader.addEventListener('click', () => window.location = 'https://mcwooden.github.io/todo/profile')
-
-    //     return formHeader
-    // }
 
     formDescription() {
         const deskripsiContainer = document.createElement('div')

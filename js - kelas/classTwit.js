@@ -18,7 +18,9 @@ class Twit {
     createTwitElement() {
         const twit = document.createElement('div')
         twit.classList.add('twit')
-        twit.append(this.formPicture(), this.formContainer(), this.twitOption())
+        twit.setAttribute('id', this.id)
+        twit.append(this.formPicture(), this.formContainer())
+        this.nickname == nickname && twit.append(this.twitOption())
         return twit
     }
 
@@ -116,7 +118,7 @@ class Twit {
         option.classList.add('twit-option')
         option.setAttribute('src', 'img/ellipsis-solid.svg')
         option.addEventListener('click', () => {
-            new twitShadow().showOption()
+            new twitShadow(this.id, this.nickname).showOption()
         })
         return option
     }
