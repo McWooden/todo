@@ -72,8 +72,15 @@ class Twit {
 
         const like = document.createElement('img')
         like.setAttribute('src', 'img/heart-regular.svg')
-        like.addEventListener('click', () => {
-            this.addLike()
+        const unlike = document.createElement('img')
+        unlike.setAttribute('src', 'img/heart-solid.svg')
+        like.addEventListener('click', async () => {
+            await this.addLike()
+            document.dispatchEvent(new Event('renderTugas'))
+        })
+        unlike.addEventListener('click', async () => {
+            await this.deleteLike()
+            document.dispatchEvent(new Event('renderTugas'))
         })
 
         const likeCount = document.createElement('span')
@@ -87,8 +94,13 @@ class Twit {
         commentCount.classList.add('twit-count')
         commentCount.textContent = 0
 
-
-        menu.append(like, likeCount, comment, commentCount)
+        if (this.likeCount.indexOf(nickname) == -1) {
+            menu.append(like)
+        } else {
+            menu.append(unlike)
+            likeCount.classList.add('text-pink')
+        }
+        menu.append(likeCount, comment, commentCount)
 
         return menu
     }
@@ -130,7 +142,16 @@ class Twit {
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then(popup(alertMsg.save))
+        }).then(popup(alertMsg.like))
+    }
+    async deleteLike() {
+        await fetch(`${url}/twit/deleteLike`, {
+            method: "PUT",
+            body: JSON.stringify({id: this.id, nickname, token}),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(popup(alertMsg.unlike))
     }
 
     showTwit() {

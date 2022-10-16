@@ -138,7 +138,7 @@
 .twit-menu {
     display: flex;
     padding: .25em;
-    gap: .5em;
+    gap: .35em;
 }
 .twit a {
     color: goldenrod;
@@ -147,6 +147,9 @@
     color: #62657a;
     font-size: small;
     margin-right: .5em;
+}
+.text-pink {
+    color: #a51357;
 }
 .twit-menu img {
     width: 1em;
