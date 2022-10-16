@@ -35,7 +35,7 @@ class twitShadow {
         btn.classList.add('option-btn')
         btn.dataset.option = 'put'
         btn.addEventListener('click', async () => {
-            await fetch(`${urlLocal}/twit/${this.id}`, {
+            await fetch(`${url}/twit/${this.id}`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     nickname: this.nickname
