@@ -56,10 +56,7 @@
     height: 3em;
     border: 1px solid #1d9bf0;
 }
-#formTwit #twitSubmit {
-    height: 100%;
-}
-#formTwit button {
+#formTwit button, #twitSave {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,8 +69,12 @@
     align-self: flex-end;
     cursor: pointer;
 }
-#formTwit button img {
+#formTwit button img, #twitSave img {
     width: 1.5em;
+    height: 20px;
+}
+#formTwit  #twitSave {
+    display: none;
 }
 
 /* twit card */
