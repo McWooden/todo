@@ -30,6 +30,7 @@ class Twit {
 
         const picture = document.createElement('img')
         picture.classList.add('user-img')
+        picture.setAttribute('loading', 'lazy')
         picture.src = this.picture
 
         imgContainer.append(picture)
