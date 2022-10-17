@@ -27,7 +27,7 @@
     background-color: rgb(0 0 0);
     border: none;
     border-radius: 3px;
-    color: #eee;
+    color: #d6d9db;
     width: 99% !important;
     box-shadow: none;
     align-self: center;
@@ -85,7 +85,7 @@
     font-size: large;
     font-weight: 300;
     background-color: rgb(0 0 0);
-    color: #eee;
+    color: #d6d9db;
 }
 .user-img {
     padding-top: .25em;
