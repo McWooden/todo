@@ -2,14 +2,13 @@ const url = 'https://x6todo.herokuapp.com/x6'
 const urlLocal = 'http://localhost:3000/x6'
 const regex = /(https?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/g
 
-
 let link = {
     Beranda: '/',
     Twit: '/twit',
     Log: '/log'
 }
 
-let modeState = 'Beranda'
+let modeState = 'Twit'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
 const {nickname, rank: title, pass: token} = akun
@@ -24,6 +23,7 @@ window.addEventListener('load', () => {
     roles()
     mode()
     modeNav()
+    changeTheme()
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -329,6 +329,7 @@ function mode() {
 
     const modeBtn = document.createElement('div')
     modeBtn.classList.add('mode-btn')
+    modeBtn.addEventListener('click', () => changeTheme())
     modeBtn.append(beranda, twit, log)
 
     document.getElementById('mode').append(modeInfo, modeBtn)
@@ -355,4 +356,17 @@ function modeNav() {
 function loaderCard() {
     document.getElementById('sudah').innerHTML = ''
     document.getElementById('belum').innerHTML = '<div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div>'
+}
+
+function changeTheme() {
+    const body = document.querySelector('body')
+    const footer = document.querySelector('footer')
+    if (modeState == 'Twit') {
+        body.style.backgroundColor = 'rgb(0 0 0)'
+        footer.style.opacity = '0'
+    } else {
+        body.style.backgroundColor = '#f0f1f3'
+        footer.style.opacity = '1'
+    }
+    console.log('dijalankan')
 }

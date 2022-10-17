@@ -163,6 +163,10 @@ footer a {
     right: 1em;
     font-size: small;
     color: #2b2f42;
+    text-decoration: none;
+    background-color: #267abf40;
+    padding: .1em .2em;
+    border-radius: 5px;
 }
 .proggressBar {
     width: 100%;
