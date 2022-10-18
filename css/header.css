@@ -73,7 +73,7 @@ form {
     transition: .3s;
     padding: 0;
 }
-form input, form textarea {
+form input, form textarea, #tipeTugas {
     box-shadow: #7253ee 0px 15px 25px -25px;
     padding: .5em;
     margin: .25em;

@@ -71,22 +71,47 @@ function modeNav() {
     }
     document.getElementById('todoapp').style.marginTop = document.getElementById('header').offsetHeight + 'px'
 }
+
+function changeTheme() {
+    const body = document.querySelector('body')
+    const footer = document.querySelector('footer')
+    if (modeState == 'Twit') {
+        body.style.backgroundColor = 'rgb(0 0 0)'
+        footer.style.opacity = '0'
+    } else {
+        body.style.backgroundColor = '#f0f1f3'
+        footer.style.opacity = '1'
+    }
+}
+
 const filterBtn = document.querySelectorAll('.filter-btn')
 filterBtn.forEach(element => {
     element.addEventListener('click', (e) => {
         filterTugas(e.target.dataset.filter)
+        e.target.classList.toggle('disable')
     })
 })
-let filterTugasSatate = {
+let filterTugasState = {
     tugas: true,
     ulangan: true,
     kelompok: true
 }
 function resetFilterTugas() {
-    filterTugasSatate.tugas = true
-    filterTugasSatate.ulangan = true
-    filterTugasSatate.kelompok = true
+    filterTugasState.tugas = true
+    filterTugasState.ulangan = true
+    filterTugasState.kelompok = true
 }
 function filterTugas(filter) {
-    return filterTugasSatate[filter] = !filterTugasSatate[filter]
+    filterTugasState[filter] = !filterTugasState[filter]
+    filterMode()
+}
+function filterMode() {
+    const card = document.querySelectorAll('.card')
+    card.forEach(x => {
+        if (filterTugasState[x.dataset.filter]) {
+            x.style.display = 'flex'
+        } else {
+            x.style.display = 'none'
+        }
+    })
 }

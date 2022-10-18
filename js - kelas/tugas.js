@@ -11,7 +11,7 @@ form.addEventListener('submit', async (e) => {
         deskripsi: document.getElementById('deskripsi').value,
         color: document.getElementById('color').value,
         mulai: document.getElementById('mulai').value,
-        berakhir: document.getElementById('tanggal').value,
+        tipe: document.getElementById('tipeTugas').value,
         by: nickname,
         token,
         selesai: false
@@ -41,7 +41,7 @@ async function saveEdit() {
             deskripsi: document.getElementById('deskripsi').value,
             color: document.getElementById('color').value,
             mulai: document.getElementById('mulai').value,
-            berakhir: document.getElementById('tanggal').value,
+            tipe: document.getElementById('tipeTugas').value,
             token,
             nickname
         }),

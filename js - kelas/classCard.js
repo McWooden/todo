@@ -5,7 +5,7 @@ class Card {
         this.deskripsi = data.deskripsi
         this.color = data.color
         this.mulai = data.mulai
-        this.berakhir = data.berakhir
+        this.tipe = data.tipe
         this.by = data.by
         this.selesai = data.selesai
         this.card = this.createCardELement()
@@ -19,7 +19,8 @@ class Card {
         card.style.borderLeftColor = this.color
         card.dataset.by = this.by
         card.dataset.color = this.color
-        card.dataset.date = `${this.mulai} | ${this.berakhir}`
+        card.dataset.date = `${this.mulai} | ${this.tipe}`
+        card.dataset.filter = this.tipe
         return card
     }
 
@@ -140,7 +141,7 @@ class Card {
                 document.getElementById('tugas').value = x.tugas
                 document.getElementById('deskripsi').value = x.deskripsi
                 document.getElementById('mulai').value = x.mulai
-                document.getElementById('tanggal').value = x.berakhir
+                document.getElementById('tipeTugas').value = x.tipe
                 document.getElementById('color').value = x.color
                 if (document.getElementById('color').value == '#000000') {
                     document.getElementById('color').value = '#31364c'

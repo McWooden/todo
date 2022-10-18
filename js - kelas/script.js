@@ -39,12 +39,11 @@ document.addEventListener('renderTugas', () => {
             let twit = twits.reverse()
             twit.map(item => new Twit(item).showTwit())
             popup(alertMsg.reload)
-            updateProggress(twits)
         }).catch((err) => {
             showError(err)
         })
     } else if (modeState == 'Log') {
-        document.getElementById('belum').innerHTML = 'Comming Soon...'
+        document.getElementById('belum').innerHTML = 'Coming Soon...'
         document.getElementById('sudah').innerHTML = ''
     } else {
         fetch(url)
@@ -110,7 +109,7 @@ function kembalikanKeDefault() {
     document.getElementById('tugas').value = ''
     document.getElementById('deskripsi').value = ''
     document.getElementById('mulai').value = ''
-    document.getElementById('tanggal').value = ''
+    document.getElementById('tipeTugas').value = 'tugas'
     document.getElementById('color').value = '#31364c'
     greet()
     getDate()
@@ -145,16 +144,4 @@ function showError(msg) {
 function loaderCard() {
     document.getElementById('sudah').innerHTML = ''
     document.getElementById('belum').innerHTML = '<div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div>'
-}
-
-function changeTheme() {
-    const body = document.querySelector('body')
-    const footer = document.querySelector('footer')
-    if (modeState == 'Twit') {
-        body.style.backgroundColor = 'rgb(0 0 0)'
-        footer.style.opacity = '0'
-    } else {
-        body.style.backgroundColor = '#f0f1f3'
-        footer.style.opacity = '1'
-    }
 }

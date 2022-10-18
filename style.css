@@ -197,7 +197,12 @@ footer a {
     padding: .1em .2em;
     border-radius: 5px;
     color: #2b2f42;
-    opacity: .5;
+    cursor: pointer;
+    transition: .1s;
+}
+.disable {
+    text-decoration: line-through;
+    background-color: #8897a11f !important;
 }
 .filter-btn:first-child {
     background-color: #bf822640;
