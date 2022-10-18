@@ -7,7 +7,6 @@ let link = {
     Twit: '/twit',
     Log: '/log'
 }
-
 let modeState = 'Beranda'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
@@ -63,57 +62,6 @@ document.addEventListener('renderTugas', () => {
     }
 })
 
-//  form on submit
-const form = document.getElementById('form')
-form.addEventListener('submit', async (e) => {    
-    e.preventDefault()
-    const data = {
-        tugas: document.getElementById('tugas').value,
-        deskripsi: document.getElementById('deskripsi').value,
-        color: document.getElementById('color').value,
-        mulai: document.getElementById('mulai').value,
-        berakhir: document.getElementById('tanggal').value,
-        by: nickname,
-        token,
-        selesai: false
-    }
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {'Content-Type': 'application/json'}
-    }
-    await fetch(url, options).then(form.reset())
-
-    document.dispatchEvent(new Event('renderTugas'))
-    rotateSubmitButton()
-    popup(alertMsg.add)
-})
-document.getElementById('btnUpdate').addEventListener('click', (e) => {
-    e.preventDefault()
-    saveEdit()
-    kembalikanKeDefault()
-})
-async function saveEdit() {
-    await fetch(`${url}/`, {
-        method: "PUT",
-        body: JSON.stringify({
-            id: document.getElementById('month').textContent,
-            tugas: document.getElementById('tugas').value,
-            deskripsi: document.getElementById('deskripsi').value,
-            color: document.getElementById('color').value,
-            mulai: document.getElementById('mulai').value,
-            berakhir: document.getElementById('tanggal').value,
-            token,
-            nickname
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-    document.dispatchEvent(new Event('renderTugas'))
-    popup(alertMsg.save)
-}
-
 // animate btn submit 
 function rotateSubmitButton() {
     const btnSubmit = document.getElementById('submitImg')
@@ -126,33 +74,6 @@ function rotateSubmitButton() {
 // styling
 document.getElementById('header').style.top = 'auto'
 document.getElementById('footer').style.marginBottom = (document.getElementById('nav').offsetHeight + 15) + 'px'
-
-// form state
-let formState = {
-    isMinimize: true,
-    isEdit: false,
-}
-
-function minimize() {
-    if (formState.isMinimize) {
-        document.getElementById('form').style.height = '0'
-        formState.isMinimize = false
-        document.getElementById('minimize').style.transform = 'rotate(0deg)'
-        if (document.getElementById('tugas').value == '') {
-            document.getElementById('buttonToSubmit').style.visibility = 'hidden'
-        }
-    } else {
-        document.getElementById('form').style.height = '235px'
-        formState.isMinimize = true
-        document.getElementById('minimize').style.transform = 'rotate(180deg)'
-        if (!formState.isEdit) {
-            document.getElementById('buttonToSubmit').style.visibility = 'visible'
-        } else if (!formState.isEdit) {
-            document.getElementById('buttonToSubmit').style.visibility = 'hidden'
-        }
-    }
-}
-document.getElementById('minimize').addEventListener('click', minimize) 
 
 // update proggres
 function updateProggress(tasks) {
@@ -197,64 +118,6 @@ function kembalikanKeDefault() {
     document.getElementById('btnUpdate').style.visibility = 'hidden'
 }
 
-// pop up :)
-alertMsg = {
-    reload: {
-        link: 'img/rotate-right-solid.svg',
-        bgColor: '#0D7377'
-    },
-    add: {
-        link: 'img/plus-solid.svg',
-        bgColor: '#A27B5C'
-    },
-    delete: {
-        link: 'img/trash-solid-white.svg',
-        bgColor: '#774360'
-    },
-    check: {
-        link: 'img/check-solid.svg',
-        bgColor: '#0D7377'
-    },
-    reply: {
-        link: 'img/reply-solid.svg',
-        bgColor: '#A27B5C'
-    },
-    edit: {
-        link: 'img/pen-to-square-solid.svg',
-        bgColor: '#2b2f42'
-    },
-    save: {
-        link: 'img/floppy-disk-solid.svg',
-        bgColor: '#277BC0'
-    },
-    feather: {
-        link: 'img/feather-light-solid.svg',
-        bgColor: '#1d9bf0'
-    },
-    like: {
-        link: 'img/heart-solid.svg',
-        bgColor: '#2b2f42'
-    },
-    unlike: {
-        link: 'img/heart-regular.svg',
-        bgColor: '#2b2f42'
-    }
-}
-function popup(imgLink) {
-    const alertImg = document.createElement('img')
-    alertImg.src = imgLink.link
-    alertImg.style.backgroundColor = imgLink.bgColor
-    document.getElementById('alert').appendChild(alertImg)
-
-    setTimeout(() => {
-        alertImg.style.opacity = '0'
-        alertImg.style.transform = 'translateX(-5px)'
-    }, 2000)
-    setTimeout(() => {
-        alertImg.remove()
-    }, 2100)
-}
-
 function roles() {
     document.getElementById('buttonToSubmit').style.opacity = '.1'
     form.style.opacity = '.5'
@@ -279,80 +142,6 @@ function showError(msg) {
     document.getElementById('belum').appendChild(card)
 }
 
-function mode() {
-    const profile = document.createElement('img')
-    profile.setAttribute('src', akun.picture)
-    profile.setAttribute('id', 'pp')
-    profile.addEventListener('click', () => {
-        window.location = 'https://mcwooden.github.io/todo/profile'
-    })
-    const nickname = document.createElement('span')
-    nickname.setAttribute('id', 'nickname')
-    nickname.textContent = akun.nickname
-
-    const beranda = document.createElement('img')
-    beranda.setAttribute('src', 'img/house-solid.svg')
-    beranda.setAttribute('title', 'Beranda')
-    beranda.addEventListener('click', (e) => {
-        modeState = e.target.title
-        modeNav()
-        loaderCard()
-        document.dispatchEvent(new Event('renderTugas'))
-    })
-
-    const twit = document.createElement('img')
-    twit.setAttribute('src', 'img/feather-solid.svg')
-    twit.setAttribute('title', 'Twit')
-    twit.addEventListener('click', (e) => {
-        modeState = e.target.title
-        modeNav()
-        loaderCard()
-        document.dispatchEvent(new Event('renderTugas'))
-    })
-
-    const log = document.createElement('img')
-    log.setAttribute('src', 'img/terminal-solid.svg')
-    log.setAttribute('title', 'Log')
-    log.addEventListener('click', (e) => {
-        modeState = e.target.title
-        modeNav()
-        loaderCard()
-        document.dispatchEvent(new Event('renderTugas'))
-    })
-
-    const modeInfo = document.createElement('div')
-    modeInfo.classList.add('profile')
-    modeInfo.append(profile, nickname)
-    modeInfo.addEventListener('click', () => {
-        window.location = 'https://mcwooden.github.io/todo/profile'
-    })
-
-    const modeBtn = document.createElement('div')
-    modeBtn.classList.add('mode-btn')
-    modeBtn.addEventListener('click', () => changeTheme())
-    modeBtn.append(beranda, twit, log)
-
-    document.getElementById('mode').append(modeInfo, modeBtn)
-}
-
-function modeNav() {
-    if (modeState == 'Beranda') {
-        document.getElementById('header').style.display = 'inherit'
-        document.getElementById('proggress').style.display = 'inherit'
-        document.getElementById('TwitForm').style.display = 'none'
-    } else if (modeState == 'Twit') {
-        document.getElementById('header').style.display = 'none'
-        document.getElementById('proggress').style.display = 'none'
-        new formTwit(akun).showFormTwit()
-        document.getElementById('TwitForm').style.display = 'inherit'
-    } else {
-        document.getElementById('TwitForm').style.display = 'none'
-        document.getElementById('header').style.display = 'none'
-        document.getElementById('proggress').style.display = 'none'
-    }
-    document.getElementById('todoapp').style.marginTop = document.getElementById('header').offsetHeight + 'px'
-}
-
 function loaderCard() {
     document.getElementById('sudah').innerHTML = ''
     document.getElementById('belum').innerHTML = '<div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div><div class="card card-loading card-dark"></div>'
@@ -368,5 +157,4 @@ function changeTheme() {
         body.style.backgroundColor = '#f0f1f3'
         footer.style.opacity = '1'
     }
-    console.log('dijalankan')
 }

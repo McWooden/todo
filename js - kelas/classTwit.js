@@ -21,6 +21,7 @@ class Twit {
         twit.setAttribute('id', this.id)
         twit.append(this.formPicture(), this.formContainer())
         this.nickname == nickname && twit.append(this.twitOption())
+        if (document.getElementById('sudah').innerHTML != '') twit.style.borderTop = '.25px solid #62657a43'
         return twit
     }
 
