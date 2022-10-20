@@ -44,6 +44,14 @@
     max-height: 80vh;
     padding: 1px;
 }
+#belum .text-time {
+    cursor: pointer;
+    color: #eaeaeab5;
+}
+#sudah .text-time {
+    cursor: pointer;
+    color: #2b2f42;
+}
 .card-text a {
     color: goldenrod;
 }

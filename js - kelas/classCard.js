@@ -2,12 +2,21 @@ class Card {
     constructor(data) {
         this.id = data._id
         this.tugas = data.tugas
+        this.caption = data.deskripsi.slice(0, 45) + '...'
         this.deskripsi = data.deskripsi
         this.color = data.color
         this.mulai = data.mulai
         this.tipe = data.tipe
         this.by = data.by
         this.selesai = data.selesai
+        this.shadow = {
+            tugas: this.tugas,
+            deskripsi: this.deskripsi,
+            id: this.id,
+            tipe: this.tipe,
+            deadline: this.mulai,
+            color: this.color
+        }
         this.card = this.createCardELement()
     }
 
@@ -20,7 +29,7 @@ class Card {
         card.dataset.by = this.by
         card.dataset.color = this.color
         card.dataset.date = `${this.mulai} | ${this.tipe}`
-        card.dataset.filter = this.tipe
+        card.dataset.filter = this.tipe        
         return card
     }
 
@@ -31,10 +40,12 @@ class Card {
         const textTitle = document.createElement('p')
         textTitle.innerText = this.tugas
 
-        const deskripsiText = document.createElement('pre')
+        const deskripsiText = document.createElement('p')
         deskripsiText.classList.add('text-time')
-
-        deskripsiText.innerHTML = this.deskripsi.replace(regex, x => `<a href="${x}" target="_blank">${x}</a>`)
+        deskripsiText.innerHTML = this.caption
+        deskripsiText.addEventListener('click', () => {
+            new cardShadow(this.shadow).showCard()
+        })
 
         cardText.append(textTitle, deskripsiText)
         return cardText

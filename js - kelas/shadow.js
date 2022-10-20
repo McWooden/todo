@@ -1,5 +1,4 @@
 const shadow = document.getElementById('shadow')
-const moreOption = document.getElementById('more-option')
 shadow.addEventListener('click', (e) => {
     if (e.target == shadow) hideShadow()
     if (e.target.dataset.option == 'put') console.log('mengedit') + hideShadow()
@@ -89,6 +88,73 @@ class twitShadow {
     showOption() {
         shadow.innerHTML = ''
         shadow.append(this.createOptions())
+        showShadow()
+    }
+}
+/* <div id="card-shadow">
+    <div class="shadow-header">
+        <p class="shadow-title">Biologi</p>
+        <p class="shadow-attribute"></p>
+    </div>
+    <pre>
+        text isi
+    </pre>
+    <div class="shadow-footer">
+        <p class="shadow-attribute">kelompok 2022-10-19</p>
+        <p class="shadow-attribute">6350af3eea7a31921c9faa5f</p>
+    </div>
+</div> */
+class cardShadow {
+    constructor(data) {
+        this.tugas = data.tugas
+        this.deskripsi = data.deskripsi
+        this.id = data.id
+        this.tipe = data.tipe
+        this.deadline = data.deadline
+        this.color = data.color
+    }
+    createElement() {
+        const container = document.createElement('div')
+        container.setAttribute('id', 'card-shadow')
+        container.append(this.header(), this.body(), this.footer())
+        container.style.borderTop = `1em solid ${this.color}`
+        return container
+    }
+    header() {
+        const header = document.createElement('div')
+        header.classList.add('shadow-header')
+        header.style.borderBottom = `.1em solid ${this.color}`
+
+        const title = document.createElement('p')
+        title.classList.add('shadow-title')
+        title.innerHTML = this.tugas
+
+        header.append(title)
+        return header
+    }
+    body() {
+        const body = document.createElement('pre')
+        body.innerHTML = this.deskripsi.replace(regex, x => `<a href="${x}" target="_blank">${x}</a>`)
+        return body
+    }
+    footer() {
+        const footer = document.createElement('div')
+        footer.classList.add('shadow-footer')
+
+        const before = document.createElement('p')
+        before.classList.add('shadow-attribute')
+        before.textContent = `${this.tipe} ${this.deadline}`
+
+        const after = document.createElement('p')
+        after.classList.add('shadow-attribute')
+        after.textContent = this.id
+
+        footer.append(before, after)
+        return footer
+    }
+    showCard() {
+        shadow.innerHTML = ''
+        shadow.append(this.createElement())
         showShadow()
     }
 }

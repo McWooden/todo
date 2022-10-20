@@ -58,6 +58,7 @@ body {
     max-width: calc(100vw - .5em);
     font-size: .8em;
     border: none;
+    background-color: #1b1e2b;
 }
 .card-news.buat-akun a {
     color: goldenrod;
@@ -72,10 +73,6 @@ body {
     width: 3em;
     border-bottom: 3px solid #573146;
     cursor: pointer;
-}
-.login-container {
-    background-color: #31364c;
-    border-bottom: 4px solid #1b1e2b;
 }
 form input {
     background-color: #2b2f42;
@@ -117,13 +114,13 @@ form input {
     margin-top: 2.5em;
     border-top: .5em solid #267abf;
     border-bottom: .5em solid goldenrod;
+    background-color: #1b1e2b;
 }
 #profile .profile-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #2b2f42;
     width: 100%;
     padding: .25em;
     border-radius: 5px;
