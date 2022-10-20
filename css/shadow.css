@@ -1,7 +1,7 @@
 #shadow {
     display: flex;
     justify-content: center;
-    align-items:flex-end;
+    align-items: flex-end;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -38,6 +38,7 @@
     width: 100%;
     background-color: #2b2f42;
     max-height: calc(100vh - 20%);
+    min-height: 45%;
     color: #f0f1f3;
     border-radius: 5px 5px 0 0;
     padding: .5em;
@@ -60,7 +61,7 @@
     padding: .25em;
     background-color: #31364c;
     border-radius: 0 0 5px 5px;
-    font-size: calc(1vw + .7em);
+    font-size: calc(1vw + .6em);
 }
 #card-shadow a {
     color: goldenrod;
