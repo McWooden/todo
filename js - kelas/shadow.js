@@ -1,4 +1,5 @@
 const shadow = document.getElementById('shadow')
+const body = document.querySelector('body')
 shadow.addEventListener('click', (e) => {
     if (e.target == shadow) hideShadow()
     if (e.target.dataset.option == 'put') console.log('mengedit') + hideShadow()
@@ -6,10 +7,12 @@ shadow.addEventListener('click', (e) => {
 })
 const showShadow = () => {
     shadow.style.display = 'flex'
+    body.style.overflow = 'hidden'
 }
 const hideShadow = () => {
     shadow.style.display = 'none'
     shadow.style.opacity = '0'
+    body.style.overflow = 'auto'
 }
 class twitShadow {
     constructor(id, nickname) {
