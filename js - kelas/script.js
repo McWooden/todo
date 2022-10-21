@@ -7,7 +7,7 @@ let link = {
     Twit: '/twit',
     Log: '/log'
 }
-let modeState = 'Beranda'
+let modeState = 'Twit'
 
 const akun = JSON.parse(localStorage.getItem('akun'))
 const {nickname, rank: title, pass: token} = akun

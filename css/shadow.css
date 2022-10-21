@@ -77,9 +77,75 @@
     margin-top: .25em;
 }
 
+#twit-shadow {
+    width: 100%;
+    background-color: #101118;
+    height: 90%;
+    color: #f0f1f3;
+    padding: .5em;
+    border-top: 1em solid #267abf;
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    overflow: auto;
+}
+.twit-shadow-header {
+    border-bottom: .25px solid #62657a43;
+    padding: .5em;
+    padding-top: 0;
+}
+.twit-shadow-title {
+    font-size: x-small;
+}
+.twit-shadow-isi {
+    color: #8e959c;
+    font-size: x-small;
+}
+.twit-shadow-attr {
+    font-weight: 300;
+    padding: .1em;
+    font-size: x-small;
+    color: #71767b;
+}
+.attr-blue {
+    color: #267abf;
+}
+.twit-shadow-body {
+    padding-bottom: 2.2em;
+}
+.twit-comment {
+    padding: .5em 1em;
+    font-size: small;
+    padding-bottom: 0;
+}
+.twit-comment-isi {
+    color: #71767b;
+}
+#twit-comment-form {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: #101118;
+    padding: .25em;
+}
 
+#twit-comment-form input {
+    height: 2.4em;
+    color: #71767b;
+    border: none;
+}
+#twit-comment-form button {
+    height: 2.1em;
+}
+#twit-comment-form button img {
+    width: 15px;
+}
 @media screen and (min-width: 1024px) {
-    #more-option, #card-shadow {
+    #more-option, #card-shadow, #twit-shadow {
         max-width: 1024px;
     }
 }

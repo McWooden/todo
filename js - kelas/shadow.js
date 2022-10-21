@@ -9,6 +9,7 @@ const showShadow = () => {
     shadow.style.display = 'flex'
     body.style.overflow = 'hidden'
 }
+showShadow()
 const hideShadow = () => {
     shadow.style.display = 'none'
     shadow.style.opacity = '0'
@@ -119,7 +120,6 @@ class cardShadow {
     }
     header() {
         const header = document.createElement('div')
-        header.classList.add('shadow-header')
         header.style.borderBottom = `.1em solid ${this.color}`
 
         const title = document.createElement('p')
