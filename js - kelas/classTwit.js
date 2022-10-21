@@ -12,6 +12,12 @@ class Twit {
         this.token = data.token
         this.likeCount = data.like
         this.commentCount = data.comment
+        this.shadow = {
+            nickname: data.nickname,
+            isi: data.isi,
+            date: data.date,
+            comment: data.comment
+        }
         this.twit = this.createTwitElement()
     }
 
@@ -91,10 +97,13 @@ class Twit {
 
         const comment = document.createElement('img')
         comment.setAttribute('src', 'img/comment-regular.svg')
+        comment.addEventListener('click', () => {
+            new commentTwit(this.shadow).showComment()
+        })
 
         const commentCount = document.createElement('span')
         commentCount.classList.add('twit-count')
-        commentCount.textContent = 0
+        commentCount.textContent = this.commentCount.length
 
         if (this.likeCount.indexOf(nickname) == -1) {
             menu.append(like)

@@ -9,7 +9,6 @@ const showShadow = () => {
     shadow.style.display = 'flex'
     body.style.overflow = 'hidden'
 }
-showShadow()
 const hideShadow = () => {
     shadow.style.display = 'none'
     shadow.style.opacity = '0'
@@ -155,6 +154,98 @@ class cardShadow {
         showShadow()
         setTimeout(() => {
             document.getElementById('card-shadow').style.transform = 'translateY(0)'
+            shadow.style.opacity = '1'
+        }, 100)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+class commentTwit {
+    constructor(data) {
+        this.nickname = data.nickname
+        this.isi = data.isi
+        this.date = data.date
+        this.comment = data.comment
+    }
+    createElement() {
+        const container = document.createElement('div')
+        container.setAttribute('id', 'twit-shadow')
+        container.append(this.header(), this.body(), this.footer())
+        return container
+    }
+    header() {
+        const title = document.createElement('span')
+        title.classList.add('twit-shadow-title')
+        title.textContent = this.nickname + ' '
+
+        const isi = document.createElement('span')
+        isi.classList.add('twit-shadow-isi')
+        isi.textContent = this.isi
+
+        const attr = document.createElement('div')
+            const tag = document.createElement('span')
+            tag.classList.add('twit-shadow-attr', 'attr-blue')
+            tag.textContent = this.tag
+
+            const date = document.createElement('span')
+            date.classList.add('twit-shadow-attr')
+            date.textContent = this.date
+        attr.append(tag, date)
+        
+
+        const header = document.createElement('div')
+        header.classList.add('twit-shadow-header')
+        header.append(title, isi, attr)
+        return header
+    }
+    body() {
+        const body = document.createElement('div')
+        body.classList.add('twit-shadow-body')
+
+        const arrayComment = this.comment.map(x => {
+            const cardComment = document.createElement('div')
+            cardComment.classList.add('twit-comment')
+                const title = document.createElement('span')
+                title.classList.add('twit-comment-title')
+                title.textContent = x.title
+                const isi = document.createElement('span')
+                isi.classList.add('twit-comment-isi')
+                isi.textContent = x.title
+            cardComment.append(title, isi)
+        })
+
+        body.append(arrayComment)
+        return body
+    } 
+    footer() {
+        const footer = document.createElement('form')
+        footer.setAttribute('id', 'twit-comment-form')
+            const input = document.createElement('input')
+            input.setAttribute('type', 'text')
+            input.classList.add('twit-tag')
+            const btn = document.createElement('button')
+            btn.setAttribute('type', 'submit')
+            btn.setAttribute('form', 'twit-comment-form')
+                const btnIcon = document.createElement('img')
+                btnIcon.setAttribute('src', 'img/feather-light-solid.svg')
+            btn.append(btnIcon)
+        footer.append(input, btn)
+        return footer
+    }
+
+    showComment() {
+        shadow.innerHTML = ''
+        shadow.append(this.createElement())
+        showShadow()
+        setTimeout(() => {
             shadow.style.opacity = '1'
         }, 100)
     }
