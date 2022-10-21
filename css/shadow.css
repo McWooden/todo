@@ -10,11 +10,14 @@
     background-color: #1f292f78;
     display: none;
     z-index: 2;
+    transition: .2s;
 }
 #more-option {
     background-color: #31364c;
     color: #eeeeee;
     width: 100%;
+    transition: .2s;
+    transform: translateY(100%);
 }
 .option {
     position: relative;
@@ -44,6 +47,8 @@
     padding: .5em;
     padding-top: 0;
     overflow: auto;
+    transition: .2s;
+    transform: translateY(100%);
 }
 .shadow-title {
     overflow: auto;

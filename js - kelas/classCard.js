@@ -2,7 +2,7 @@ class Card {
     constructor(data) {
         this.id = data._id
         this.tugas = data.tugas
-        this.caption = data.deskripsi.slice(0, 45) + '...'
+        this.caption = data.deskripsi.slice(0, 45)
         this.deskripsi = data.deskripsi
         this.color = data.color
         this.mulai = data.mulai
@@ -42,7 +42,11 @@ class Card {
 
         const deskripsiText = document.createElement('p')
         deskripsiText.classList.add('text-time')
-        deskripsiText.innerHTML = this.caption
+        if (this.caption == this.deskripsi) {
+            deskripsiText.innerHTML = this.caption
+        } else {
+            deskripsiText.innerHTML = this.caption + '... <span style="color:#267abf;">Baca selengkapnya</span>'
+        }
         deskripsiText.addEventListener('click', () => {
             new cardShadow(this.shadow).showCard()
         })

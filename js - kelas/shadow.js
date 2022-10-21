@@ -9,6 +9,7 @@ const showShadow = () => {
 }
 const hideShadow = () => {
     shadow.style.display = 'none'
+    shadow.style.opacity = '0'
 }
 class twitShadow {
     constructor(id, nickname) {
@@ -89,21 +90,14 @@ class twitShadow {
         shadow.innerHTML = ''
         shadow.append(this.createOptions())
         showShadow()
+        setTimeout(() => {
+            document.getElementById('more-option').style.transform = 'translateY(0)'
+            shadow.style.opacity = '1'
+        }, 100)
     }
 }
-/* <div id="card-shadow">
-    <div class="shadow-header">
-        <p class="shadow-title">Biologi</p>
-        <p class="shadow-attribute"></p>
-    </div>
-    <pre>
-        text isi
-    </pre>
-    <div class="shadow-footer">
-        <p class="shadow-attribute">kelompok 2022-10-19</p>
-        <p class="shadow-attribute">6350af3eea7a31921c9faa5f</p>
-    </div>
-</div> */
+
+
 class cardShadow {
     constructor(data) {
         this.tugas = data.tugas
@@ -156,5 +150,9 @@ class cardShadow {
         shadow.innerHTML = ''
         shadow.append(this.createElement())
         showShadow()
+        setTimeout(() => {
+            document.getElementById('card-shadow').style.transform = 'translateY(0)'
+            shadow.style.opacity = '1'
+        }, 100)
     }
 }
