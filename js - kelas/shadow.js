@@ -224,7 +224,7 @@ class commentTwit {
                 trash.setAttribute('src', 'img/trash-solid-white.svg')
                 trash.classList.add('hide-comment-trash', 'comment-trash')
                 trash.addEventListener('click', async () => {
-                    await fetch(`${urlLocal}/twit/deleteComment`, {
+                    await fetch(`${url}/twit/deleteComment`, {
                         method: "PUT",
                         body: JSON.stringify({id: this.id, commentId: x._id}),
                         headers: {
