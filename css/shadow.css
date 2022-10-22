@@ -118,9 +118,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .5em 1em;
+    padding: .25em 1em;
     font-size: small;
-    padding-bottom: 0;
+    border-radius: 3px;
+}
+.comment-highlight {
+    background-color: #267abf2d;
 }
 .twit-comment-isi {
     color: #71767b;
@@ -131,6 +134,7 @@
 }
 .comment-trash {
     width: 1em;
+    cursor: pointer;
 }
 .hide-comment-trash {
     display: none;

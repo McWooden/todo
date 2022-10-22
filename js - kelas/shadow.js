@@ -218,6 +218,7 @@ class commentTwit {
                 if (e.target == divContent) return
                 if (x.commentNickname == nickname) {
                     trash.classList.toggle('hide-comment-trash')
+                    cardComment.classList.toggle('comment-highlight')
                 }
             })
                 const trash = document.createElement('img')
@@ -231,8 +232,12 @@ class commentTwit {
                             "Content-Type": "application/json",
                         },
                     }).then(() => {
+                        document.querySelector('#twit-shadow').style.transform = 'translateX(100%)'
                         popup(alertMsg.delete)
-                        hideShadow()
+                        document.dispatchEvent(new Event('renderTugas'))
+                        setTimeout(() => {
+                            hideShadow()
+                        }, 300);
                     })
                 })
 
@@ -267,10 +272,10 @@ class commentTwit {
                     "Content-Type": "application/json",
                 },
             }).then(() => {
+                document.querySelector('#twit-shadow').style.transform = 'translateX(100%)'
                 document.dispatchEvent(new Event('renderTugas'))
                 input.value = ''
                 popup(alertMsg.save)
-                footer.style.transform = 'translateX(100%)'
                 setTimeout(() => {
                     hideShadow()
                 }, 300);
