@@ -214,13 +214,39 @@ class commentTwit {
         this.comment.map(x => {
             const cardComment = document.createElement('div')
             cardComment.classList.add('twit-comment')
-                const title = document.createElement('span')
-                title.classList.add('twit-comment-title')
-                title.textContent = x.commentNickname + ' '
-                const isi = document.createElement('span')
-                isi.classList.add('twit-comment-isi')
-                isi.textContent = x.commentBody
-            cardComment.append(title, isi)
+            cardComment.addEventListener('click', (e) => {
+                if (e.target == divContent) return
+                if (x.commentNickname == nickname) {
+                    trash.classList.toggle('hide-comment-trash')
+                }
+            })
+                const trash = document.createElement('img')
+                trash.setAttribute('src', 'img/trash-solid-white.svg')
+                trash.classList.add('hide-comment-trash', 'comment-trash')
+                trash.addEventListener('click', async () => {
+                    await fetch(`${urlLocal}/twit/deleteComment`, {
+                        method: "PUT",
+                        body: JSON.stringify({id: this.id, commentId: x._id}),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }).then(() => {
+                        popup(alertMsg.delete)
+                        hideShadow()
+                    })
+                })
+
+                const divContent = document.createElement('div')
+                divContent.classList.add('twit-comment-content')
+                    const title = document.createElement('span')
+                    title.classList.add('twit-comment-title')
+                    title.textContent = x.commentNickname + ' '
+                    const isi = document.createElement('span')
+                    isi.classList.add('twit-comment-isi')
+                    isi.textContent = x.commentBody
+                divContent.append(title, isi)
+
+            cardComment.append(divContent, trash)
             body.append(cardComment)
         })
 
@@ -247,12 +273,13 @@ class commentTwit {
                 footer.style.transform = 'translateX(100%)'
                 setTimeout(() => {
                     hideShadow()
-                }, 200);
+                }, 300);
             })
         })
         footer.setAttribute('id', 'twit-comment-form')
             const input = document.createElement('input')
             input.setAttribute('type', 'text')
+            input.setAttribute('placeholder', `berkomentar sebagai ${nickname}`)
             input.classList.add('twit-tag')
             const btn = document.createElement('button')
             btn.setAttribute('type', 'submit')

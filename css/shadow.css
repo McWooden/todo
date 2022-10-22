@@ -115,12 +115,28 @@
     padding-bottom: 2.2em;
 }
 .twit-comment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: .5em 1em;
     font-size: small;
     padding-bottom: 0;
 }
 .twit-comment-isi {
     color: #71767b;
+}
+.twit-comment-content {
+    width: -moz-fit-content;
+    width: fit-content;
+}
+.comment-trash {
+    width: 1em;
+}
+.hide-comment-trash {
+    display: none;
+}
+.hide-comment-trash {
+    display: none;
 }
 #twit-comment-form {
     position: fixed;
