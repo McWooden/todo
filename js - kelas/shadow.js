@@ -170,6 +170,7 @@ class cardShadow {
 
 class commentTwit {
     constructor(data) {
+        this.id = data.id
         this.nickname = data.nickname
         this.isi = data.isi
         this.date = data.date
@@ -210,23 +211,43 @@ class commentTwit {
         const body = document.createElement('div')
         body.classList.add('twit-shadow-body')
 
-        const arrayComment = this.comment.map(x => {
+        this.comment.map(x => {
             const cardComment = document.createElement('div')
             cardComment.classList.add('twit-comment')
                 const title = document.createElement('span')
                 title.classList.add('twit-comment-title')
-                title.textContent = x.title
+                title.textContent = x.commentNickname + ' '
                 const isi = document.createElement('span')
                 isi.classList.add('twit-comment-isi')
-                isi.textContent = x.title
+                isi.textContent = x.commentBody
             cardComment.append(title, isi)
+            body.append(cardComment)
         })
 
-        body.append(arrayComment)
         return body
     } 
     footer() {
         const footer = document.createElement('form')
+        footer.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            await fetch(`${url}/twit/addComment`, {
+                method: "PUT",
+                body: JSON.stringify({
+                    id: this.id,
+                    comment: {
+                        commentNickname: this.nickname,
+                        commentBody: input.value
+                    }
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(() => {
+                document.dispatchEvent(new Event('renderTugas'))
+                input.value = ''
+                popup(alertMsg.save)
+            })
+        })
         footer.setAttribute('id', 'twit-comment-form')
             const input = document.createElement('input')
             input.setAttribute('type', 'text')
@@ -247,6 +268,7 @@ class commentTwit {
         showShadow()
         setTimeout(() => {
             shadow.style.opacity = '1'
+            document.getElementById('twit-shadow').style.transform = 'translateX(0)'
         }, 100)
     }
 }

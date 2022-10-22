@@ -11,12 +11,13 @@ class Twit {
         this.color = data.color
         this.token = data.token
         this.likeCount = data.like
-        this.commentCount = data.comment
+        this.commentCount = data.twitComment
         this.shadow = {
+            id: data._id,
             nickname: data.nickname,
             isi: data.isi,
             date: data.date,
-            comment: data.comment
+            comment: data.twitComment
         }
         this.twit = this.createTwitElement()
     }
