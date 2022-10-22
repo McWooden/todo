@@ -234,10 +234,8 @@ class commentTwit {
                 method: "PUT",
                 body: JSON.stringify({
                     id: this.id,
-                    comment: {
-                        commentNickname: this.nickname,
-                        commentBody: input.value
-                    }
+                    commentNickname: nickname,
+                    commentBody: input.value
                 }),
                 headers: {
                     "Content-Type": "application/json",
@@ -246,6 +244,10 @@ class commentTwit {
                 document.dispatchEvent(new Event('renderTugas'))
                 input.value = ''
                 popup(alertMsg.save)
+                footer.style.transform = 'translateX(100%)'
+                setTimeout(() => {
+                    hideShadow()
+                }, 200);
             })
         })
         footer.setAttribute('id', 'twit-comment-form')
