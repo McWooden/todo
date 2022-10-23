@@ -3,7 +3,6 @@ const body = document.querySelector('body')
 shadow.addEventListener('click', (e) => {
     if (e.target == shadow) hideShadow()
     if (e.target.dataset.option == 'put') console.log('mengedit') + hideShadow()
-    if (e.target.dataset.option == 'delete') hideShadow()
 })
 const showShadow = () => {
     shadow.style.display = 'flex'
@@ -14,6 +13,14 @@ const hideShadow = () => {
     shadow.style.opacity = '0'
     body.style.overflow = 'auto'
 }
+
+
+
+
+
+
+
+
 class twitShadow {
     constructor(id, nickname) {
         this.id = id
@@ -70,20 +77,23 @@ class twitShadow {
         const btn = document.createElement('div')
         btn.classList.add('option-btn')
         btn.dataset.option = 'delete'
-        btn.addEventListener('click', async () => {
-            await fetch(`${url}/twit`, {
-                method: 'DELETE',
-                body: JSON.stringify({
-                    id: this.id,
-                }),
-                headers: {
-                    'Content-Type': "application/json"
-                }
-            }).then(hideShadow()).then(() => {
-                document.getElementById(this.id).style.display = 'none'
-                popup(alertMsg.delete)
-                document.dispatchEvent(new Event('renderTugas'))
-            })
+        btn.addEventListener('click', () => {
+            new myAlert(async () => {
+                await fetch(`${url}/twit`, {
+                    method: 'DELETE',
+                    body: JSON.stringify({
+                        id: this.id,
+                    }),
+                    headers: {
+                        'Content-Type': "application/json"
+                    }
+                }).then(hideShadow()).then(() => {
+                    document.getElementById(this.id).style.display = 'none'
+                    popup(alertMsg.delete)
+                    document.dispatchEvent(new Event('renderTugas'))
+                })
+            }, {msg: 'apa kamu yakin?'}).showAlert()
+            console.log('di klik')
         })
 
         option.append(img, text, btn)
@@ -99,6 +109,10 @@ class twitShadow {
         }, 100)
     }
 }
+
+
+
+
 
 
 class cardShadow {
@@ -304,6 +318,51 @@ class commentTwit {
         setTimeout(() => {
             shadow.style.opacity = '1'
             document.getElementById('twit-shadow').style.transform = 'translateX(0)'
+        }, 100)
+    }
+}
+
+class myAlert {
+    constructor(callback, data) {
+        this.msg = data.msg
+        this.callback = callback
+    }
+    alertBody() {
+        const container = document.createElement('div')
+        container.classList.add('my-alert')
+
+        const msg = document.createElement('p')
+        msg.textContent = this.msg
+
+        container.append(msg, this.alertBtn())
+        return container
+    }
+    alertBtn() {
+        const btn = document.createElement('div')
+        btn.classList.add('alert-footer')
+
+        const ya = document.createElement('span')
+        ya.textContent = 'ya'
+        ya.style.color = '#267abf'
+        ya.addEventListener('click', () => {
+            this.callback() 
+        })
+
+        const batal = document.createElement('span')
+        batal.textContent = 'batal'
+        batal.style.color = '#a51357'
+        batal.addEventListener('click', () => hideShadow())
+
+        btn.append(batal, ya)
+        return btn
+    }
+    showAlert() {
+        shadow.innerHTML = ''
+        shadow.append(this.alertBody())
+        showShadow()
+        setTimeout(() => {
+            shadow.style.opacity = '1'
+            document.querySelector('.my-alert').style.transform = 'translateX(0)'
         }, 100)
     }
 }
