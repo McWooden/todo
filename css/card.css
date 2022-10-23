@@ -11,7 +11,7 @@
     border-radius: 5px;
     font-size: large;
     font-weight: 400;
-    background-color: #31364c;
+    background-color: #2b2f42;
     color: #eee;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     transition: .3s;
@@ -25,9 +25,9 @@
     border-color: #31364c;
 }
 #sudah .card {
-    background-color: transparent;
+    background-color: #e4e6e9;
     color: inherit;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    box-shadow: rgb(220 221 255 / 10%) 0px 2px 4px;
 }
 #sudah .card .card-text {
     background-color: transparent;
