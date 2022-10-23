@@ -33,6 +33,7 @@ nav a, nav button {
 }
 nav a:nth-child(1) {
     background-color: #0D7377;
+    box-shadow: #0D737776 0px 8px 24px;
 }
 nav button {
     border: none;
@@ -40,6 +41,7 @@ nav button {
 }
 nav a:nth-child(2) {
     background-color: #c4900f;
+    box-shadow: #c4900f76 0px 8px 24px;
 }
 nav a:active {
     opacity: 0;
