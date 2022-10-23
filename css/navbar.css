@@ -47,3 +47,38 @@ nav a:active {
 nav a img, nav button img {
     width: 1em;
 }
+
+#filterTugas {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #8897a11f;
+    padding: .5em 1em;
+    border-radius: 5px;
+    font-size: small;
+}
+.filter-btn {
+    padding: .1em .2em;
+    border-radius: 5px;
+    color: #2b2f42;
+    cursor: pointer;
+    transition: .1s;
+}
+.disable {
+    text-decoration: line-through;
+    background-color: #8897a11f !important;
+    box-shadow: none !important;
+}
+.filter-btn:first-child {
+    background-color: #bf822645;
+    box-shadow: #bf822676 0px 8px 10px;
+}
+.filter-btn:nth-child(2) {
+    background-color: #bf302645;
+    box-shadow: #bf302676 0px 8px 10px;
+
+}
+.filter-btn:nth-child(3){
+    background-color: #3dbf2645;
+    box-shadow: #3dbf2676 0px 8px 10px;
+}

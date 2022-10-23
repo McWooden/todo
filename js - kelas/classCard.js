@@ -26,6 +26,7 @@ class Card {
         card.setAttribute('id', this.id)
         card.append(this.createText(), this.createButton(), this.edit())
         card.style.borderLeftColor = this.color
+        if (!this.selesai) card.style.boxShadow = `${this.color}a0 0px 8px 24px`
         card.dataset.by = this.by
         card.dataset.color = this.color
         card.dataset.date = `${this.mulai} | ${this.tipe}`

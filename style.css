@@ -159,9 +159,10 @@ footer a {
 #proggress a {
     color: #2b2f42;
     text-decoration: none;
-    background-color: #b0c5d5;
+    background-color: #a1c0d8;
     padding: .1em .2em;
     border-radius: 5px;
+    box-shadow: #a1c0d876 0px 8px 10px;
 }
 .proggressBar {
     width: 100%;
@@ -181,33 +182,4 @@ footer a {
 }
 #valueBarRed {
     background-color: #774360;
-}
-#filterTugas {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #8897a11f;
-    padding: .5em 1em;
-    border-radius: 5px;
-    font-size: small;
-}
-.filter-btn {
-    padding: .1em .2em;
-    border-radius: 5px;
-    color: #2b2f42;
-    cursor: pointer;
-    transition: .1s;
-}
-.disable {
-    text-decoration: line-through;
-    background-color: #8897a11f !important;
-}
-.filter-btn:first-child {
-    background-color: #bf822640;
-}
-.filter-btn:nth-child(2) {
-    background-color: #bf302640;
-}
-.filter-btn:nth-child(3){
-    background-color: #3dbf2640;
 }
