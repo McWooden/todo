@@ -189,7 +189,7 @@ class commentTwit {
 
         const isi = document.createElement('span')
         isi.classList.add('twit-shadow-isi')
-        isi.textContent = this.isi
+        isi.innerHTML = this.isi.replace(regex, x => `<a href="${x}" target="_blank">${x}</a>`)
 
         const attr = document.createElement('div')
             const tag = document.createElement('span')
@@ -249,6 +249,7 @@ class commentTwit {
                     const isi = document.createElement('span')
                     isi.classList.add('twit-comment-isi')
                     isi.textContent = x.commentBody
+
                 divContent.append(title, isi)
 
             cardComment.append(divContent, trash)

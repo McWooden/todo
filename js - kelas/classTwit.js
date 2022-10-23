@@ -64,13 +64,9 @@ class Twit {
 
         const title = document.createElement('p')
         title.classList.add('twit-title')
-        title.textContent = this.title + ' | '
+        title.textContent = this.title + ' '
 
-        const time = document.createElement('p')
-        time.classList.add('twit-title')
-        time.textContent = this.date
-
-        twitHeader.append(nickname, title, time)
+        twitHeader.append(nickname, title)
 
         return twitHeader
     }
@@ -123,7 +119,7 @@ class Twit {
 
         const isi = document.createElement('span')
         isi.classList.add('twit-isi')
-        isi.innerHTML = this.isi.replace(regex, x => `<a href="${x}" target="_blank">${x}</a>`)
+        isi.innerHTML = this.isi
 
         const tag = document.createElement('p')
         tag.classList.add('twit-tag')

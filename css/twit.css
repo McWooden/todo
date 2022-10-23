@@ -101,30 +101,26 @@
 
 .twit-header {
     display: flex;
-    align-items: center;
     font-weight: 400;
+    padding-left: .25em;
     gap: .25em;
-    padding: .25em;
-    padding-left: .5em;
-    padding-bottom: 0;
+    font-size: medium;
 }
-
-.twit-title, .twit-time {
-    color: #71767b;
+.twit-nickname {
+    color: #898e94;
 }
-.twit-time {
-    font-size: small;
-    margin-top: -3px;
+.twit-title {
+    color: #585c60;
+    font-size: medium;
 }
 .twit-isi {
-    font-size: medium;
-    padding: 1px;
+    font-size: small;
     max-width: 88%;
 }
 .twit-body {
     display: flex;
     flex-direction: column;
-    padding: .5em;
+    padding: .25em;
     padding-top: 0;
 }
 .twit-body > * {
