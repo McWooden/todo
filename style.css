@@ -159,10 +159,10 @@ footer a {
 #proggress a {
     color: #2b2f42;
     text-decoration: none;
-    background-color: #a1c0d8;
+    background-color: #8bb9dd;
     padding: .1em .2em;
     border-radius: 5px;
-    box-shadow: #a1c0d876 0px 8px 10px;
+    box-shadow: #8bb9dd76 0px 8px 10px;
 }
 .proggressBar {
     width: 100%;
@@ -179,7 +179,9 @@ footer a {
 }
 #valueBar {
     background-color: #0d7377;
+    box-shadow: #0d737776 0px 8px 10px;
 }
 #valueBarRed {
     background-color: #774360;
+    box-shadow: #77436076 0px 8px 10px;
 }
