@@ -228,6 +228,7 @@ class commentTwit {
         this.comment.map(x => {
             const cardComment = document.createElement('div')
             cardComment.classList.add('twit-comment')
+            cardComment.id = x._id
             cardComment.addEventListener('click', (e) => {
                 if (e.target == divContent) return
                 if (x.commentNickname == nickname) {
@@ -238,21 +239,19 @@ class commentTwit {
                 const trash = document.createElement('img')
                 trash.setAttribute('src', 'img/trash-solid-white.svg')
                 trash.classList.add('hide-comment-trash', 'comment-trash')
-                trash.addEventListener('click', async () => {
-                    await fetch(`${url}/twit/deleteComment`, {
-                        method: "PUT",
-                        body: JSON.stringify({id: this.id, commentId: x._id}),
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }).then(() => {
-                        document.querySelector('#twit-shadow').style.transform = 'translateX(100%)'
-                        popup(alertMsg.delete)
-                        document.dispatchEvent(new Event('renderTugas'))
-                        setTimeout(() => {
-                            hideShadow()
-                        }, 300);
-                    })
+                trash.addEventListener('click', () => {
+                    new myAlert(async() => {
+                        await fetch(`${url}/twit/deleteComment`, {
+                            method: "PUT",
+                            body: JSON.stringify({id: this.id, commentId: x._id}),
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        }).then(() => {
+                            popup(alertMsg.delete)
+                            document.dispatchEvent(new Event('renderTugas'))
+                        })
+                    }, {msg: 'apa kamu yakin?'}).showAlert()
                 })
 
                 const divContent = document.createElement('div')
@@ -345,6 +344,7 @@ class myAlert {
         ya.textContent = 'ya'
         ya.style.color = '#267abf'
         ya.addEventListener('click', () => {
+            hideShadow()
             this.callback() 
         })
 
