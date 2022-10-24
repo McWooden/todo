@@ -158,6 +158,7 @@ class cardShadow {
         const after = document.createElement('p')
         after.classList.add('shadow-attribute')
         after.textContent = this.id
+        after.style.color = this.color
 
         footer.append(before, after)
         return footer

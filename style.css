@@ -11,9 +11,6 @@ html {
 body {
     background-color: #f0f1f3;
 }
-section {
-    margin-top: 152px;
-}
 ::-webkit-scrollbar {
     width: 3px;
     height: 3px;

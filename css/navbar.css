@@ -29,7 +29,7 @@ nav a, nav button {
     padding: .5em 1.3em;
     flex-basis: 20%;
     cursor: pointer;
-    box-shadow: rgb(71 75 255 / 10%) 0px 2px 4px;
+    box-shadow: #A27B5C76 0px 8px 24px;
 }
 nav a:nth-child(1) {
     background-color: #0D7377;
@@ -67,7 +67,6 @@ nav a img, nav button img {
     transition: .1s;
 }
 .disable {
-    text-decoration: line-through;
     background-color: #8897a11f !important;
     box-shadow: none !important;
 }

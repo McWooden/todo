@@ -71,6 +71,8 @@
     background-color: #31364c;
     border-radius: 0 0 5px 5px;
     font-size: calc(1vw + .6em);
+    min-height: 20vh;
+    white-space: pre-wrap;
 }
 #card-shadow a {
     color: goldenrod;
