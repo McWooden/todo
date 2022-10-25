@@ -1,0 +1,17 @@
+.costum-css-container {
+    display: flex;
+    flex-direction: column;
+    color: green;
+    font-size: small;
+}
+.costum-css-input {
+    min-height: 40vh;
+    background-color: black;
+    outline: none;
+    border: none;
+    color: green;
+    padding: .25em;
+}
+.constum-css-btn {
+    color: green;
+}

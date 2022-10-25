@@ -114,7 +114,7 @@ class twitShadow {
 
 
 
-
+// showShadow()
 class cardShadow {
     constructor(data) {
         this.tugas = data.tugas
@@ -134,6 +134,7 @@ class cardShadow {
     header() {
         const header = document.createElement('div')
         header.style.borderBottom = `.1em solid ${this.color}`
+        header.classList.add('shadow-header')
 
         const title = document.createElement('p')
         title.classList.add('shadow-title')

@@ -57,12 +57,17 @@
                 body: JSON.stringify(data),
                 headers: {'Content-Type': 'application/json',}
             }
-
-            await fetch(`https://x6todo.herokuapp.com/get-my-profile`, options).then(res => res.json()).then(res => {
-                addAccountStorage(JSON.stringify(res))
-                form.reset()
-            })
-            document.getElementById('login').style.visibility = 'visible'
+            try {
+                await fetch(`https://x6todo.herokuapp.com/get-my-profile`, options).then(res => res.json()).then(res => {
+                    addAccountStorage(JSON.stringify(res))
+                    form.reset()
+                    document.getElementById('login').value = 'Login'
+                    document.getElementById('login').style.display = 'visible'
+                })
+            } catch (err) {
+                document.getElementById('login').style.visibility = 'visible'
+                document.getElementById('login').value = 'pengguna tidak ditemukan!'
+            }
         })
 
         function getProfile() {

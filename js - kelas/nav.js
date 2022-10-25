@@ -75,7 +75,7 @@ function modeNav() {
 function changeTheme() {
     const body = document.querySelector('body')
     const footer = document.querySelector('footer')
-    if (modeState == 'Twit') {
+    if (modeState == 'Twit' || modeState == 'Log') {
         body.style.backgroundColor = 'rgb(0 0 0)'
         footer.style.opacity = '0'
     } else {

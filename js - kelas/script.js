@@ -23,6 +23,7 @@ window.addEventListener('load', () => {
     mode()
     modeNav()
     changeTheme()
+    costumCss()
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -30,6 +31,7 @@ document.getElementById('reload').addEventListener('click', () => {
 
 // render Element
 document.addEventListener('renderTugas', () => {
+    document.querySelector('#rotate-right-solid').classList.add('spin')
     if (modeState == 'Twit') {
         fetch(`${url}${link.Twit}`)
         .then(res => res.json())
@@ -41,10 +43,12 @@ document.addEventListener('renderTugas', () => {
             popup(alertMsg.reload)
         }).catch((err) => {
             showError(err)
-        })
+        }).finally(() => document.querySelector('#rotate-right-solid').classList.remove('spin'))
     } else if (modeState == 'Log') {
-        document.getElementById('belum').innerHTML = 'Coming Soon...'
+        document.getElementById('belum').innerHTML = ''
         document.getElementById('sudah').innerHTML = ''
+        logState()
+        document.querySelector('#rotate-right-solid').classList.remove('spin')
     } else {
         fetch(url)
         .then(res => res.json())
@@ -57,7 +61,7 @@ document.addEventListener('renderTugas', () => {
             updateProggress(tasks)
         }).catch((err) => {
             showError(err)
-        })
+        }).finally(() => document.querySelector('#rotate-right-solid').classList.remove('spin'))
     }
 })
 

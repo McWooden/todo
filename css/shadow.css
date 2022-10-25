@@ -52,15 +52,49 @@
     transition: .2s;
     transform: translateY(100%);
     border-radius: 10px;
-    margin: .25em;
+    margin: .5em;
+}
+
+.badge {
+    margin: .25em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.shadow-header span {
+    font-size: .6em;
+    padding: .25em 1em;
+    border-radius: 3px;
+    width: 100%;
+    gap: .25em;
 }
 .shadow-title {
     overflow: auto;
     font-size: larger;
 }
+.tandai {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5em;
+    background-color: #0D7377;
+    box-shadow: #0d747745 0px 8px 24px;
+    width: 100%;
+    border-radius: 3px;
+    padding: .25em;
+}
+.tandai img {
+    width: 1em;
+    margin-left: .2em;
+}
+.sudah-selesai {
+    font-size: small !important;
+    opacity: .5;
+    text-align: right;
+    padding-right: .1em !important;
+}
 .shadow-attribute {
     color: #eaeaea;
-    font-size: x-small;
     opacity: .8;
     font-weight: 300;
     padding: .1em;
@@ -95,8 +129,7 @@
     overflow: auto;
     transform: translateX(100%);
     transition: .2s;
-    border-radius: 10px;
-    margin: .25em;
+    border-radius: 10px 10px 0 0;
     padding-bottom: 0;
 }
 .twit-shadow-header {

@@ -83,3 +83,15 @@ nav a img, nav button img {
     background-color: #3dbf2645;
     box-shadow: #3dbf2676 0px 8px 10px;
 }
+.spin {
+    animation: spin .9s ease-in-out forwards infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
