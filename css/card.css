@@ -24,6 +24,9 @@
 #belum .card {
     border-color: #31364c;
 }
+#belum .card.belumTapiSudah {
+    color: #eaeaeab5;
+}
 #sudah .card {
     background-color: #e4e6e9;
     color: inherit;
@@ -54,6 +57,12 @@
 }
 .card-text a {
     color: goldenrod;
+}
+.card-mark {
+    position: absolute;
+    width: 1em;
+    top: -2px;
+    left: 2px;
 }
 /* button */
 .card-btn {

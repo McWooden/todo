@@ -72,20 +72,32 @@
     overflow: auto;
     font-size: larger;
 }
-.tandai {
+.shadow-tanda {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: .5em;
-    background-color: #0D7377;
-    box-shadow: #0d747745 0px 8px 24px;
     width: 100%;
     border-radius: 3px;
     padding: .25em;
+    font-size: small;
+    cursor: pointer;
 }
-.tandai img {
+.shadow-tanda img {
     width: 1em;
     margin-left: .2em;
+}
+.shadow-tanda span {
+    flex-basis: 100px;
+    margin: 0 auto;
+}
+.shadow-tanda-belum {
+    background-color: #0D7377;
+    box-shadow: #0d747745 0px 8px 24px;
+}
+.shadow-tanda-selesai {
+    background-color: #77436029;
+    box-shadow: #77436045 0px 8px 24px;
 }
 .sudah-selesai {
     font-size: small !important;
@@ -98,6 +110,7 @@
     opacity: .8;
     font-weight: 300;
     padding: .1em;
+    font-size: x-small;
 }
 #card-shadow pre {
     overflow: auto;

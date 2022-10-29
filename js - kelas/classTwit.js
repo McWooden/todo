@@ -71,9 +71,42 @@ class Twit {
         return twitHeader
     }
 
+    twitBody() {
+        const twitBody = document.createElement('div')
+        twitBody.classList.add('twit-body')
+
+        const isi = document.createElement('span')
+        isi.classList.add('twit-isi')
+        isi.innerHTML = this.isi.replaceAll(regex, () => `<span style="color:goldenrod;">link</span>`)
+
+        const date = document.createElement('p')
+        date.classList.add('twit-time')
+        date.innerHTML = this.date
+
+        twitBody.append(isi, this.twitMenu())
+
+        return twitBody
+    }
+    twitOption() {
+        const option = document.createElement('img')
+        option.classList.add('twit-option')
+        option.setAttribute('src', 'img/ellipsis-solid.svg')
+        option.addEventListener('click', () => {
+            new twitShadow(this.id, this.nickname).showOption()
+        })
+        return option
+    }
+
     twitMenu() {
+        const div = document.createElement('div')
+        div.classList.add('twit-footer')
+        
         const menu = document.createElement('div')
         menu.classList.add('twit-menu')
+        
+        const tag = document.createElement('p')
+        tag.classList.add('twit-tag')
+        tag.innerHTML = this.tag
 
         const like = document.createElement('img')
         like.setAttribute('src', 'img/heart-regular.svg')
@@ -108,39 +141,10 @@ class Twit {
             menu.append(unlike)
             likeCount.classList.add('text-pink')
         }
-        menu.append(likeCount, comment, commentCount)
+        menu.append(comment)
+        div.append(tag, menu)
 
-        return menu
-    }
-
-    twitBody() {
-        const twitBody = document.createElement('div')
-        twitBody.classList.add('twit-body')
-
-        const isi = document.createElement('span')
-        isi.classList.add('twit-isi')
-        isi.innerHTML = this.isi
-
-        const tag = document.createElement('p')
-        tag.classList.add('twit-tag')
-        tag.innerHTML = this.tag
-
-        const date = document.createElement('p')
-        date.classList.add('twit-time')
-        date.innerHTML = this.date
-
-        twitBody.append(isi, tag, this.twitMenu())
-
-        return twitBody
-    }
-    twitOption() {
-        const option = document.createElement('img')
-        option.classList.add('twit-option')
-        option.setAttribute('src', 'img/ellipsis-solid.svg')
-        option.addEventListener('click', () => {
-            new twitShadow(this.id, this.nickname).showOption()
-        })
-        return option
+        return div
     }
 
     async addLike() {

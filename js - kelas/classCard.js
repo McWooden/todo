@@ -9,13 +9,16 @@ class Card {
         this.tipe = data.tipe
         this.by = data.by
         this.selesai = data.selesai
+        this.selesaiCount = data.selesaiCount,
         this.shadow = {
             tugas: this.tugas,
             deskripsi: this.deskripsi,
             id: this.id,
             tipe: this.tipe,
             deadline: this.mulai,
-            color: this.color
+            color: this.color,
+            selesaiCount: data.selesaiCount,
+            selesai: data.selesai
         }
         this.card = this.createCardELement()
     }
@@ -26,11 +29,26 @@ class Card {
         card.setAttribute('id', this.id)
         card.append(this.createText(), this.createButton(), this.edit())
         card.style.borderLeftColor = this.color
-        if (!this.selesai) card.style.boxShadow = `${this.color}a0 0px 8px 24px`
+        try {
+            if (this.selesaiCount.includes(nickname)) {
+                if (!this.selesai) {
+                    card.classList.add('belumTapiSudah')
+                    const mark = document.createElement('img')
+                    mark.setAttribute('src', 'img/bookmark-solid.svg')
+                    mark.classList.add('card-mark')
+                    card.append(mark)
+                }
+                card.style.boxShadow = 'none'
+            } else {
+                throw new Error
+            }
+        } catch (error) {
+            card.style.boxShadow = `${this.color}a0 0px 8px 24px`
+        }
         card.dataset.by = this.by
         card.dataset.color = this.color
         card.dataset.date = `${this.mulai} | ${this.tipe}`
-        card.dataset.filter = this.tipe        
+        card.dataset.filter = this.tipe
         return card
     }
 
@@ -39,7 +57,12 @@ class Card {
         cardText.classList.add('card-text')
 
         const textTitle = document.createElement('p')
-        textTitle.innerText = this.tugas
+        try {
+            if (!this.selesaiCount.length) throw new Error
+            textTitle.innerHTML = `${this.tugas}  <span style="color: #0D7377;font-weight: 300;">${this.selesaiCount.length}</span>`
+        } catch (error) {
+            textTitle.innerText = this.tugas
+        }
 
         const deskripsiText = document.createElement('p')
         deskripsiText.classList.add('text-time')

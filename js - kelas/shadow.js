@@ -8,10 +8,13 @@ const showShadow = () => {
     shadow.style.display = 'flex'
     body.style.overflow = 'hidden'
 }
+// showShadow()
 const hideShadow = () => {
-    shadow.style.display = 'none'
     shadow.style.opacity = '0'
     body.style.overflow = 'auto'
+    setTimeout(() => {
+        shadow.style.display = 'none'
+    }, 200)
 }
 
 
@@ -123,6 +126,8 @@ class cardShadow {
         this.tipe = data.tipe
         this.deadline = data.deadline
         this.color = data.color
+        this.selesaiCount = data.selesaiCount
+        this.selesai = data.selesai
     }
     createElement() {
         const container = document.createElement('div')
@@ -140,8 +145,71 @@ class cardShadow {
         title.classList.add('shadow-title')
         title.innerHTML = this.tugas
 
-        header.append(title)
+        header.append(title, this.badge())
         return header
+    }
+    badge() {
+        const div = document.createElement('div')
+        div.classList.add('badge')
+
+        const tanda = document.createElement('div')
+        const img = document.createElement('img')
+        const text = document.createElement('span')
+
+        try {
+            if (!this.selesaiCount.includes(nickname)) {
+                tanda.classList.add('shadow-tanda', 'shadow-tanda-belum')
+                tanda.addEventListener('click', () => this.addSelesai())
+                    img.src = 'img/check-solid.svg'
+                    text.textContent = 'tandai tugas'
+            } else {
+                tanda.classList.add('shadow-tanda', 'shadow-tanda-selesai')
+                tanda.addEventListener('click', () => this.deleteSelesai())
+                    img.src = 'img/reply-solid.svg'
+                    text.textContent = 'tunda tugas'
+            }
+        } catch (err) {
+            tanda.classList.add('shadow-tanda', 'shadow-tanda-belum')
+                tanda.addEventListener('click', () => this.addSelesai())
+                    img.src = 'img/check-solid.svg'
+                    text.textContent = 'tandai tugas'
+        }
+        tanda.append(img, text)
+            
+        const selesai = document.createElement('span')
+        try {
+            selesai.textContent = `${this.selesaiCount.length} selesai`
+        } catch (err) {
+            selesai.textContent = `Belum ada yang selesai`
+        }
+        selesai.classList.add('sudah-selesai')
+
+        div.append(tanda, selesai)
+        return div
+    }
+    async addSelesai() {
+        await fetch(`${url}/addSelesai`, {
+            method: "PUT",
+            body: JSON.stringify({id: this.id, nickname}),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(popup(alertMsg.save)).then(() => {
+            hideShadow()
+            document.dispatchEvent(new Event('renderTugas'))
+        })
+    }
+    async deleteSelesai() {
+        await fetch(`${url}/deleteSelesai`, {
+            method: "PUT",
+            body: JSON.stringify({id: this.id, nickname}),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(popup(alertMsg.save)).then(() => {
+            hideShadow()
+            document.dispatchEvent(new Event('renderTugas'))
+        })
     }
     body() {
         const body = document.createElement('pre')

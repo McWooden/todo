@@ -13,7 +13,7 @@ form.addEventListener('submit', async (e) => {
         mulai: document.getElementById('mulai').value,
         tipe: document.getElementById('tipeTugas').value,
         by: nickname,
-        token,
+        rank: title,
         selesai: false
     }
     const options = {
