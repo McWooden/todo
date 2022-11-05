@@ -118,6 +118,11 @@
     background-color: #292b38;
     margin: .25em;
     border-radius: 3px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.storage-item::selection {
+    transform: rotate(180deg);
 }
 .add-item {
     background-color: #20202c;
@@ -252,7 +257,7 @@
 .my-alert {
     color: #eeeeee;
     background-color: #20202c;
-    width: 100%;
+    width: calc(100% - 1em);
     border-radius: 10px;
     margin: 1em;
     padding: 1em;
@@ -305,7 +310,6 @@
 #form-add-file input[type="submit"]:active {
     opacity: 0;
 }
-
 
 @media screen and (min-width: 1024px) {
     #more-option, #card-shadow, #twit-shadow, #form-add-file {

@@ -2,7 +2,7 @@ const shadow = document.getElementById('shadow')
 const body = document.querySelector('body')
 shadow.addEventListener('click', (e) => {
     if (e.target == shadow) hideShadow()
-    if (e.target.dataset.option == 'put') console.log('mengedit') + hideShadow()
+    if (e.target.dataset.option == 'put') hideShadow()
 })
 const showShadow = () => {
     shadow.style.display = 'flex'
@@ -66,8 +66,64 @@ class addImage {
         shadow.innerHTML = ''
         shadow.append(this.createForm())
         setTimeout(() => {
-            shadow.style.opacity = '1'
             document.querySelector('#form-add-file').style.transform = 'translateX(0)'
+        }, 100)
+    }
+}
+
+class imgShadow {
+    constructor (id, path) {
+        this.id = id
+        this.path = path
+    }
+    createElement() {
+        const c = document.createElement('div')
+        c.setAttribute('id', 'more-option')
+        c.dataset.id = this.id
+        c.append(this.delete())
+        return c
+    }
+    delete() {
+        const option = document.createElement('div')
+        option.classList.add('option')
+        const img = document.createElement('img')
+        img.classList.add('option-icon')
+        img.setAttribute('src', 'img/trash-solid-white.svg')
+        const text = document.createElement('p')
+        text.textContent = 'Delete'
+        const btn = document.createElement('div')
+        btn.classList.add('option-btn')
+        btn.dataset.option = 'delete'
+        btn.addEventListener('click', () => {
+            if (title != 'Owner' && title != 'Admin') {
+                return new myAlert(hideShadow, {msg: `kamu bukan admin`}).showAlert()
+            }
+            new myAlert(async () => {
+                await fetch(`${url}/image`, {
+                    method: 'DELETE',
+                    body: JSON.stringify({
+                        id: this.id,
+                        path: this.path
+                    }),
+                    headers: {
+                        'Content-Type': "application/json"
+                    }
+                }).then(() => {
+                    hideShadow()
+                    popup(alertMsg.delete)
+                    document.dispatchEvent(new Event('renderTugas'))
+                })
+            }, {msg: `Menghapus gambar:<br><span style="opacity: .5; font-size: .6em;">${this.path}</span><br>apa kamu yakin?`}).showAlert()
+        })
+
+        option.append(img, text, btn)
+        return option
+    }
+    show() {
+        shadow.innerHTML = ''
+        shadow.append(this.createElement())
+        setTimeout(() => {
+            document.querySelector('#more-option').style.transform = 'translateX(0)'
         }, 100)
     }
 }
@@ -148,7 +204,6 @@ class twitShadow {
                     document.dispatchEvent(new Event('renderTugas'))
                 })
             }, {msg: 'apa kamu yakin?'}).showAlert()
-            console.log('di klik')
         })
 
         option.append(img, text, btn)
@@ -164,9 +219,6 @@ class twitShadow {
         }, 100)
     }
 }
-
-
-
 
 
 class cardShadow {
@@ -215,6 +267,9 @@ class cardShadow {
                 const img = document.createElement('img')
                 img.classList.add('storage-item')
                 img.setAttribute('src', `${urlImage + x}`)
+                img.addEventListener('click', () => {
+                    new imgShadow(this.id, x).show()
+                })
                 c.append(img)
             })
         } catch (err) {
@@ -319,14 +374,6 @@ class cardShadow {
         }, 100)
     }
 }
-
-
-
-
-
-
-
-
 
 
 class commentTwit {
@@ -478,7 +525,7 @@ class myAlert {
         container.classList.add('my-alert')
 
         const msg = document.createElement('p')
-        msg.textContent = this.msg
+        msg.innerHTML = this.msg
 
         container.append(msg, this.alertBtn())
         return container
