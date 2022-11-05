@@ -215,12 +215,13 @@ class cardShadow {
                 const img = document.createElement('img')
                 img.classList.add('storage-item')
                 img.setAttribute('src', `${urlImage + x}`)
-                c.append(img, add)
+                c.append(img)
             })
         } catch (err) {
-            if (title == 'Owner' || title == 'Admin') {
-                c.append(add)
-            }
+
+        }
+        if (title == 'Owner' || title == 'Admin') {
+            c.append(add)
         }
         return c
     }
