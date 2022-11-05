@@ -206,22 +206,23 @@ class cardShadow {
         const add = document.createElement('div')
         add.textContent = '+'
         add.classList.add('storage-item', 'add-item')
-
         add.addEventListener('click', () => {
             new addImage(this.id, this.tugas, nickname).render()
         })
+
         try {
             this.images.map(x => {
                 const img = document.createElement('img')
                 img.classList.add('storage-item')
                 img.setAttribute('src', `${urlImage + x}`)
-                c.append(img)
+                c.append(img, add)
             })
-            if (title == 'Owner' || title == 'Admin') c.append(add)
-            return c
         } catch (err) {
-            return title == 'Owner' || title == 'Admin' ? c.append(add) : ''
+            if (title == 'Owner' || title == 'Admin') {
+                c.append(add)
+            }
         }
+        return c
     }
     badge() {
         const div = document.createElement('div')
