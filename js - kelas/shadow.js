@@ -40,7 +40,7 @@ class addImage {
                 body: data,
             }
 
-            await fetch(`${urlLocal}/image`, options).then(() => {
+            await fetch(`${url}/image`, options).then(() => {
                 hideShadow()
                 document.dispatchEvent(new Event('renderTugas'))
                 popup(alertMsg.save)

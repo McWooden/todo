@@ -162,7 +162,7 @@ class Card {
     }
 
     async deleteItem() {
-        await fetch(`${urlLocal}/${this.id}`, {
+        await fetch(`${url}/${this.id}`, {
             method: 'DELETE',
             body: JSON.stringify({images: this.images}),
             headers: {
