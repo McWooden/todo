@@ -77,7 +77,7 @@ class Twit {
 
         const isi = document.createElement('span')
         isi.classList.add('twit-isi')
-        isi.innerHTML = this.isi.replaceAll(regex, () => `<span style="color:goldenrod;">link</span>`)
+        isi.innerHTML = this.isi.replaceAll(regex, (x) => `<span style="color:goldenrod;">${x.replace(regex, x => x.slice(x.indexOf('//') + 2, x.indexOf('/', x.indexOf('//') + 2)))}</span>`)
 
         const date = document.createElement('p')
         date.classList.add('twit-time')

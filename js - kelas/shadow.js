@@ -18,7 +18,59 @@ const hideShadow = () => {
 }
 
 
+class addImage {
+    constructor(id, tugas, nickname) {
+        this.id = id
+        this.tugas = tugas
+        this.nickname = nickname
+    }
+    createForm() {
+        const form = document.createElement('form')
+        form.setAttribute('id', 'form-add-file')
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const data = new FormData()
+            data.append('image', input.files[0])
+            data.append('id', this.id)
+            data.append('tugas', this.tugas)
+            data.append('nickname', this.nickname)
 
+            const options = {
+                method: 'POST',
+                body: data,
+            }
+
+            await fetch(`${urlLocal}/image`, options).then(() => {
+                hideShadow()
+                document.dispatchEvent(new Event('renderTugas'))
+                popup(alertMsg.save)
+            })
+        })
+
+            const p = document.createElement('p')
+            p.textContent = this.tugas + ' - ' + this.id
+
+            const input = document.createElement('input')
+            input.type = 'file'
+            input.id = 'inputFile'
+            input.required = true
+
+            const submit = document.createElement('input')
+            submit.type = 'submit'
+            submit.value = 'kirim'
+
+            form.append(p, input, submit)
+        return form
+    }
+    render() {
+        shadow.innerHTML = ''
+        shadow.append(this.createForm())
+        setTimeout(() => {
+            shadow.style.opacity = '1'
+            document.querySelector('#form-add-file').style.transform = 'translateX(0)'
+        }, 100)
+    }
+}
 
 
 
@@ -117,7 +169,6 @@ class twitShadow {
 
 
 
-// showShadow()
 class cardShadow {
     constructor(data) {
         this.tugas = data.tugas
@@ -128,11 +179,12 @@ class cardShadow {
         this.color = data.color
         this.selesaiCount = data.selesaiCount
         this.selesai = data.selesai
+        this.images = data.images
     }
     createElement() {
         const container = document.createElement('div')
         container.setAttribute('id', 'card-shadow')
-        container.append(this.header(), this.body(), this.footer())
+        container.append(this.header(), this.storage(), this.body(), this.footer())
         container.style.borderTop = `1em solid ${this.color}`
         return container
     }
@@ -147,6 +199,29 @@ class cardShadow {
 
         header.append(title, this.badge())
         return header
+    }
+    storage() {
+        const c = document.createElement('div')
+        c.classList.add('shadow-storage')
+        const add = document.createElement('div')
+        add.textContent = '+'
+        add.classList.add('storage-item', 'add-item')
+
+        add.addEventListener('click', () => {
+            new addImage(this.id, this.tugas, nickname).render()
+        })
+        try {
+            this.images.map(x => {
+                const img = document.createElement('img')
+                img.classList.add('storage-item')
+                img.setAttribute('src', `${urlImage + x}`)
+                c.append(img)
+            })
+            if (title == 'Owner' || title == 'Admin') c.append(add)
+            return c
+        } catch (err) {
+            return title == 'Owner' || title == 'Admin' ? c.append(add) : ''
+        }
     }
     badge() {
         const div = document.createElement('div')

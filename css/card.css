@@ -35,9 +35,6 @@
 #sudah .card .card-text {
     background-color: transparent;
 }
-#sudah .card p:first-child {
-    text-decoration: line-through;
-}
 #sudah .card-btn {
     background-color: transparent;
 }

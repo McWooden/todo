@@ -70,6 +70,7 @@ body {
     border-radius: 0;
     margin: 0;
     width: 100vw;
+    transition: .3s;
 }
 .container-mode div {
     width: 45%;

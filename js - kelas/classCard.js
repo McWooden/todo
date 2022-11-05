@@ -2,7 +2,7 @@ class Card {
     constructor(data) {
         this.id = data._id
         this.tugas = data.tugas
-        this.caption = data.deskripsi.slice(0, 100)
+        this.caption = data.deskripsi.replace(regex, x => `<span style="color:goldenrod;">${x.replace(regex, x => x.slice(x.indexOf('//') + 2, x.indexOf('/', x.indexOf('//') + 2)))}</span>`).slice(0, 150)
         this.deskripsi = data.deskripsi
         this.color = data.color
         this.mulai = data.mulai
@@ -10,7 +10,9 @@ class Card {
         this.by = data.by
         this.selesai = data.selesai
         this.selesaiCount = data.selesaiCount,
+        this.images = data.images,
         this.shadow = {
+            images: data.images,
             tugas: this.tugas,
             deskripsi: this.deskripsi,
             id: this.id,
@@ -43,7 +45,9 @@ class Card {
                 throw new Error
             }
         } catch (error) {
-            card.style.boxShadow = `${this.color}a0 0px 8px 24px`
+            if (!this.selesai) {
+                card.style.boxShadow = `${this.color}a0 0px 8px 24px`
+            }
         }
         card.dataset.by = this.by
         card.dataset.color = this.color
@@ -158,9 +162,9 @@ class Card {
     }
 
     async deleteItem() {
-        await fetch(`${url}/${this.id}`, {
+        await fetch(`${urlLocal}/${this.id}`, {
             method: 'DELETE',
-            body: JSON.stringify({token}),
+            body: JSON.stringify({images: this.images}),
             headers: {
                 'Content-Type': "application/json"
             }

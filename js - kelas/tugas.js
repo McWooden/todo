@@ -6,6 +6,7 @@ let formState = {
 const form = document.getElementById('form')
 form.addEventListener('submit', async (e) => {    
     e.preventDefault()
+
     const data = {
         tugas: document.getElementById('tugas').value,
         deskripsi: document.getElementById('deskripsi').value,
@@ -14,14 +15,15 @@ form.addEventListener('submit', async (e) => {
         tipe: document.getElementById('tipeTugas').value,
         by: nickname,
         rank: title,
-        selesai: false
     }
+
+    
     const options = {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json'}
     }
-    await fetch(url, options).then(form.reset())
+    await fetch(urlLocal, options).then(form.reset())
 
     document.dispatchEvent(new Event('renderTugas'))
     rotateSubmitButton()

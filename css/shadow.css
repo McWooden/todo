@@ -10,7 +10,7 @@
     display: none;
     z-index: 2;
     transition: .2s;
-    background-color: #20202c74;
+    background-color: #010101a1;
 }
 #more-option {
     background-color: #20202c;
@@ -39,6 +39,7 @@
     right: 0%;
     bottom: 0;
 }
+
 #card-shadow {
     width: 100%;
     background-color: #2b2f42;
@@ -48,13 +49,13 @@
     border-radius: 5px 5px 0 0;
     padding: .5em;
     padding-top: 0;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     transition: .2s;
     transform: translateY(100%);
     border-radius: 10px;
     margin: .5em;
 }
-
 .badge {
     margin: .25em 0;
     display: flex;
@@ -105,13 +106,30 @@
     text-align: right;
     padding-right: .1em !important;
 }
-.shadow-attribute {
-    color: #eaeaea;
-    opacity: .8;
-    font-weight: 300;
-    padding: .1em;
-    font-size: x-small;
+.shadow-storage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: scroll;
 }
+.storage-item {
+    min-width: 4em;
+    height: 4em ;
+    background-color: #292b38;
+    margin: .25em;
+    border-radius: 3px;
+}
+.add-item {
+    background-color: #20202c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    min-width: 3em;
+    width: 3em;
+    height: 3em;
+}
+
 #card-shadow pre {
     overflow: auto;
     padding: .25em;
@@ -120,6 +138,13 @@
     font-size: calc(1vw + .6em);
     min-height: 20vh;
     white-space: pre-wrap;
+}
+.shadow-attribute {
+    color: #eaeaea;
+    opacity: .8;
+    font-weight: 300;
+    padding: .1em;
+    font-size: x-small;
 }
 #card-shadow a {
     color: goldenrod;
@@ -251,15 +276,39 @@
     text-align: center;
 }
 
-@media screen and (min-width: 1024px) {
-    #more-option, #card-shadow, #twit-shadow {
-        max-width: 1024px;
-    }
+#form-add-file {
+    margin-bottom: 1em;
+    background-color: #15161e;
+    padding: .5em;
+    border-radius: 5px;
+    width: calc(100% - 2em);
+    transform: translateY(100%);
+    transition: .2s;
 }
-@media screen and (max-width: 425px) {
-    #shadow {
-        background: rgba(0,0,0,0.45);
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
+#form-add-file p {
+    color: #f0f1f3;
+    padding: .5em;
+    border-radius: 5px;
+    word-wrap: break-word;
+    text-align: center;
+}
+#form-add-file input {
+    background-color: #20202c;
+    color: #f0f1f3;
+    border: none;
+}
+
+#form-add-file input[type="submit"] {
+    background-color: #267abf;
+    cursor: pointer;
+}
+#form-add-file input[type="submit"]:active {
+    opacity: 0;
+}
+
+
+@media screen and (min-width: 1024px) {
+    #more-option, #card-shadow, #twit-shadow, #form-add-file {
+        max-width: 1024px;
     }
 }

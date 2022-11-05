@@ -73,13 +73,18 @@ function modeNav() {
 }
 
 function changeTheme() {
+    const mode = document.getElementById('mode')
+    const white = '#f0f1f3'
+    const black = '#0A0D14'
     const body = document.querySelector('body')
     const footer = document.querySelector('footer')
     if (modeState == 'Twit' || modeState == 'Log') {
-        body.style.backgroundColor = 'rgb(0 0 0)'
+        body.style.backgroundColor = black
+        mode.style.backgroundColor = black
         footer.style.opacity = '0'
     } else {
-        body.style.backgroundColor = '#f0f1f3'
+        body.style.backgroundColor = white
+        mode.style.backgroundColor = '#2b2f42'
         footer.style.opacity = '1'
     }
 }
