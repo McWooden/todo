@@ -5,7 +5,7 @@ function simpanProggress() {
     let simpanJSON = JSON.stringify(tugas)
     localStorage.setItem(myChache, simpanJSON)
 }
-function ambilProggress() {
-    let ambilJSON = JSON.parse(localStorage.getItem(myChache))
-    tugas = ambilJSON
-}
+    function ambilProggress() {
+        let ambilJSON = JSON.parse(localStorage.getItem(myChache))
+        tugas = ambilJSON
+    }

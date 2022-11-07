@@ -4,7 +4,11 @@ const myChache = 'todolist'
 
 // window on load
 window.addEventListener('load', () => {
-    ambilProggress()
+    try {
+        ambilProggress()
+    } catch (error) {
+        
+    }
     document.dispatchEvent(new Event('renderTugas'))
     minimize()
     greet()

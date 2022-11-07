@@ -31,6 +31,10 @@ alertMsg = {
         link: 'img/feather-light-solid.svg',
         bgColor: '#1d9bf0'
     },
+    plane: {
+        link: 'img/paper-plane-solid.svg',
+        bgColor: '#1d9bf0'
+    },
     like: {
         link: 'img/heart-solid.svg',
         bgColor: '#2b2f42'

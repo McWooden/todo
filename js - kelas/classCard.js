@@ -20,7 +20,8 @@ class Card {
             deadline: this.mulai,
             color: this.color,
             selesaiCount: data.selesaiCount,
-            selesai: data.selesai
+            selesai: data.selesai,
+            komentar: data.tugasComment
         }
         this.card = this.createCardELement()
     }

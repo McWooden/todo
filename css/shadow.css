@@ -52,7 +52,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     transition: .2s;
-    transform: translateY(100%);
+    transform: translateX(100%);
     border-radius: 10px;
     margin: .5em;
 }
@@ -110,7 +110,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    overflow: scroll;
+    overflow: auto;
 }
 .storage-item {
     min-width: 4em;
@@ -138,7 +138,7 @@
 #card-shadow pre {
     overflow: auto;
     padding: .25em;
-    background-color: #31364c;
+    background-color: #20202c;
     border-radius: 0 0 5px 5px;
     font-size: calc(1vw + .6em);
     min-height: 20vh;
@@ -159,6 +159,114 @@
     justify-content: space-between;
     margin-top: .25em;
 }
+
+.komentar {
+    font-size: small;
+    background-color: #31364c;
+    padding: .5em;
+    border-radius: 5px 5px 0 0;
+    font-weight: 300;
+}
+.jumlah-komentar {
+    color: #eaeaeaa3;
+}
+.komentar-title {
+    margin: .5em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    border-bottom: 1px solid goldenrod;
+}
+#shadow-comment-container {
+    width: 100%;
+    background-color: #20202c;
+    max-height: calc(100vh - 20%);
+    min-height: 65%;
+    border-radius: 5px 5px 0 0;
+    padding: .5em;
+    transition: .2s;
+    font-size: x-small;
+    font-weight: 300;
+    color: #f0f1f3;
+    border-top: 2px solid goldenrod;
+    transform: translateX(-100%);
+}
+.shadow-comment {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+.shadow-comment a {
+    color: goldenrod;
+}
+.shadow-comment-card {
+    background-color: #292b38;
+    padding: .5em;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.tugas-comment-body {
+    color: #919191;
+}
+.tugas-comment-footer {
+    color: #919191;
+    align-self: end;
+}
+
+
+
+
+
+
+
+#tugas-comment-form {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1em;
+    padding: .25em;
+    border-radius: 5px;
+    background-color: #15161e;
+}
+#tugas-comment-form input {
+    height: 2.4em;
+    color: #919191;
+    border: none;
+    width: 100%;
+    margin: 0;
+    background-color: #15161e;
+}
+#tugas-comment-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.1em;
+    width: 5em;
+    border-radius: 5px;
+    background-color: #267abf;
+    border: none;
+    transition: .3s;
+}
+#tugas-comment-form button:active {
+    opacity: 0;
+}
+#tugas-comment-form button img {
+    width: 15px;
+}
+
+
+
+
+
+
+
+
 
 #twit-shadow {
     width: 100%;
@@ -221,6 +329,11 @@
     width: 1em;
     cursor: pointer;
 }
+.tugas-comment-trash {
+    position: absolute;
+    top: .5em;
+    right: .5em;
+}
 .hide-comment-trash {
     display: none;
 }
@@ -236,7 +349,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    background-color: #15161e;
+    background-color: #20202c;
     padding: .25em;
     border-radius: 5px;
 }

@@ -39,12 +39,15 @@ class addImage {
                 method: 'POST',
                 body: data,
             }
-
-            await fetch(`${url}/image`, options).then(() => {
-                hideShadow()
-                document.dispatchEvent(new Event('renderTugas'))
-                popup(alertMsg.save)
-            })
+            if (input.files[0].type.split('/')[0] == 'image') {
+                await fetch(`${url}/image`, options).then(() => {
+                    hideShadow()
+                    document.dispatchEvent(new Event('renderTugas'))
+                    popup(alertMsg.save)
+                })
+            } else {
+                new myAlert(hideShadow(), {msg: 'tipe file yang anda kirim bukan "image"'}).render()
+            }
         })
 
             const p = document.createElement('p')
@@ -54,6 +57,7 @@ class addImage {
             input.type = 'file'
             input.id = 'inputFile'
             input.required = true
+            input.accept = 'image/*'
 
             const submit = document.createElement('input')
             submit.type = 'submit'
@@ -96,7 +100,7 @@ class imgShadow {
         btn.dataset.option = 'delete'
         btn.addEventListener('click', () => {
             if (title != 'Owner' && title != 'Admin') {
-                return new myAlert(hideShadow, {msg: `kamu bukan admin`}).showAlert()
+                return new myAlert(hideShadow, {msg: `kamu bukan admin`}).render()
             }
             new myAlert(async () => {
                 await fetch(`${url}/image`, {
@@ -113,7 +117,7 @@ class imgShadow {
                     popup(alertMsg.delete)
                     document.dispatchEvent(new Event('renderTugas'))
                 })
-            }, {msg: `Menghapus gambar:<br><span style="opacity: .5; font-size: .6em;">${this.path}</span><br>apa kamu yakin?`}).showAlert()
+            }, {msg: `Menghapus gambar:<br><span style="opacity: .5; font-size: .6em;">${this.path}</span><br>apa kamu yakin?`}).render()
         })
 
         option.append(img, text, btn)
@@ -127,9 +131,6 @@ class imgShadow {
         }, 100)
     }
 }
-
-
-
 
 
 class twitShadow {
@@ -203,7 +204,7 @@ class twitShadow {
                     popup(alertMsg.delete)
                     document.dispatchEvent(new Event('renderTugas'))
                 })
-            }, {msg: 'apa kamu yakin?'}).showAlert()
+            }, {msg: 'apa kamu yakin?'}).render()
         })
 
         option.append(img, text, btn)
@@ -232,11 +233,12 @@ class cardShadow {
         this.selesaiCount = data.selesaiCount
         this.selesai = data.selesai
         this.images = data.images
+        this.comment = data.komentar || []
     }
     createElement() {
         const container = document.createElement('div')
         container.setAttribute('id', 'card-shadow')
-        container.append(this.header(), this.storage(), this.body(), this.footer())
+        container.append(this.header(), this.storage(), this.komentar(), this.body(), this.footer())
         container.style.borderTop = `1em solid ${this.color}`
         return container
     }
@@ -364,13 +366,152 @@ class cardShadow {
         footer.append(before, after)
         return footer
     }
+    komentar() {
+        const c = document.createElement('div')
+        c.classList.add('komentar')
+        c.addEventListener('click', () => {
+            new commentTugas({
+                id: this.id,
+                tugas: this.tugas,
+                color: this.color,
+                comment: this.comment,
+            }).render()
+        })
+            const count = document.createElement('span')
+            count.classList.add('jumlah-komentar')
+            count.innerHTML = this.comment.length
+            const p = document.createElement('p')
+            p.textContent = 'Komentar '
+            p.append(count)
+        c.append(p)
+        return c
+    }
     showCard() {
         shadow.innerHTML = ''
         shadow.append(this.createElement())
         showShadow()
         setTimeout(() => {
-            document.getElementById('card-shadow').style.transform = 'translateY(0)'
+            document.getElementById('card-shadow').style.transform = 'translateX(0)'
             shadow.style.opacity = '1'
+        }, 100)
+    }
+}
+
+
+class commentTugas {
+    constructor(data) {
+        this.id = data.id
+        this.tugas = data.tugas
+        this.komentar = data.comment || [{_id: '', isi: 'Tidak ada komentar', time: '', nickname: ''}]
+        this.color = data.color
+    }
+    createElement() {
+        const c = document.createElement('div')
+        c.setAttribute('id', 'shadow-comment-container')
+        c.append(this.title(), this.body(), this.form())
+        return c
+    }
+    title() {
+        const p = document.createElement('p')
+        p.classList.add('komentar-title')
+        p.textContent = this.tugas
+        return p
+    }
+    body() {
+        const c = document.createElement('div')
+        c.classList.add('shadow-comment')
+            this.komentar.map(x => {
+                const card = document.createElement('div')
+                card.setAttribute('id', x._id)
+                card.classList.add('shadow-comment-card')
+                    const head = document.createElement('p')
+                    head.classList.add('tugas-comment-header')
+                    head.textContent = x.nickname
+                    const body = document.createElement('p')
+                    body.classList.add('tugas-comment-body')
+                    body.textContent = x.isi
+                    const footer = document.createElement('p')
+                    footer.classList.add('tugas-comment-footer')
+                    footer.textContent = x.time
+                card.addEventListener('click', (e) => {
+                    if (e.target == body || e.target == head) return
+                    if (x.commentNickname == nickname) {
+                        trash.classList.toggle('hide-comment-trash')
+                        card.classList.toggle('comment-highlight')
+                    }
+                })
+                card.addEventListener('click', (e) => {
+                    if (e.target == body) return
+                    if (x.nickname == nickname) {
+                        trash.classList.toggle('hide-comment-trash')
+                        card.classList.toggle('comment-highlight')
+                    }
+                })
+                    const trash = document.createElement('img')
+                    trash.setAttribute('src', 'img/trash-solid-white.svg')
+                    trash.classList.add('hide-comment-trash', 'comment-trash', 'tugas-comment-trash')
+                    trash.addEventListener('click', () => {
+                        new myAlert(async() => {
+                            await fetch(`${url}/deleteComment`, {
+                                method: "PUT",
+                                body: JSON.stringify({id: this.id, commentId: x._id}),
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                            }).then(() => {
+                                popup(alertMsg.delete)
+                                document.dispatchEvent(new Event('renderTugas'))
+                            })
+                        }, {msg: 'apa kamu yakin?'}).render()
+                    })
+                card.append(head,body,footer, trash)
+                c.append(card)
+            })
+            
+        return c
+    }
+    form() {
+        const form = document.createElement('form')
+        form.setAttribute('id','tugas-comment-form')
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            await fetch(`${url}/addComment`, {
+                method: "PUT",
+                body: JSON.stringify({
+                    id: this.id,
+                    nickname,
+                    isi: input.value,
+                    time: `${new Date().getHours()}.${new Date().getMinutes()}`
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(() => {
+                document.querySelector('#shadow-comment-container').style.transform = 'translateX(100%)'
+                document.dispatchEvent(new Event('renderTugas'))
+                popup(alertMsg.plane)
+                setTimeout(() => {
+                    hideShadow()
+                }, 300)
+            })
+        })
+            const input = document.createElement('input')
+            input.setAttribute('id', 'text')
+            input.setAttribute('placeholder', `berkomentar sebagai ${nickname}`)
+            const button = document.createElement('button')
+            button.setAttribute('type', 'submit')
+            button.setAttribute('form', 'tugas-comment-form')
+                const img = document.createElement('img')
+                img.setAttribute('src', 'img/paper-plane-solid.svg')
+            button.append(img)
+        form.append(input, button)
+        return form
+    }
+    render() {
+        shadow.innerHTML = ''
+        shadow.append(this.createElement())
+        setTimeout(() => {
+            document.getElementById('shadow-comment-container').style.transform = 'translateX(0)'
         }, 100)
     }
 }
@@ -445,7 +586,7 @@ class commentTwit {
                             popup(alertMsg.delete)
                             document.dispatchEvent(new Event('renderTugas'))
                         })
-                    }, {msg: 'apa kamu yakin?'}).showAlert()
+                    }, {msg: 'apa kamu yakin?'}).render()
                 })
 
                 const divContent = document.createElement('div')
@@ -550,7 +691,7 @@ class myAlert {
         btn.append(batal, ya)
         return btn
     }
-    showAlert() {
+    render() {
         shadow.innerHTML = ''
         shadow.append(this.alertBody())
         showShadow()
