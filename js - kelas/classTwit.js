@@ -124,6 +124,9 @@ class Twit {
         const likeCount = document.createElement('span')
         likeCount.classList.add('twit-count')
         likeCount.textContent = this.likeCount.length
+        likeCount.addEventListener('click', () => {
+            new myAlert(() => {hideShadow()}, {msg: `${this.likeCount.map(x => `<p>${x}</p>`).join('')}`}).render()
+        })
 
         const comment = document.createElement('img')
         comment.setAttribute('src', 'img/comment-regular.svg')
@@ -136,9 +139,9 @@ class Twit {
         commentCount.textContent = this.commentCount.length
 
         if (this.likeCount.indexOf(nickname) == -1) {
-            menu.append(like)
+            menu.append(likeCount, like)
         } else {
-            menu.append(unlike)
+            menu.append(likeCount, unlike)
             likeCount.classList.add('text-pink')
         }
         menu.append(comment)

@@ -139,7 +139,6 @@
     display: flex;
     padding: 0 .25em;
     gap: .5em;
-    margin-left: .5em;
 }
 .twit a {
     color: goldenrod;
@@ -147,7 +146,6 @@
 .twit-count {
     color: #62657a;
     font-size: small;
-    margin-right: .5em;
 }
 .text-pink {
     color: #a51357;
