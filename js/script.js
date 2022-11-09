@@ -13,6 +13,7 @@ window.addEventListener('load', () => {
     minimize()
     greet()
     getDate()
+    document.querySelector('section').style.marginTop = document.querySelector('header').offsetHeight + 'px'
 })
 
 // render Element

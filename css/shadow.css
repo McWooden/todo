@@ -1,5 +1,4 @@
 #shadow {
-    display: flex;
     justify-content: center;
     align-items: flex-end;
     position: fixed;
@@ -28,6 +27,7 @@
     padding: .5em;
     gap: .5em;
     font-size: 1.1em;
+    cursor: pointer;
 }
 .option-icon {
     width: 1.2em;
@@ -392,6 +392,7 @@
     padding: .5em 1em;
     width: 100%;
     text-align: center;
+    cursor: pointer;
 }
 
 #form-add-file {

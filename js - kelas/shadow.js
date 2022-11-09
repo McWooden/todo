@@ -17,18 +17,19 @@ const hideShadow = () => {
     }, 200)
 }
 
-
 class addImage {
     constructor(id, tugas, nickname) {
         this.id = id
         this.tugas = tugas
         this.nickname = nickname
+        this.waktu = 1
     }
     createForm() {
         const form = document.createElement('form')
         form.setAttribute('id', 'form-add-file')
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
+            submit.style.backgroundColor = 'inherit'
             const data = new FormData()
             data.append('image', input.files[0])
             data.append('id', this.id)
@@ -39,14 +40,20 @@ class addImage {
                 method: 'POST',
                 body: data,
             }
+            const jalankanWaktu = setInterval(() => {
+                submit.value = this.waktu++
+                console.log(this.waktu)
+            }, 1000)
             if (input.files[0].type.split('/')[0] == 'image') {
                 await fetch(`${url}/image`, options).then(() => {
                     hideShadow()
                     document.dispatchEvent(new Event('renderTugas'))
                     popup(alertMsg.save)
+                    clearInterval(jalankanWaktu)
                 })
             } else {
                 new myAlert(hideShadow(), {msg: 'tipe file yang anda kirim bukan "image"'}).render()
+                clearInterval(jalankanWaktu)
             }
         })
 
