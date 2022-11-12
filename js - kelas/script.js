@@ -7,13 +7,24 @@ const regexDomain = /(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b/g
 let link = {
     Beranda: '/',
     Twit: '/twit',
+    Profile: '/profile',
     Log: '/log'
 }
 let modeState = 'Beranda'
-
-const akun = JSON.parse(localStorage.getItem('akun'))
+const defaultAccount = {
+    name: "anonymous",
+    nickname: "User",
+    password: "0",
+    picture: "img/no-pic.png",
+    rank: "Guest",
+    sub: "123456789"
+}
+const defaultAuth = {
+    nickname: 'Guest',
+    password: 'Guest'
+}
+const akun = JSON.parse(localStorage.getItem('akun')) || defaultAccount
 const {nickname, rank: title, pass: token} = akun
-
 // window on load
 window.addEventListener('load', () => {
     loaderCard()
@@ -25,7 +36,7 @@ window.addEventListener('load', () => {
     mode()
     modeNav()
     changeTheme()
-    costumCss()
+    document.body.style.marginBottom = document.querySelector('nav').offsetHeight + 'px'
 })
 document.getElementById('reload').addEventListener('click', () => {
     document.dispatchEvent(new Event('renderTugas'))
@@ -34,6 +45,7 @@ document.getElementById('reload').addEventListener('click', () => {
 // render Element
 document.addEventListener('renderTugas', () => {
     document.querySelector('#rotate-right-solid').classList.add('spin')
+    hideLoginForm()
     if (modeState == 'Twit') {
         fetch(`${url}${link.Twit}`)
         .then(res => res.json())
@@ -46,10 +58,15 @@ document.addEventListener('renderTugas', () => {
         }).catch((err) => {
             showError(err)
         }).finally(() => document.querySelector('#rotate-right-solid').classList.remove('spin'))
-    } else if (modeState == 'Log') {
+    } else if (modeState == 'Profile') {
         document.getElementById('belum').innerHTML = ''
         document.getElementById('sudah').innerHTML = ''
-        logState()
+        showLoginForm()
+        document.querySelector('#rotate-right-solid').classList.remove('spin')
+        myAccountDetail()
+    } else if (modeState == 'Log') {
+        document.getElementById('belum').innerHTML = 'waiting for new update...'
+        document.getElementById('sudah').innerHTML = ''
         document.querySelector('#rotate-right-solid').classList.remove('spin')
     } else {
         fetch(url)
@@ -78,7 +95,6 @@ function rotateSubmitButton() {
 
 // styling
 document.getElementById('header').style.top = 'auto'
-document.getElementById('footer').style.marginBottom = (document.getElementById('nav').offsetHeight + 15) + 'px'
 
 // update proggres
 function updateProggress(tasks) {

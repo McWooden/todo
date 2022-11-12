@@ -1,57 +1,48 @@
-function mode() {
-    const profile = document.createElement('img')
-    profile.setAttribute('src', akun.picture)
-    profile.setAttribute('id', 'pp')
-    profile.addEventListener('click', () => {
-        window.location = 'https://mcwooden.github.io/todo/profile'
-    })
-    const nickname = document.createElement('span')
-    nickname.setAttribute('id', 'nickname')
-    nickname.textContent = akun.nickname
+async function mode() {
+    const modeInfo = document.createElement('div')
+    modeInfo.setAttribute('title', 'Profile')
+    modeInfo.classList.add('profile')
+        const profile = document.createElement('img')
+        profile.setAttribute('src', akun.picture)
+        profile.setAttribute('id', 'pp')
+
+        const nickname = document.createElement('span')
+        nickname.setAttribute('id', 'nickname')
+        nickname.textContent = akun.nickname
+    modeInfo.append(profile, nickname)
+    modeInfo.addEventListener('click', () => clickModeNavElement('Profile'))
+
 
     const beranda = document.createElement('img')
     beranda.setAttribute('src', 'img/house-solid.svg')
     beranda.setAttribute('title', 'Beranda')
-    beranda.addEventListener('click', (e) => {
-        modeState = e.target.title
-        modeNav()
-        loaderCard()
-        document.dispatchEvent(new Event('renderTugas'))
-    })
+    beranda.addEventListener('click', () => clickModeNavElement('Beranda'))
+
 
     const twit = document.createElement('img')
     twit.setAttribute('src', 'img/feather-solid.svg')
     twit.setAttribute('title', 'Twit')
-    twit.addEventListener('click', (e) => {
-        modeState = e.target.title
-        modeNav()
-        loaderCard()
-        document.dispatchEvent(new Event('renderTugas'))
-    })
+    twit.addEventListener('click', () => clickModeNavElement('Twit'))
+
+
 
     const log = document.createElement('img')
     log.setAttribute('src', 'img/terminal-solid.svg')
     log.setAttribute('title', 'Log')
-    log.addEventListener('click', (e) => {
-        modeState = e.target.title
-        modeNav()
-        loaderCard()
-        document.dispatchEvent(new Event('renderTugas'))
-    })
+    log.addEventListener('click', () => clickModeNavElement('Log'))
 
-    const modeInfo = document.createElement('div')
-    modeInfo.classList.add('profile')
-    modeInfo.append(profile, nickname)
-    modeInfo.addEventListener('click', () => {
-        window.location = 'https://mcwooden.github.io/todo/profile'
-    })
 
     const modeBtn = document.createElement('div')
     modeBtn.classList.add('mode-btn')
-    modeBtn.addEventListener('click', () => changeTheme())
     modeBtn.append(beranda, twit, log)
-
     document.getElementById('mode').append(modeInfo, modeBtn)
+}
+function clickModeNavElement(newState) {
+    modeState = newState
+    modeNav()
+    loaderCard()
+    document.dispatchEvent(new Event('renderTugas'))
+    changeTheme()
 }
 
 function modeNav() {
@@ -76,16 +67,17 @@ function changeTheme() {
     const mode = document.getElementById('mode')
     const white = '#f0f1f3'
     const black = '#0A0D14'
+    const lowBlack = '#1b1e2b'
     const body = document.querySelector('body')
-    const footer = document.querySelector('footer')
-    if (modeState == 'Twit' || modeState == 'Log') {
+    if (modeState == 'Twit') {
         body.style.backgroundColor = black
         mode.style.backgroundColor = black
-        footer.style.opacity = '0'
+    } else if (modeState == 'Profile') {
+        body.style.backgroundColor = lowBlack
+        mode.style.backgroundColor = lowBlack
     } else {
         body.style.backgroundColor = white
         mode.style.backgroundColor = '#2b2f42'
-        footer.style.opacity = '1'
     }
 }
 

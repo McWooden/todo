@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/alert.css">
     <link rel="stylesheet" href="css/twit.css">
     <link rel="stylesheet" href="css/shadow.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/log.css">
     <style id="costumCss"></style>
     <link rel="shortcut icon" href="img/x6.png" type="image/x-icon">
@@ -53,6 +54,7 @@
         </div>
     </header>
     
+    
     <!-- body -->
     <section id="todoapp">
         <div id="TwitForm"></div>
@@ -77,11 +79,18 @@
             <div id="sudah"></div>
         </div>
     </section>
+    <!-- Login -->
+    <form id="loginForm" class="container log">
+        <input type="text" name="nickname" placeholder="Nickname" autocomplete="off" required>
+        <input type="password" name="password" placeholder="password" autocomplete="off" required>
+        <input type="submit" name="submitBtn" value="Login">
+        <p>Tidak memiliki akun? <a class="login-btn" href="https://x6todo.herokuapp.com">Buat dengan Google</a></p>
+    </form>
 
     <!-- footer -->
-    <footer id="footer">
-        <p><a target="_blank" href="https://huddin.showwcase.com/">McWooden</a> | <a href="https://www.canva.com/design/DAFPYLobK0E/siU-aCswkHDVWQzV8CbrVw/view?utm_content=DAFPYLobK0E&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu">Feedback</a></p>
-    </footer>
+    <!-- <footer id="footer">
+        <p><a target="_blank" href="https://huddin.showwcase.com/">McWooden</a> | <a href="https://www.instagram.com/direct/t/340282366841710300949128316658067612933">Feedback</a></p>
+    </footer> -->
     <nav id="nav">
         <div class="link">
             <a id="reload"><img src="img/rotate-right-solid.svg" id="rotate-right-solid"></a>
@@ -93,37 +102,9 @@
         </div>
     </nav>
 
-    <div id="shadow">
-        <!-- <div id="shadow-comment-container">
-            <p class="komentar-title">Tugas - hehe haha</p>
-            <div class="shadow-comment">
-                <div class="shadow-comment-card">
-                    <div class="tugas-comment-heaader">McWooden</div>
-                    <div class="tugas-comment-body">hehe haha too</div>
-                    <div class="tugas-comment-footer">10.00</div>
-                </div>
-                <div class="shadow-comment-card">
-                    <div class="tugas-comment-heaader">Hudd1n</div>
-                    <div class="tugas-comment-body">hard</div>
-                    <div class="tugas-comment-footer">10.20</div>
-                </div>
-                <div class="shadow-comment-card">
-                    <div class="tugas-comment-heaader">Lugowo</div>
-                    <div class="tugas-comment-body"><a href="https://qph.fs.quoracdn.net/main-qimg-eb36ce7444c700643f33629e79e2f0c8">https://qph.fs.quoracdn.net/main-qimg-eb36ce7444c700643f33629e79e2f0c8</a></div>
-                    <div class="tugas-comment-footer">10.24</div>
-                </div>
-            </div>
-            <form id="tugas-comment-form">
-                <input type="text" placeholder="berkomentar sebagai huddin">
-                <button type="submit" form="tugas-comment-form">
-                    <img src="img/paper-plane-solid.svg">
-                </button>
-            </form>
-        </div> -->
-    </div>
-
+    <div id="shadow"></div>
     <div id="alert"></div>
-    <script src="js/profile.js"></script>
+
     <script src="js - kelas/script.js"></script>
     <script src="js - kelas/classCard.js"></script>
     <script src="js - kelas/classTwit.js"></script>
@@ -132,6 +113,6 @@
     <script src="js - kelas/nav.js"></script>
     <script src="js - kelas/alert.js"></script>
     <script src="js - kelas/tugas.js"></script>
-    <script src="js - kelas/log.js"></script>
+    <script src="js - kelas/profile.js"></script>
 </body>
 </html>
