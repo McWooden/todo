@@ -45,7 +45,6 @@ async function loginToMyAccount() {
     localStorage.setItem('akun', JSON.stringify(result))
     return result
 }
-loginToMyAccount()
 
 async function myAccountDetail() {
     const c = document.createElement('div')

@@ -110,19 +110,30 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 .storage-item {
-    min-width: 4em;
-    height: 4em ;
-    background-color: #292b38;
+    max-width: 4em;
+    max-height: 4em;
     margin: .25em;
     border-radius: 3px;
-    object-fit: cover;
     cursor: pointer;
+    position: relative;
 }
-.storage-item::selection {
-    transform: rotate(180deg);
+.storage-item-img {
+    width: 4em;
+    height: 4em;
+    object-fit: cover;
+}
+.storage-item-option {
+    width: 1.5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 .25em;
+    border-radius: 3px 0 3px 3px;
+    background-color: #20202cdb;
 }
 .add-item {
     background-color: #20202c;
@@ -337,9 +348,6 @@
 .hide-comment-trash {
     display: none;
 }
-.hide-comment-trash {
-    display: none;
-}
 #twit-comment-form {
     position: fixed;
     bottom: 0;
@@ -424,6 +432,43 @@
 #form-add-file input[type="submit"]:active {
     opacity: 0;
 }
+
+.fullScreen {
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+}
+.fullScreen img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+.fullScreenAttr {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    background-color: #15161e;
+    color: #f0f1f3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    padding: .5em;
+    transition: .3s;
+}
+.fullScreenAttr p {
+    font-size: small;
+}
+.fullScreen .fullScreenClose {
+    width: 3em;
+    height: fit-content;
+    padding: .5em;
+    cursor: pointer;
+}
+.hide-back {
+    transform: translateY(-100%);
+}
+
 
 @media screen and (min-width: 1024px) {
     #more-option, #card-shadow, #twit-shadow, #form-add-file {

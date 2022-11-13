@@ -139,6 +139,40 @@ class imgShadow {
     }
 }
 
+class imgFullScreen {
+    constructor(url, path) {
+        this.url = url
+        this.path = path
+        this.element = this.createElement()
+    }
+    createElement() {
+        const full = document.createElement('div')
+        full.classList.add('fullScreen')
+            const image = document.createElement('img')
+            image.src = this.url
+            const attr = document.createElement('div')
+            attr.classList.add('fullScreenAttr')
+                const close = document.createElement('img')
+                close.classList.add('fullScreenClose')
+                close.src = 'img/reply-solid.svg'
+                close.addEventListener('click', () => {
+                    this.element.parentNode.removeChild(this.element)
+                })
+                const title = document.createElement('p')
+                title.textContent = this.path
+                console.log(this.path)
+            attr.append(close, title)
+        full.addEventListener('click', () => {
+            attr.classList.toggle('hide-back')
+        })
+        full.append(image, attr)
+        return full
+    }
+    render() {
+        shadow.append(this.element)
+        showShadow()
+    }
+}
 
 class twitShadow {
     constructor(id, nickname) {
@@ -273,13 +307,22 @@ class cardShadow {
 
         try {
             this.images.map(x => {
-                const img = document.createElement('img')
-                img.classList.add('storage-item')
-                img.setAttribute('src', `${urlImage + x}`)
-                img.addEventListener('click', () => {
-                    new imgShadow(this.id, x).show()
-                })
-                c.append(img)
+                const div = document.createElement('div')
+                div.classList.add('storage-item')
+                    const img = document.createElement('img')
+                    img.classList.add('storage-item-img')
+                    img.setAttribute('src', `${urlImage + x}`)
+                    img.addEventListener('click', () => {
+                        new imgFullScreen(`${urlImage + x}`, x).render()
+                    })
+                    const option = document.createElement('img')
+                    option.classList.add('storage-item-option')
+                    option.src = 'img/ellipsis-solid.svg'
+                    option.addEventListener('click', () => {
+                        new imgShadow(this.id, x).show()
+                    })
+                div.append(img, option)
+                c.append(div)
             })
         } catch (err) {
 
