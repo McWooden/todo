@@ -452,8 +452,10 @@
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
     padding: .5em;
     transition: .3s;
+    z-index: 3;
 }
 .fullScreenAttr p {
     font-size: small;
