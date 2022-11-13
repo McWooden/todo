@@ -452,7 +452,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 10px;
     padding: .5em;
     transition: .3s;
 }

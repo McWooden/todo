@@ -162,7 +162,7 @@ class imgFullScreen {
                 title.textContent = this.path
                 console.log(this.path)
             attr.append(close, title)
-        full.addEventListener('click', () => {
+        image.addEventListener('click', () => {
             attr.classList.toggle('hide-back')
         })
         full.append(image, attr)
