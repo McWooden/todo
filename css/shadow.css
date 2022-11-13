@@ -432,7 +432,11 @@
 #form-add-file input[type="submit"]:active {
     opacity: 0;
 }
-
+.fullSee {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .fullScreen {
     position: absolute;
     background-color: rgb(0, 0, 0);

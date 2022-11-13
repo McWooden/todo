@@ -150,22 +150,10 @@ class imgFullScreen {
         full.classList.add('fullScreen')
             const image = document.createElement('img')
             image.src = this.url
-            const attr = document.createElement('div')
-            attr.classList.add('fullScreenAttr')
-                const close = document.createElement('img')
-                close.classList.add('fullScreenClose')
-                close.src = 'img/reply-solid.svg'
-                close.addEventListener('click', () => {
-                    this.element.parentNode.removeChild(this.element)
-                })
-                const title = document.createElement('p')
-                title.textContent = this.path
-                console.log(this.path)
-            attr.append(close, title)
-        image.addEventListener('click', () => {
-            attr.classList.toggle('hide-back')
-        })
-        full.append(image, attr)
+            image.addEventListener('click', () => {
+                full.parentNode.removeChild(full)
+            })
+        full.append(image)
         return full
     }
     render() {
@@ -321,7 +309,7 @@ class cardShadow {
                     option.addEventListener('click', () => {
                         new imgShadow(this.id, x).show()
                     })
-                div.append(img, option)
+                div.append(option, img)
                 c.append(div)
             })
         } catch (err) {
