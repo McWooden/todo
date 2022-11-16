@@ -1,0 +1,20 @@
+.container-jadwal {
+    background-color: #dbdbdb;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+#gantiJadwal {
+    overflow: visible;
+}
+#gantiJadwal input {
+    border: none;
+    background-color: #cacaca;
+}
+#gantiJadwal input[type="submit"] {
+    background-color: #277BC0;
+    color: #f0f1f3;
+    box-shadow: #277bc076 0px 8px 24px;
+    transition: .3s;
+    cursor: pointer;
+}

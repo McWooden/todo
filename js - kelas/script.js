@@ -62,11 +62,13 @@ document.addEventListener('renderTugas', () => {
         document.getElementById('belum').innerHTML = ''
         document.getElementById('sudah').innerHTML = ''
         showLoginForm()
+        loginToMyAccount()
         document.querySelector('#rotate-right-solid').classList.remove('spin')
         myAccountDetail()
     } else if (modeState == 'Log') {
-        document.getElementById('belum').innerHTML = 'waiting for new update...'
+        document.getElementById('belum').innerHTML = ''
         document.getElementById('sudah').innerHTML = ''
+        jadwalConfig()
         document.querySelector('#rotate-right-solid').classList.remove('spin')
     } else {
         fetch(url)

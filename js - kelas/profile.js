@@ -45,7 +45,6 @@ async function loginToMyAccount() {
     localStorage.setItem('akun', JSON.stringify(result))
     return result
 }
-
 async function myAccountDetail() {
     const c = document.createElement('div')
     c.classList.add('container', 'detail-profile')
@@ -70,6 +69,7 @@ async function myAccountDetail() {
         logout.addEventListener('click', () => {
             new myAlert(() => {
                 localStorage.setItem('auth', JSON.stringify(defaultAuth))
+                localStorage.setItem('akun', JSON.stringify(defaultAccount))
                 location.reload()
             }, {msg: 'Logout?'}).render()
         })

@@ -5,32 +5,26 @@ async function mode() {
         const profile = document.createElement('img')
         profile.setAttribute('src', akun.picture)
         profile.setAttribute('id', 'pp')
-
         const nickname = document.createElement('span')
         nickname.setAttribute('id', 'nickname')
         nickname.textContent = akun.nickname
     modeInfo.append(profile, nickname)
     modeInfo.addEventListener('click', () => clickModeNavElement('Profile'))
 
-
     const beranda = document.createElement('img')
     beranda.setAttribute('src', 'img/house-solid.svg')
     beranda.setAttribute('title', 'Beranda')
     beranda.addEventListener('click', () => clickModeNavElement('Beranda'))
-
 
     const twit = document.createElement('img')
     twit.setAttribute('src', 'img/feather-solid.svg')
     twit.setAttribute('title', 'Twit')
     twit.addEventListener('click', () => clickModeNavElement('Twit'))
 
-
-
     const log = document.createElement('img')
     log.setAttribute('src', 'img/terminal-solid.svg')
     log.setAttribute('title', 'Log')
     log.addEventListener('click', () => clickModeNavElement('Log'))
-
 
     const modeBtn = document.createElement('div')
     modeBtn.classList.add('mode-btn')
@@ -44,7 +38,6 @@ function clickModeNavElement(newState) {
     document.dispatchEvent(new Event('renderTugas'))
     changeTheme()
 }
-
 function modeNav() {
     if (modeState == 'Beranda') {
         document.getElementById('header').style.display = 'inherit'

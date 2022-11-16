@@ -50,9 +50,13 @@ class addImage {
                     document.dispatchEvent(new Event('renderTugas'))
                     popup(alertMsg.save)
                     clearInterval(jalankanWaktu)
+                }).catch(() => {
+                    clearInterval(jalankanWaktu)
                 })
             } else {
-                new myAlert(hideShadow(), {msg: 'tipe file yang anda kirim bukan "image"'}).render()
+                setTimeout(() => {
+                    new myAlert(hideShadow(), {msg: 'tipe file yang anda kirim bukan "image"'}).render()
+                }, 300);
                 clearInterval(jalankanWaktu)
             }
         })
@@ -140,10 +144,10 @@ class imgShadow {
 }
 
 class imgFullScreen {
-    constructor(url, path) {
+    constructor(url, type) {
         this.url = url
-        this.path = path
         this.element = this.createElement()
+        this.type = type || 'normalImage'
     }
     createElement() {
         const full = document.createElement('div')
@@ -152,6 +156,10 @@ class imgFullScreen {
             image.src = this.url
             image.addEventListener('click', () => {
                 full.parentNode.removeChild(full)
+                if (this.type == 'jadwal') {
+                    console.log(this.type)
+                    hideShadow()
+                }
             })
         full.append(image)
         return full
