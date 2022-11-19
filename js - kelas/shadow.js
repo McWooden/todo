@@ -544,6 +544,7 @@ class commentTugas {
             const input = document.createElement('input')
             input.setAttribute('id', 'text')
             input.setAttribute('placeholder', `berkomentar sebagai ${nickname}`)
+            input.autocomplete = false
             const button = document.createElement('button')
             button.setAttribute('type', 'submit')
             button.setAttribute('form', 'tugas-comment-form')
@@ -681,6 +682,7 @@ class commentTwit {
             input.setAttribute('type', 'text')
             input.setAttribute('placeholder', `berkomentar sebagai ${nickname}`)
             input.classList.add('twit-tag')
+            input.autocomplete = false
             const btn = document.createElement('button')
             btn.setAttribute('type', 'submit')
             btn.setAttribute('form', 'twit-comment-form')

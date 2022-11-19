@@ -14,7 +14,6 @@ loginForm.addEventListener('submit', async (e) => {
     }
     localStorage.setItem('auth', JSON.stringify(data))
     loginForm.submitBtn.style.opacity = '1'
-    await loginToMyAccount()
     location.reload()
 })
 function hideLoginForm() {

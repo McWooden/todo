@@ -15,7 +15,7 @@ const defaultAccount = {
     name: "anonymous",
     nickname: "User",
     password: "0",
-    picture: "img/no-pic.png",
+    picture: "https://nvhibgshtzxykdbwmats.supabase.co/storage/v1/object/public/img/user-picture/no-pic.png",
     rank: "Guest",
     sub: "123456789"
 }
