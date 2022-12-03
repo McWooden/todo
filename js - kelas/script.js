@@ -1,4 +1,4 @@
-const url = 'https://x6todo.herokuapp.com/x6'
+const url = 'https://todo-api.cyclic.app/x6'
 const urlLocal = 'http://localhost:3000/x6'
 const urlImage = 'https://nvhibgshtzxykdbwmats.supabase.co/storage/v1/object/public/tugas/'
 const regex = /(https?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/g

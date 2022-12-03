@@ -40,7 +40,7 @@ async function loginToMyAccount() {
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json',}
     }
-    const result = await fetch(`https://x6todo.herokuapp.com/get-my-profile`, options).then(res => res.json())
+    const result = await fetch(`https://todo-api.cyclic.app/get-my-profile`, options).then(res => res.json())
     localStorage.setItem('akun', JSON.stringify(result))
     return result
 }
